@@ -1,0 +1,9 @@
+Creating EC2 instances on aws
+And understanding how to connect to my instance remoely via SSH
+
+create apache server via sudo apt install apache2
+install mysql
+install php 
+create a virtual host
+create a demo index.html page
+
