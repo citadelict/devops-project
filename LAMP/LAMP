@@ -6,4 +6,6 @@ install mysql
 install php 
 create a virtual host
 create a demo index.html page
+configure apache to render php first before html
+create a basic php.info page to display php version
 
