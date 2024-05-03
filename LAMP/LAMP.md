@@ -1,7 +1,7 @@
 Creating EC2 instances on aws
-And understanding how to connect to my instance remoely via SSH
+And understanding how to connect to my instance remoely via SSH    ![LAMP 101](https://github.com/citadelict/My-devops-Journey/raw/main/LAMP/images/lamp%20101.png)
 
-create apache server via sudo apt install apache2  ![LAMP 101](https://github.com/citadelict/My-devops-Journey/raw/main/LAMP/images/lamp%20101.png)
+create apache server via sudo apt install apache2  
 
 install mysql
 install php 
