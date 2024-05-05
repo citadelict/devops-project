@@ -12,3 +12,12 @@ installing mysql and configuring root password and privileges
 
 installing php via php fpm package manager
 
+Testing PHPP with NGINX
+
+created a mysql db and user, granted all privileges and alos created a table
+and inserting into the table
+
+Retrieving data from mysql 
+
+
+
