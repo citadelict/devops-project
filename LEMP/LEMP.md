@@ -6,8 +6,10 @@ __The LEMP stack is a popular open-source web development platform that consists
 
 
 ## 0. install git bash
+
+  ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/gitbash.png)
    
-    ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/gitbash.png)
+   
 
   
 ## 1. Configuring and Installing Lemp Stack into aws EC2 instance
