@@ -37,9 +37,11 @@ __The LEMP stack is a popular open-source web development platform that consists
 
 * installing php via php fpm package manager AND TESTING NGINX WITH PHP
   
-  ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/testing%20php%20with%20nginx.png)  
+
     ```
     sudo apt install php-fpm php-mysql
+     ```
+    ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/testing%20php%20with%20nginx.png)  
 
 * Configure Nginx to use php
   
