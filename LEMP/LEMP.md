@@ -155,6 +155,7 @@ and insert some data into the table
     7. Now exit console
 
                  exit
+        ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/mysql%20db2.png)  
 
 * Create a php script to interact with the mysql database
   
@@ -163,7 +164,7 @@ and insert some data into the table
 
               
     
- ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/mysql%20db2.png)  
+
 
 writing a simple todo_list.php to connect to my database and retrieve the content  ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/todo_list.php.png)  
 
