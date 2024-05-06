@@ -21,4 +21,6 @@ Launch an EC2 instance with the Amazon Linux 2 AMI and the t2.micro instance typ
 Set up a security group allowing SSH and HTTP traffic.
 Connect to the instance using the SSH key pair :
 
-     ![LAMP 101](https://github.com/citadelict/My-devops-Journey/blob/main/LAMP/ec2%20instance.png)
+    !ssh -i /path/to/key.pem ec2-user@<ipaddress>
+
+     
