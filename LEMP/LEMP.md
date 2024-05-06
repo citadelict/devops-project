@@ -23,18 +23,16 @@ __The LEMP stack is a popular open-source web development platform that consists
         sudo apt install nginx
         
         ```
-  *  
+![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/installed%20Nginx.png)  , 
+![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/nginx.png)  
 
+  * installing mysql and configuring root password and privileges
     
-
-     
-
-
-
-
-Installing Nginx Web server  ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/installed%20Nginx.png)  , ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/nginx.png)  
-
-installing mysql and configuring root password and privileges   ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/installed%20mysql.png)  
+        
+          ```
+          sudo apt install mysql-server
+     ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/installed%20mysql.png)
+    
 
 installing php via php fpm package manager AND TESTING NGINX WITH PHP  ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/testing%20php%20with%20nginx.png)  
  
