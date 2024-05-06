@@ -1,8 +1,8 @@
-WEB STACK IMPLEMENTATION (LEMP STACK) IN AWS
+## WEB STACK IMPLEMENTATION (LEMP STACK) IN AWS 
 
-INTRODUCTION
+### INTRODUCTION
 
-The LEMP stack is a popular open-source web development platform that consists of four main components: Linux, Nginx, MySQL, and PHP (or sometimes Perl or Python). This documentation outlines the setup, configuration, and usage of the LEMP stack.
+__The LEMP stack is a popular open-source web development platform that consists of four main components: Linux, Nginx, MySQL, and PHP (or sometimes Perl or Python). This documentation outlines the setup, configuration, and usage of the LEMP stack.
 
 
 0. install git bash
