@@ -15,6 +15,8 @@ __The LEMP stack is a popular open-source web development platform that consists
   * First update your Ubuntu server list of packages
          ```
         sudo apt update
+        ```
+      ```
         sudo apt upgrade -y
         ```
   *  Then install nginx webserver
