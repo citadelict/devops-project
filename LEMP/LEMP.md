@@ -108,7 +108,7 @@ and insert some data into the table
 
             FLUSH PRIVILEGES;
 
-  ![LEMP ]
+  ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/db%20user%20and%20pwd.png)
 
 
 
