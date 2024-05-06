@@ -83,7 +83,9 @@ __The LEMP stack is a popular open-source web development platform that consists
 
              sudo nginx -t
 
-  5. Reload nginx to apply changes
+    ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/test%20nginx%20config.png)
+
+  6. Reload nginx to apply changes
  
              sudo systemctl reload nginx
 
@@ -106,7 +108,7 @@ and insert some data into the table
 
             FLUSH PRIVILEGES;
 
-  
+  ![LEMP ]
 
 
 
