@@ -158,15 +158,49 @@ and insert some data into the table
         ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/mysql%20db2.png)  
 
 * Create a php script to interact with the mysql database
-  
+    1. use nano or vim to create a sample php file, lets call it todo_lists.php
 
+                   sudo nano /var/www/citatechlemp/todo_lists.php
+
+    2. now , write a test script to connect to mysql, heres a sample script:
+
+                   <?php
+            $user = "citatech"; 
+            $password = "dbpassword";  
+            $database = "db name";  
+            $table = "todo_lists";
+            
+            try {
+               
+                $db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
+                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  // Set the PDO error mode to exception
+
+                echo "<h2>TODO</h2><ol>";
+                $query = "SELECT content FROM $table";  // SQL query to fetch data from todo_list
+                foreach ($db->query($query) as $row) {
+                    // Display each row as a list item, ensuring content is safely escaped to prevent XSS
+                    echo "<li>" . htmlspecialchars($row['content']) . "</li>";
+                }
+                echo "</ol>";
+            } catch (PDOException $e) {
+                // Error handling: display error message and stop script execution
+                echo "Error!: " . $e->getMessage() . "<br/>";
+                die();
+            }
+            ?>
+
+  ### OUTPUT
+
+   ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/todo_list.php.png)  
+        
                     
+  ### CONCLUSION:
 
+    These are all the steps involved in creating a LEMP stack environment for deloying php websites, and alos a sample php website to connect to the database we created
               
     
 
 
-writing a simple todo_list.php to connect to my database and retrieve the content  ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/todo_list.php.png)  
 
 
 
