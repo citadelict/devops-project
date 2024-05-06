@@ -87,8 +87,31 @@ __The LEMP stack is a popular open-source web development platform that consists
  
              sudo systemctl reload nginx
 
-created a mysql db and user, granted all privileges and alos created a table
-and inserting into the table   ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/mysql%20db2.png)  
+* create a mysql db and db user, grante all privileges and alos create a table
+and insert some data into the table
+
+    1. Create db
+       
+            CREATE DATABASE database2;
+
+    2. Create User
+
+            CREATE USER 'citatech2'@'localhost' IDENTIFIED BY '(choose a password)';
+
+    3. Grant all privileges
+
+           GRANT ALL PRIVILEGES ON database2.* TO 'citatech2'@'localhost';
+
+   4. Apply the chnages you made
+
+            FLUSH PRIVILEGES;
+
+  
+
+
+
+
+ ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/mysql%20db2.png)  
 
 writing a simple todo_list.php to connect to my database and retrieve the content  ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/todo_list.php.png)  
 
