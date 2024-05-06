@@ -30,8 +30,10 @@ __The LEMP stack is a popular open-source web development platform that consists
     
         
           ```
-          sudo apt install mysql-server
+          sudo apt install mysql-serve
+
      ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/installed%20mysql.png)
+
  
     
 
@@ -43,8 +45,47 @@ __The LEMP stack is a popular open-source web development platform that consists
      ```
     ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/testing%20php%20with%20nginx.png)  
 
-* Configure Nginx to use php
-  
+* Configure Nginx to use php,
+  1. open your text editor using nano or vim
+
+                        sudo nano /etc/nginx/sites-available/citatechlem
+                          ```
+  2. Edit the server config file, heres an example of how it should look
+
+                 # /etc/nginx/sites-available/citatechlemp
+
+              server {
+              listen 80;
+              server_name citatechlemp www.citatechlemp;
+              root /var/www/citatechlemp;
+          
+              index index.html index.htm index.php;
+          
+              location / {
+                  try_files $uri $uri/ =404;
+              }
+          
+              location ~ \.php$ {
+                  include snippets/fastcgi-php.conf;
+                  fastcgi_pass unix:/var/run/php/php8.3-fpm.sock;
+              }
+          
+              location ~ /\.ht {
+                  deny all;
+              }
+          }
+                         
+  3. Activate the configuration by linking it to the sites enabled directory
+
+             sudo ln -s /etc/nginx/sites-available/citatechlemp /etc/nginx/sites-enabled/
+
+  4. Test configuration for syntax error
+
+             sudo nginx -t
+
+  5. Reload nginx to apply changes
+ 
+             sudo systemctl reload nginx
 
 created a mysql db and user, granted all privileges and alos created a table
 and inserting into the table   ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/mysql%20db2.png)  
