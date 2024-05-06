@@ -1,11 +1,28 @@
+WEB STACK IMPLEMENTATION (LEMP STACK) IN AWS
 
-Configuring and Installing Lemp Stack into aws EC2 instance
-LEMP stands for Linux/nginx/mysql/php or python or perl
+INTRODUCTION
 
-install git bash   ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/gitbash.png)
+The LEMP stack is a popular open-source web development platform that consists of four main components: Linux, Nginx, MySQL, and PHP (or sometimes Perl or Python). This documentation outlines the setup, configuration, and usage of the LEMP stack.
 
 
-launch Ec2 instance and ssh into it
+0. install git bash
+   
+    ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/gitbash.png)
+
+  
+1. Configuring and Installing Lemp Stack into aws EC2 instance
+
+     * launch aws Ec2 instance and ssh into it
+          `ssh -i (keypair.pem) ubuntu@(ipaddress)` 
+
+          `sudo apt update`
+
+          `sudo APT install nginx`
+
+     
+
+
+
 
 Installing Nginx Web server  ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/installed%20Nginx.png)  , ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/nginx.png)  
 
