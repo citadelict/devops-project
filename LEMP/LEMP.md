@@ -23,6 +23,8 @@ __The LEMP stack is a popular open-source web development platform that consists
         sudo apt install nginx
         
         ```
+### OUTPUT
+
 ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/installed%20Nginx.png)  , 
 ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/nginx.png)  
 
@@ -32,7 +34,9 @@ __The LEMP stack is a popular open-source web development platform that consists
           ```
           sudo apt install mysql-server
 
-     ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/installed%20mysql.png)
+
+ ### OUTPUT
+ ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/installed%20mysql.png)
 
  
     
@@ -83,7 +87,8 @@ __The LEMP stack is a popular open-source web development platform that consists
 
              sudo nginx -t
 
-    ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/test%20nginx%20config.png)
+### OUTPUT 
+![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/test%20nginx%20config.png)
 
   6. Reload nginx to apply changes
  
@@ -94,7 +99,7 @@ and insert some data into the table
 
     1. Create db
        
-            CREATE DATABASE database2;
+            CREATE DATABASE citatech;
 
     2. Create User
 
@@ -102,13 +107,14 @@ and insert some data into the table
 
     3. Grant all privileges
 
-           GRANT ALL PRIVILEGES ON database2.* TO 'citatech2'@'localhost';
+           GRANT ALL PRIVILEGES ON citatech.* TO 'citatech2'@'localhost';
 
    4. Apply the chnages you made
 
             FLUSH PRIVILEGES;
 
-  ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/db%20user%20and%20pwd.png)
+### OUTPUT
+![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/db%20user%20and%20pwd.png)
 
 * Testing PHP with Nginx
       !. create an info.php file in your root directory
@@ -119,6 +125,7 @@ and insert some data into the table
                 
                   <?php
                     phpinfo();
+  ### OUTPUT
      ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/testing%20php%20with%20nginx.png)
 
 * Retrieving Data from mysql Database with PHP
@@ -155,7 +162,9 @@ and insert some data into the table
     7. Now exit console
 
                  exit
-        ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/mysql%20db2.png)  
+       
+   ### OUTPUT
+   ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/mysql%20db2.png)  
 
 * Create a php script to interact with the mysql database
     1. use nano or vim to create a sample php file, lets call it todo_lists.php
