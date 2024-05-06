@@ -11,15 +11,20 @@ __The LEMP stack is a popular open-source web development platform that consists
    
    
 
-  
-## 1. Configuring and Installing Lemp Stack into aws EC2 instance
+## 1.  Configuring and Installing Lemp Stack into aws EC2 instance : 
+  * First update your Ubuntu server list of packages
+         ```
+        sudo apt update
+        sudo apt upgrade -y
+        ```
+  *  Then install nginx webserver
+      ```
+        sudo apt install nginx
+        
+        ```
+  *  
 
-     * launch aws Ec2 instance and ssh into it
-          `ssh -i (keypair.pem) ubuntu@(ipaddress)` 
-
-          `sudo apt update`
-
-          `sudo APT install nginx`
+    
 
      
 
