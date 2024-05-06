@@ -32,10 +32,17 @@ __The LEMP stack is a popular open-source web development platform that consists
           ```
           sudo apt install mysql-server
      ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/installed%20mysql.png)
+ 
     
 
-installing php via php fpm package manager AND TESTING NGINX WITH PHP  ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/testing%20php%20with%20nginx.png)  
- 
+* installing php via php fpm package manager AND TESTING NGINX WITH PHP
+  
+  ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/testing%20php%20with%20nginx.png)  
+    ```
+    sudo apt install php-fpm php-mysql
+
+* Configure Nginx to use php
+  
 
 created a mysql db and user, granted all privileges and alos created a table
 and inserting into the table   ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/mysql%20db2.png)  
