@@ -5,12 +5,12 @@
 __The LEMP stack is a popular open-source web development platform that consists of four main components: Linux, Nginx, MySQL, and PHP (or sometimes Perl or Python). This documentation outlines the setup, configuration, and usage of the LEMP stack.
 
 
-0. install git bash
+## 0. install git bash
    
     ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/gitbash.png)
 
   
-1. Configuring and Installing Lemp Stack into aws EC2 instance
+## 1. Configuring and Installing Lemp Stack into aws EC2 instance
 
      * launch aws Ec2 instance and ssh into it
           `ssh -i (keypair.pem) ubuntu@(ipaddress)` 
