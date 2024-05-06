@@ -1,3 +1,10 @@
+INTRODUCTION
+
+The LAMP stack is a popular set of open-source software for building web servers and applications. LAMP stands for Linux, Apache, MySQL, and PHP. In this guide, we will walk through the process of deploying a LAMP stack on an AWS EC2 instance.
+
+
+
+
 Creating EC2 instances on aws
 And understanding how to connect to my instance remoely via SSH    ![LAMP 101](https://github.com/citadelict/My-devops-Journey/raw/main/LAMP/images/lamp%20101.png)
 
