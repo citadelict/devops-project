@@ -9,11 +9,8 @@ The LAMP stack is a popular set of open-source software for building web servers
 
 
 2. create apache server via sudo apt install apache2
-   sudo apt update
-   sudo install apache2
+   ![LAMP 101](https://github.com/citadelict/My-devops-Journey/blob/main/LAMP/install%20apache.png)
 
-   sudo systemctl start apache2
-   sudo systemctl enable apache2
   ![LAMP 101](https://github.com/citadelict/My-devops-Journey/blob/main/LAMP/images/apache%20default%20page.png)
 
 3. install mysql
