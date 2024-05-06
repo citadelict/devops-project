@@ -30,7 +30,7 @@ __The LEMP stack is a popular open-source web development platform that consists
     
         
           ```
-          sudo apt install mysql-serve
+          sudo apt install mysql-server
 
      ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/installed%20mysql.png)
 
