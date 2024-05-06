@@ -1,14 +1,15 @@
 Deploying a LAMP Stack on AWS EC2
 
 Table of Contents
-Introduction
-Launch and Connect to EC2
-Install Apache
-Install MySQL
-Install PHP
-Testing the LAMP Stack
-Configure Security Groups
-Conclusion
+
+* Introduction
+* Launch and Connect to EC2
+* Install Apache
+* Install MySQL
+* Install PHP
+* Testing the LAMP Stack
+* Configure Security Groups
+* Conclusion
 
 
 Introduction
