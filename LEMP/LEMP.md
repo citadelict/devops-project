@@ -37,13 +37,13 @@ __The LEMP stack is a popular open-source web development platform that consists
  
     
 
-* installing php via php fpm package manager AND TESTING NGINX WITH PHP
+* installing php via php fpm package manager 
   
 
     ```
     sudo apt install php-fpm php-mysql
      ```
-    ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/testing%20php%20with%20nginx.png)  
+    
 
 * Configure Nginx to use php,
   1. open your text editor using nano or vim
@@ -110,9 +110,59 @@ and insert some data into the table
 
   ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/db%20user%20and%20pwd.png)
 
+* Testing PHP with Nginx
+      !. create an info.php file in your root directory
+
+                sudo nano /var/www/citatechlemp/info.php
+     2. create a simple php script to check for php info, then save 
+
+                
+                  <?php
+                    phpinfo();
+     ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/testing%20php%20with%20nginx.png)
+
+* Retrieving Data from mysql Database with PHP
+     1.  connect to mysql console using
+ 
+                sudo -u root -p
+
+     2 Show Database
+
+                SHOW DATABASES;
+
+  
+     3.  Use database you created earlier
+
+                USE (DB NAME);
+
+     4. Create a test table
+
+                CREATE TABLE todo_lists (
+              id INT AUTO_INCREMENT PRIMARY KEY,
+              content VARCHAR(50),
+              created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+          );
+
+     5. Insert some rows into it
+
+              INSERT INTO citatech2  (content)  VALUES   ( sample data  )
 
 
+     6.  Confirm data was inserted
+ 
+                SELECT * FROM todo_lists;
 
+    7. Now exit console
+
+                 exit
+
+* Create a php script to interact with the mysql database
+  
+
+                    
+
+              
+    
  ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/mysql%20db2.png)  
 
 writing a simple todo_list.php to connect to my database and retrieve the content  ![LEMP ](https://github.com/citadelict/My-devops-Journey/blob/main/LEMP/todo_list.php.png)  
