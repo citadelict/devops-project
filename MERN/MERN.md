@@ -288,7 +288,7 @@ output  :   [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MER
 
                  node index.js
 
-          output:  
+          output:  [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/db%20connected%20successfully.png)
 
 
       
