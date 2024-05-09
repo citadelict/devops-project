@@ -281,8 +281,9 @@ output  :   [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MER
                  app.listen(port, () =>  {
                  console.log(`Server running on port ${port}`)
                  });
+      
                
-                  4. Start the server
+       4. Start the server
 
                  node index.js
 
