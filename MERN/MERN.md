@@ -60,7 +60,17 @@ Connect to your EC2 instance using SSH:
          
          ssh -i /path/to/-key-pair.pem ubuntu@ipaddress
 
+ Update your Ubuntu Ec2 Instance
 
+          sudo apt update
+          sudo apt upgrade
+
+ install node js and npm (node package manager) 
+
+          curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+          sudo apt-get install -y nodejs
+
+ 
 
 
 
