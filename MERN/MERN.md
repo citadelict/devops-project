@@ -131,10 +131,37 @@ first, go back to your aws console and allow access from all ips to your port 50
 
 then visit your ipaddess:5000
 
-## There 3
+## step eight :  For each task, we need to create a routes for the different end points that the todo application will depend on
 
-            
+     mkdir routes
+     cd routes
 
+   * create an api.js file in it
+
+           touch api.js
+
+   * open the file using 
+
+           sudo nano api.js
+
+   * paste the code below
+
+                    const express = require ('express');
+                  const router = express.Router();
+                  
+                  router.get('/todos', (req, res, next) =&gt; {
+                  
+                  });
+                  
+                  router.post('/todos', (req, res, next) =&gt; {
+                  
+                  });
+                  
+                  router.delete('/todos/:id', (req, res, next) =&gt; {
+                  
+                  })
+                  
+                  module.exports = router;
 
 
 
