@@ -172,11 +172,32 @@ then visit your ipaddess:5000
             mkdir models
             cd models
 
- * Inside the models direcory, we can create a file , lets call it todo.js
+ * Inside the models directory, we can create a file , lets call it todo.js
 
              touch todo.js
 
-   
+ * open the file
+
+             sudo nano todo.js
+
+ * paste this sample code in it
+
+               const mongoose = require('mongoose');
+               const Schema = mongoose.Schema;
+               
+               //create schema for todo
+               const TodoSchema = new Schema({
+               action: {
+               type: String,
+               required: [true, 'The todo text field is required']
+               }
+               })
+               
+               //create model for todo
+               const Todo = mongoose.model('todo', TodoSchema);
+               
+               module.exports = Todo;
+
 
 
 
