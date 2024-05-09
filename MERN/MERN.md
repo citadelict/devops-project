@@ -44,6 +44,8 @@ The MERN stack is a popular technology stack used for building dynamic and scala
 
 These are the steps involved in the  process of setting up the MERN stack on an AWS EC2 instance.
 
+### PART ONE
+
 ## Step 1: Set Up AWS EC2 Instance
 
 1. **Log In to your AWS Console** and navigate to the EC2 dashboard.
@@ -291,6 +293,7 @@ output  :   [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MER
           output:  [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/db%20connected%20successfully.png)
 
 
+## PART TWO
       
       
       
