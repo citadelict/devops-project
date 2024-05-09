@@ -70,6 +70,7 @@ Connect to your EC2 instance using SSH:
           curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
           sudo apt-get install -y nodejs
 
+ output [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/node%20%26%20npm%20installed.png)
  
 # Creating a Todo application
 ### this application will be able to
@@ -86,7 +87,7 @@ Connect to your EC2 instance using SSH:
 
          npm init
 
-output   [Mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/npm%20init.png)
+##output :  [Mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/npm%20init.png)
   
 
 ## step three :  Install Express Js
@@ -133,6 +134,8 @@ output   [Mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/n
 first, go back to your aws console and allow access from all ips to your port 5000
 
 then visit your ipaddess:5000
+
+ output:[mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/express.js.png)
 
 ## step eight :  For each task, we need to create a routes for the different end points that the todo application will depend on
 
