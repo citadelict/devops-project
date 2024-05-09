@@ -40,12 +40,9 @@ The MERN stack is a popular technology stack used for building dynamic and scala
 4. **Response Generation**: The server may perform additional processing based on the data retrieved or manipulated in the database before sending a response back to the client.
 5. **Displaying Data**: React.js then takes this data and updates the view for the user, without needing a full page refresh.
 
-## Advantages of Using the MERN Stack
+## NSTALLING MERN STACK ON AWS EC2 INSTANCE
 
-- **Full Stack JavaScript**: Single language development (JavaScript) across the entire application.
-- **Open Source**: Each technology in the MERN stack is open-source and widely used, providing a robust community and plethora of resources for troubleshooting.
-- **Rich Ecosystem**: Numerous libraries and frameworks available to extend or enhance each layer.
-- **Ease of Integration**: Components are designed to work seamlessly together, reducing development time and simplifying the construction of complex applications.
+
 
 
 
