@@ -164,6 +164,19 @@ then visit your ipaddess:5000
                   module.exports = router;
 
 
+## step nine: To be able to use mongodb, we need to install the mongoose package
+            npm install mongoose
+            
+ * Create a models directory
+
+            mkdir models
+            cd models
+
+ * Inside the models direcory, we can create a file , lets call it todo.js
+
+             touch todo.js
+
+   
 
 
 
