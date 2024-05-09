@@ -201,9 +201,20 @@ then visit your ipaddess:5000
 ## Step ten : Creating Mongodb  
    1. in your web browser, visit https://cloud.mongodb.com/
    2. Sign up for an account
-   3. After sign up, click on Build Cluster button
+   3. After sign up, click on Create Cluster button
    4. Choose AWS cloud and tyhen region closest to you
    5. click on create cluster
+
+ ### Configure Security Settings
+   1.  Create a Database User:
+   2.  Go to the “Database Access” under the “Security” section.
+   3.  Click on “Add New Database User”.
+   4.  Enter a username and password. Ensure the “Read and Write to any database” option is selected.
+   5.  Click "Add User".
+      
+      
+      
+      
 
 
 
