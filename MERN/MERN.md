@@ -57,8 +57,10 @@ These are the steps involved in the  process of setting up the MERN stack on an 
 
 Connect to your EC2 instance using SSH:
 
-```bash
-ssh -i /path/to/-key-pair.pem ubuntu@ipaddress
+         
+         ssh -i /path/to/-key-pair.pem ubuntu@ipaddress
+
+
 
 
 
