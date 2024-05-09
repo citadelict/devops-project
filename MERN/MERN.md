@@ -86,7 +86,7 @@ Connect to your EC2 instance using SSH:
 
          npm init
 
-   # output :   [Mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/npm%20init.png)
+output   [Mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/npm%20init.png)
   
 
 ## step three :  Install Express Js
