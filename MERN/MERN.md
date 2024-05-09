@@ -294,8 +294,21 @@ output  :   [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MER
 
 
 ## PART TWO
-      
-      
+
+ *  connecting the backend code using restful api
+
+    !.   download postman software from   https://www.postman.com/downloads/
+    
+    2.   Open Postman and create an api request to <your-server-IP:5000/api/todos>
+
+    3.   Set the HTTP method to POST.
+    4.   set the header : key=  content-tyep, Value = application/json
+  
+    5.   Now create a GET request by  Clicking on http, choose GET, add the previous address from the post request
+    6.   To create a DELETE request,  click on http, choose DELETE, add the same address as we did in GET and POST request
+    
+
+
       
 
 
