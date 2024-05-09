@@ -222,7 +222,73 @@ output : [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/m
    6.  Then go back to cluster page, click in connect, select drivers and choose Mongoose , copy your conection url
 
 output  :   [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/whitelist%20any%20IP.png)
+
+## step eleven :  Coonecting THe app to Mongo db
+
+   !. create a .env file in the todo directory and open the file;
+
+            touch .env
+            sudo nano .env
+
+   NOTE: creating .env variables to store information is a very secure practice is highly recommended
+
+   2. Create a connection string
+
+            Db:mongodb+srv://<username>:<password>@clusternode.tngzjdp.mongodb.net/?retryWrites=true&w=majority&appName=Clusternode
       
+      change <username: your usernamee, <password: your password >
+
+   2. Navigate to the index.js file which i already set up,
+
+               sudo nano todo/index.js
+
+   3. Clear out previous code and paste this sample :
+
+               const express = require('express');
+            const bodyParser = require('body-parser');
+            const mongoose = require('mongoose');
+            const routes = require('./routes/api');
+            const path = require('path');
+            require('dotenv').config();
+            
+            const app = express();
+            
+            const port = process.env.PORT || 5000;
+            
+            //connect to the database
+            mongoose.connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true })
+            .then(() =&gt; console.log(`Database connected successfully`))
+            .catch(err =&gt; console.log(err));
+            
+            //since mongoose promise is depreciated, we overide it with node's promise
+            mongoose.Promise = global.Promise;
+            
+            app.use((req, res, next) =&gt; {
+            res.header("Access-Control-Allow-Origin", "\*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            next();
+            });
+            
+            app.use(bodyParser.json());
+            
+            app.use('/api', routes);
+            
+            app.use((err, req, res, next) =&gt; {
+            console.log(err);
+            next();
+            });
+            
+            app.listen(port, () =&gt; {
+            console.log(`Server running on port ${port}`)
+            });
+
+
+
+   4. Start the server
+
+                 node index.js
+
+
       
       
       
