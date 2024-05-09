@@ -71,6 +71,19 @@ Connect to your EC2 instance using SSH:
           sudo apt-get install -y nodejs
 
  
+# Creating a Todo application
+
+## step one :  Make a new directory, name it "todo" and move into it
+
+         sudo mkdir
+         cd todo
+
+## step two :   Run an NPM init to create a package.json file
+
+         npm init
+
+## step three :
+
 
 
 
