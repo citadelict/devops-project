@@ -211,6 +211,8 @@ then visit your ipaddess:5000
    4. Choose AWS cloud and tyhen region closest to you
    5. click on create cluster
 
+output : [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/mongodbcluster.png)
+
  ### Configure Security Settings
    1.  Create a Database User:
    2.  Go to the “Database Access” under the “Security” section.
@@ -219,7 +221,7 @@ then visit your ipaddess:5000
    5.  Click "Add User".
    6.  Then go back to cluster page, click in connect, select drivers and choose Mongoose , copy your conection url
 
-output  :  
+output  :   [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/whitelist%20any%20IP.png)
       
       
       
