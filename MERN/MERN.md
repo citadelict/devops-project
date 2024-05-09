@@ -198,7 +198,12 @@ then visit your ipaddess:5000
                
                module.exports = Todo;
 
-
+## Step ten : Creating Mongodb  
+   1. in your web browser, visit https://cloud.mongodb.com/
+   2. Sign up for an account
+   3. After sign up, click on Build Cluster button
+   4. Choose AWS cloud and tyhen region closest to you
+   5. click on create cluster
 
 
 
