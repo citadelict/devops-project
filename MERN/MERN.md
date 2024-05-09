@@ -217,6 +217,9 @@ then visit your ipaddess:5000
    3.  Click on “Add New Database User”.
    4.  Enter a username and password. Ensure the “Read and Write to any database” option is selected.
    5.  Click "Add User".
+   6.  Then go back to cluster page, click in connect, select drivers and choose Mongoose , copy your conection url
+
+output  :  
       
       
       
