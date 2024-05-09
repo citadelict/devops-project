@@ -82,7 +82,19 @@ Connect to your EC2 instance using SSH:
 
          npm init
 
-## step three :
+## step three :  Install Express Js
+
+         npm install express
+
+## step four : create an index.js file
+
+         touuch index.js
+
+## step five :  Installing dotenv module
+
+         npm install dotenv
+
+## step six : 
 
 
 
