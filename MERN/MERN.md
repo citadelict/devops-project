@@ -256,9 +256,10 @@ output  :   [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MER
                  const port = process.env.PORT || 5000;
                  
                  //connect to the database
-                 mongoose.connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true })
-                 .then(() =>  console.log(`Database connected successfully`))
-                 .catch(err =>  console.log(err));
+                mongoose.connect(process.env.DB)
+               .then(() => console.log('Database connected successfully'))
+               .catch(err => console.log('Error connecting to MongoDB:', err));
+
                  
                  //since mongoose promise is depreciated, we overide it with node's promise
                  mongoose.Promise = global.Promise;
@@ -286,6 +287,8 @@ output  :   [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MER
        4. Start the server
 
                  node index.js
+
+          output:  
 
 
       
