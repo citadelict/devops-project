@@ -123,6 +123,10 @@ Connect to your EC2 instance using SSH:
 
 ## step seven : start server to see if it works
 
+first, go back to your aws console and allow access from all ips to your port 5000
+
+then visit your ipaddess:5000
+
             
 
 
