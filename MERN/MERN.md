@@ -72,7 +72,11 @@ Connect to your EC2 instance using SSH:
 
  
 # Creating a Todo application
-
+### this application will be able to
+  * create new task
+  * display a list of all tasks
+  * delete completed tasks
+    
 ## step one :  Make a new directory, name it "todo" and move into it
 
          sudo mkdir
@@ -126,6 +130,8 @@ Connect to your EC2 instance using SSH:
 first, go back to your aws console and allow access from all ips to your port 5000
 
 then visit your ipaddess:5000
+
+## There 3
 
             
 
