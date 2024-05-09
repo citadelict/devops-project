@@ -306,6 +306,48 @@ output  :   [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MER
   
     5.   Now create a GET request by  Clicking on http, choose GET, add the previous address from the post request
     6.   To create a DELETE request,  click on http, choose DELETE, add the same address as we did in GET and POST request
+
+[mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/restapi.png)
+
+*  Lets create a front end , this is the Client interface that will interact with the api
+
+     1. Naviage to todo directory
+
+              cd todo
+
+     2. Create a react project
+ 
+              npx-create-react-app client
+
+        alternatively, i tried creating the project manually by running
+
+               mkdir client
+               cd client
+               npm init -y
+
+   3. Install concurrently, as well as nodeman
+       concurrently is used to run multiple commands at the same time
+ 
+               npm install concurrently --save-dev
+      
+      Nodeman is used to run and monitor the server, in order to reload automatically if it detects any change
+
+               npm install nodeman --save-dev
+
+   4.  Set it up by navigating to pacakge.json in the root directory
+
+               sudo nano package.json
+       change this part
+       
+                                  **{
+                  "start": "node index.js",
+                  "start-watch": "nodemon index.js",
+                  "dev": "concurrently \"npm run start-watch\" \"cd client &amp;&amp; npm start\""**
+   
+
+       
+
+     
     
 
 
