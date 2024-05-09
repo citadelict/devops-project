@@ -40,7 +40,27 @@ The MERN stack is a popular technology stack used for building dynamic and scala
 4. **Response Generation**: The server may perform additional processing based on the data retrieved or manipulated in the database before sending a response back to the client.
 5. **Displaying Data**: React.js then takes this data and updates the view for the user, without needing a full page refresh.
 
-## NSTALLING MERN STACK ON AWS EC2 INSTANCE
+##  Installing the MERN Stack on AWS EC2
+
+These are the steps involved in the  process of setting up the MERN stack on an AWS EC2 instance.
+
+## Step 1: Set Up AWS EC2 Instance
+
+1. **Log In to your AWS Console** and navigate to the EC2 dashboard.
+2. **Launch an Instance**:
+   - Select an Amazon Machine Image (AMI), such as Amazon Linux 2 or Ubuntu.
+   - Choose an instance type, like `t3.micro`, which is free tier eligible.
+   - Configure instance details, add storage, and configure a security group to allow traffic on ports 80 (HTTP), 443 (HTTPS), and 3000 (React).
+   - Launch the instance
+
+## Step 2: Connect to Your Instance
+
+Connect to your EC2 instance using SSH:
+
+```bash
+ssh -i /path/to/-key-pair.pem ubuntu@ipaddress
+
+
 
 
 
