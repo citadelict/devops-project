@@ -319,11 +319,7 @@ output  :   [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MER
  
               npx-create-react-app client
 
-        alternatively, i tried creating the project manually by running
-
-               mkdir client
-               cd client
-               npm init -y
+      
 
    3. Install concurrently, as well as nodeman
        concurrently is used to run multiple commands at the same time
@@ -345,7 +341,16 @@ output  :   [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MER
                   "dev": "concurrently \"npm run start-watch\" \"cd client &amp;&amp; npm start\""**
    
 
-       
+   %. Navigate back to todo directory and run
+
+                  npm run dev
+
+    * the react app should load at http://youripaddress:3000
+    *  Your backend server should load at http://youripaddress:5000
+ 
+    *  P>S ensure to allow port 3000 in aws in bound rules
+
+   ###   [mern]()
 
      
     
