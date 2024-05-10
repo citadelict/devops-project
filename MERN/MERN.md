@@ -341,7 +341,7 @@ output  :   [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MER
                   "dev": "concurrently \"npm run start-watch\" \"cd client &amp;&amp; npm start\""**
    
 
-   %. Navigate back to todo directory and run
+   5. Navigate back to todo directory and run
 
                   npm run dev
 
@@ -350,15 +350,310 @@ output  :   [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MER
  
     *  P>S ensure to allow port 3000 in aws in bound rules
 
-   ###   [mern]()
+   ##Output: [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/react%20app%20running.png)
+
+   6. Navigate to src directory and create new directory "components" , tehn create 3 files "Todo.js, Input.js, ListTodo.js"
+
+                  cd client/src
+                  mkdir components
+                  cd components
+                  touch Input.js Todo.js ListTodo.js
+
+   7. now open each of those files and paste these codes
+            * open Todo.js
+
+                  sudo nano Todo.js
+
+      input these codes samples
+
+               import React, { Component } from 'react';
+               import axios from 'axios';
+               
+               import Input from './Input';
+               import ListTodo from './ListTodo';
+               
+               class Todo extends Component {
+                 state = {
+                   todos: []
+                 }
+               
+                 componentDidMount() {
+                   this.getTodos();
+                 }
+               
+                 getTodos = () => {
+                   axios.get('/api/todos')
+                     .then(res => {
+                       if (res.data) {
+                         this.setState({
+                           todos: res.data
+                         });
+                       }
+                     })
+                     .catch(err => console.log(err));
+                 }
+               
+                 deleteTodo = (id) => {
+                   axios.delete(`/api/todos/${id}`)
+                     .then(res => {
+                       if (res.data) {
+                         this.getTodos();
+                       }
+                     })
+                     .catch(err => console.log(err));
+                 }
+               
+                 render() {
+                   let { todos } = this.state;
+               
+                   return (
+                     <div>
+                       <h1>My Todo(s)</h1>
+                       <Input getTodos={this.getTodos} />
+                       <ListTodo todos={todos} deleteTodo={this.deleteTodo} />
+                     </div>
+                   );
+                 }
+               }
+               
+               export default Todo;
+               
+               
+   * open ListTodo.js
+
+            sudo nano ToDo.js
+
+    paste this sample codes
+
+            import React from 'react';
+
+            const ListTodo = ({ todos, deleteTodo }) => {
+            
+            return (
+            <ul>
+            {
+            todos && todos.length > 0 ?
+            (
+            todos.map(todo => {
+            return (
+            <li key={todo._id} onClick={() => deleteTodo(todo._id)}>{todo.action}</li>
+            )
+            })
+            )
+            :
+            (
+            <li>No todo(s) left</li>
+            )
+            }
+            </ul>
+            )
+            }
+            
+            export default ListTodo;
+
+                   
+ *  Open Input.js
+
+            sudo nano Input.js
+    paste this code
+
+                        import React, { Component } from 'react';
+            import axios from 'axios';
+            
+            class Input extends Component {
+              state = {
+                action: ""
+              }
+            
+              addTodo = () => {
+                const task = { action: this.state.action };
+            
+                if (task.action && task.action.length > 0) {
+                  axios.post('/api/todos', task)
+                    .then(res => {
+                      if (res.data) {
+                        this.props.getTodos();
+                        this.setState({ action: "" });
+                      }
+                    })
+                    .catch(err => console.log(err));
+                } else {
+                  console.log('input field required');
+                }
+              }
+            
+              handleChange = (e) => {
+                this.setState({
+                  action: e.target.value
+                });
+              }
+            
+              render() {
+                let { action } = this.state;
+                return (
+                  <div>
+                    <input type="text" onChange={this.handleChange} value={action} />
+                    <button onClick={this.addTodo}>add todo</button>
+                  </div>
+                );
+              }
+            }
+            
+            export default Input;
+
+               
+   8. Navigate back to clients directory and install axios. Axios is a promised based HTTP library that enables developers make request to thier own server, or third party servers
+
+            cd ../..
+            npm install axios
+
+   9.  Move back into the src directory and edit the app.js file to remove the defualt react logo
+
+               cd src
+                sudo nano App.js
+       paste this code in it
+
+                import React from 'react';
+            import Todo from './components/Todo';
+            import './App.css';
+            
+            const App = () => {
+              return (
+                <div className="App">
+                  <Todo />
+                </div>
+              );
+            }
+            
+            export default App;
+
+       * Open the app.css also and paste this code
+
+               .App {
+               text-align: center;
+               font-size: calc(10px + 2vmin);
+               width: 60%;
+               margin-left: auto;
+               margin-right: auto;
+               }
+               
+               input {
+               height: 40px;
+               width: 50%;
+               border: none;
+               border-bottom: 2px #101113 solid;
+               background: none;
+               font-size: 1.5rem;
+               color: #787a80;
+               }
+               
+               input:focus {
+               outline: none;
+               }
+               
+               button {
+               width: 25%;
+               height: 45px;
+               border: none;
+               margin-left: 10px;
+               font-size: 25px;
+               background: #101113;
+               border-radius: 5px;
+               color: #787a80;
+               cursor: pointer;
+               }
+               
+               button:focus {
+               outline: none;
+               }
+               
+               ul {
+               list-style: none;
+               text-align: left;
+               padding: 15px;
+               background: #171a1f;
+               border-radius: 5px;
+               }
+               
+               li {
+               padding: 15px;
+               font-size: 1.5rem;
+               margin-bottom: 15px;
+               background: #282c34;
+               border-radius: 5px;
+               overflow-wrap: break-word;
+               cursor: pointer;
+               }
+               
+               @media only screen and (min-width: 300px) {
+               .App {
+               width: 80%;
+               }
+               
+               input {
+               width: 100%
+               }
+               
+               button {
+               width: 100%;
+               margin-top: 15px;
+               margin-left: 0;
+               }
+               }
+               
+               @media only screen and (min-width: 640px) {
+               .App {
+               width: 60%;
+               }
+               
+               input {
+               width: 50%;
+               }
+               
+               button {
+               width: 30%;
+               margin-left: 10px;
+               margin-top: 0;
+               }
+               }
+
+          
+
+
+   * Open the index.css file and paste this code in it
+
+              body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+            "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+            sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            box-sizing: border-box;
+            background-color: #282c34;
+            color: #787a80;
+            }
+            
+            code {
+            font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+            monospace;
+            }
+
 
      
-    
+ 10. Navigate back into parent directory and run the build using this command
+
+              npm run dev
+
+     React build would compile sucessfully and both backend and front end will run concurrently through the ports we earlier opened
+
+     #$Output: [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/full%20compiled.png)
+              [mern]()
 
 
-      
 
+### CONCLUSION
 
-
-
-
+We have just created a todo web application , front end based on react and backend is based on the Express js framework, alos we have been able to create api using POSTMAN,
+Over all, we have learnt how to deploy a MERN stack into our cloud server
