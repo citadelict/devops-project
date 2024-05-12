@@ -89,7 +89,7 @@ Connect to your EC2 instance using SSH:
 
          npm init
 
-output :  [Mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/npm%20init.png)
+output :  ![Mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/npm%20init.png)
   
 
 ## step three :  Install Express Js
@@ -137,7 +137,7 @@ first, go back to your aws console and allow access from all ips to your port 50
 
 then visit your ipaddess:5000
 
- output:[mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/express.js.png)
+ output:![mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/express.js.png)
 
 ## step eight :  For each task, we need to create a routes for the different end points that the todo application will depend on
 
@@ -213,7 +213,7 @@ then visit your ipaddess:5000
    4. Choose AWS cloud and tyhen region closest to you
    5. click on create cluster
 
-output : [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/mongodbcluster.png)
+output : ![mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/mongodbcluster.png)
 
  ### Configure Security Settings
    1.  Create a Database User:
@@ -223,7 +223,7 @@ output : [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/m
    5.  Click "Add User".
    6.  Then go back to cluster page, click in connect, select drivers and choose Mongoose , copy your conection url
 
-output  :   [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/whitelist%20any%20IP.png)
+output  :   ![mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/whitelist%20any%20IP.png)
 
 ## step eleven :  Coonecting THe app to Mongo db
 
@@ -290,7 +290,7 @@ output  :   [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MER
 
                  node index.js
 
-          output:  [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/db%20connected%20successfully.png)
+          output:  ![mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/db%20connected%20successfully.png)
 
 
 ## PART TWO
@@ -307,7 +307,7 @@ output  :   [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MER
     5.   Now create a GET request by  Clicking on http, choose GET, add the previous address from the post request
     6.   To create a DELETE request,  click on http, choose DELETE, add the same address as we did in GET and POST request
 
-[mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/restapi.png)
+![mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/restapi.png)
 
 *  Lets create a front end , this is the Client interface that will interact with the api
 
@@ -350,7 +350,7 @@ output  :   [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MER
  
     *  P>S ensure to allow port 3000 in aws in bound rules
 
-   ##Output: [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/react%20app%20running.png)
+   ##Output: ![mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/react%20app%20running.png)
 
    6. Navigate to src directory and create new directory "components" , tehn create 3 files "Todo.js, Input.js, ListTodo.js"
 
@@ -648,7 +648,7 @@ output  :   [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MER
 
      React build would compile sucessfully and both backend and front end will run concurrently through the ports we earlier opened
 
-     #$Output: [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/full%20compiled.png)
+     #$Output: ![mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/full%20compiled.png)
               [mern]()
 
 
