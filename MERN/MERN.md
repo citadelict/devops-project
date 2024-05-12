@@ -72,7 +72,7 @@ Connect to your EC2 instance using SSH:
           curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
           sudo apt-get install -y nodejs
 
- output [mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/node%20%26%20npm%20installed.png)
+ output ![mern](https://github.com/citadelict/My-devops-Journey/blob/main/MERN/node%20%26%20npm%20installed.png)
  
 # Creating a Todo application
 ### this application will be able to
