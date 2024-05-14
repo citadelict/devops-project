@@ -230,13 +230,114 @@
     source Code :
 
              
+        var app = angular.module('myApp', []);
+            app.controller('myCtrl', function($scope, $http) {
+              $http( {
+                method: 'GET',
+                url: '/book'
+              }).then(function successCallback(response) {
+                $scope.books = response.data;
+              }, function errorCallback(response) {
+                console.log('Error: ' + response);
+              });
+              $scope.del_book = function(book) {
+                $http( {
+                  method: 'DELETE',
+                  url: '/book/:isbn',
+                  params: {'isbn': book.isbn}
+                }).then(function successCallback(response) {
+                  console.log(response);
+                }, function errorCallback(response) {
+                  console.log('Error: ' + response);
+                });
+              };
+              $scope.add_book = function() {
+                var body = '{ "name": "' + $scope.Name + 
+                '", "isbn": "' + $scope.Isbn +
+                '", "author": "' + $scope.Author + 
+                '", "pages": "' + $scope.Pages + '" }';
+                $http({
+                  method: 'POST',
+                  url: '/book',
+                  data: body
+                }).then(function successCallback(response) {
+                  console.log(response);
+                }, function errorCallback(response) {
+                  console.log('Error: ' + response);
+                });
+              };
+            });
+            
+            
+            
+    * Create an Index.html file to setup the forms that would collect the dtata we need ;
+
+             sudo nano index.html
+
+      Copy the source code below  :
+
+             <!doctype html>
+           <html ng-app="myApp" ng-controller="myCtrl">
+             <head>
+               <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+               <script src="script.js"></script>
+             </head>
+             <body>
+               <div>
+                 <table>
+                   <tr>
+                     <td>Name:</td>
+                     <td><input type="text" ng-model="Name"></td>
+                   </tr>
+                   <tr>
+                     <td>Isbn:</td>
+                     <td><input type="text" ng-model="Isbn"></td>
+                   </tr>
+                   <tr>
+                     <td>Author:</td>
+                     <td><input type="text" ng-model="Author"></td>
+                   </tr>
+                   <tr>
+                     <td>Pages:</td>
+                     <td><input type="number" ng-model="Pages"></td>
+                   </tr>
+                 </table>
+                 <button ng-click="add_book()">Add</button>
+               </div>
+               <hr>
+               <div>
+                 <table>
+                   <tr>
+                     <th>Name</th>
+                     <th>Isbn</th>
+                     <th>Author</th>
+                     <th>Pages</th>
+                   </tr>
+                   <tr ng-repeat="book in books">
+                     <td>{{book.name}}</td>
+                     <td>{{book.isbn}}</td>
+                     <td>{{book.author}}</td>
+                     <td>{{book.pages}}</td>
+                     <td><input type="button" value="Delete" ng-click="del_book(book)"></td>
+                   </tr>
+                 </table>
+               </div>
+             </body>
+           </html>
 
 
+   
+# Step Seven : Running the server, now we have been able to build a simple book register web form app, it is important to check if our project is working without errors, visit :your IP address with port 3300 , (ie)  ipaddress:3300
+
+P.S, ensure you adjust your inbound rule to open port 3300
+
+OUTPUT 1: ![mern](https://github.com/citadelict/My-devops-Journey/blob/main/MEAN/IMAGES/allowing%20port%203300%20in%20aws.png)
+
+OUTPUT 2 ![mean](https://github.com/citadelict/My-devops-Journey/blob/main/MEAN/IMAGES/saved%20port%203300%20inbound%20rule.png)
 
 
+## Finally, we can now check if our web app is up and running.
 
+OUTPUT 1 : ![mean](https://github.com/citadelict/My-devops-Journey/blob/main/MEAN/IMAGES/final%20output.png)
 
-
-
-
-
+OUTPUT 2 : ![mean](https://github.com/citadelict/My-devops-Journey/blob/main/MEAN/IMAGES/final%20output(1).png)
