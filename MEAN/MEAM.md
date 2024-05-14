@@ -83,8 +83,160 @@
            mkdir Books
            npm init -y
 
-     
+   
+   * Create a new file and name it server.js. and paste the source code below in it :
 
+            sudo nano server.js
+
+     source code :
+
+              var express = require('express');
+         var bodyParser = require('body-parser');
+         var mongoose = require('mongoose');
+         var app = express();
+         
+         // Connect to MongoDB
+         var dbHost = 'mongodb://localhost:27017/test';
+         mongoose.connect(dbHost, {
+           useNewUrlParser: true,
+           useUnifiedTopology: true
+         });
+         
+         // Handle connection events
+         mongoose.connection.on('connected', function() {
+           console.log('Mongoose connected to ' + dbHost);
+         });
+         
+         mongoose.connection.on('error', function(err) {
+           console.log('Mongoose connection error: ' + err);
+         });
+         
+         mongoose.connection.on('disconnected', function() {
+           console.log('Mongoose disconnected');
+         });
+         
+         // Middleware
+         app.use(express.static(__dirname + '/public'));
+         app.use(bodyParser.json());
+         app.use(bodyParser.urlencoded({ extended: true }));
+         
+         // Routes
+         require('./apps/routes')(app);
+         
+         // Start server
+         app.set('port', 3300);
+         app.listen(app.get('port'), function() {
+           console.log('Server up: http://localhost:' + app.get('port'));
+         });
 
     
+# Step Five :  setting  up routes to  the server.
+
+   * Create a new folder inside the Books directory and name it apps, then move into it.
+
+             mkdir apps
+             cd apps
+
+   * Create a new routes file, and paste the source code below in it :;
+
+            sudo nano routes.js
+
+      Source Code :
+
+             var Book = require('./models/book');
+         var path = require('path');
+         
+         module.exports = function(app) {
+           
+           // Get all books
+           app.get('/book', async function(req, res) {
+             try {
+               let result = await Book.find({});
+               res.json(result);
+             } catch (err) {
+               res.status(500).json({ error: err.message });
+             }
+           });
+         
+           // Add a new book
+           app.post('/book', async function(req, res) {
+             try {
+               var book = new Book({
+                 name: req.body.name,
+                 isbn: req.body.isbn,
+                 author: req.body.author,
+                 pages: req.body.pages
+               });
+               let result = await book.save();
+               res.json({
+                 message: "Successfully added book",
+                 book: result
+               });
+             } catch (err) {
+               res.status(500).json({ error: err.message });
+             }
+           });
+         
+           // Delete a book by ISBN
+           app.delete('/book/:isbn', async function(req, res) {
+             try {
+               let result = await Book.findOneAndRemove({ isbn: req.params.isbn });
+               res.json({
+                 message: "Successfully deleted the book",
+                 book: result
+               });
+             } catch (err) {
+               res.status(500).json({ error: err.message });
+             }
+           });
+         
+           // Serve the index.html file for any other routes
+           app.get('*', function(req, res) {
+             res.sendFile(path.join(__dirname, '../public', 'index.html'));
+           });
+         };
+         
+  * Next, we have to create another directory insode the app directory, this would be called models
+
+             mkdir models
+             cd models
+
+  * Create a new file and call it book.js, and paste the source code below in it
+
+            sudo nano book.js
+    
+     source code :
+
+              var mongoose = require('mongoose');
+
+             var bookSchema = new mongoose.Schema({
+               name: String,
+               isbn: { type: String, index: true },
+               author: String,
+               pages: Number
+             });
+             
+             module.exports = mongoose.model('Book', bookSchema);
+
+
+# Step Six :  Accessing the routes via a front end, we will create this front end using Angular JS
+
+  * in the project directory, create a new folder and call it public, move into it and create another file and call that script.js, then we can paste in the logic/controller to handle the requests: 
+
+              mkdir public
+              cd public
+              sudo nano script.js
+    
+    source Code :
+
+             
+
+
+
+
+
+
+
+
+
 
