@@ -329,6 +329,12 @@
    
 # Step Seven : Running the server, now we have been able to build a simple book register web form app, it is important to check if our project is working without errors, visit :your IP address with port 3300 , (ie)  ipaddress:3300
 
+  * Start the server :
+
+         node server.js
+
+    OUTPUT : ![mean](https://github.com/citadelict/My-devops-Journey/blob/main/MEAN/IMAGES/node%20server.js.png)
+
 P.S, ensure you adjust your inbound rule to open port 3300
 
 OUTPUT 1: ![mern](https://github.com/citadelict/My-devops-Journey/blob/main/MEAN/IMAGES/allowing%20port%203300%20in%20aws.png)
@@ -341,3 +347,11 @@ OUTPUT 2 ![mean](https://github.com/citadelict/My-devops-Journey/blob/main/MEAN/
 OUTPUT 1 : ![mean](https://github.com/citadelict/My-devops-Journey/blob/main/MEAN/IMAGES/final%20output.png)
 
 OUTPUT 2 : ![mean](https://github.com/citadelict/My-devops-Journey/blob/main/MEAN/IMAGES/final%20output(1).png)
+
+
+
+
+
+## Conclusion,
+
+This is a documentation of how i built and deployed a book register web app on AWS EC2 insance using the MEAN stackk 
