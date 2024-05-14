@@ -236,7 +236,7 @@ output  :   ![mern](https://github.com/citadelict/My-devops-Journey/blob/main/ME
 
    2. Create a connection string
 
-            Db:mongodb+srv://<username>:<password>@clusternode.tngzjdp.mongodb.net/?retryWrites=true&w=majority&appName=Clusternode
+            Db=mongodb+srv://<username>:<password>@clusternode.tngzjdp.mongodb.net/?retryWrites=true&w=majority&appName=Clusternode
       
       change <username: your usernamee, <password: your password >
 
