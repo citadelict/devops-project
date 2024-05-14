@@ -39,7 +39,7 @@
 
      OUTPUT : ![mean](https://github.com/citadelict/My-devops-Journey/blob/main/MEAN/IMAGES/installed%20nodejs%20and%20npm.png)
 
-# Step Three  : Insalling Mongo DB
+# Step Three  : Installing Mongo DB
 
   * Import Mongodb Repository key
 
