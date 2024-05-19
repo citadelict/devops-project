@@ -5,7 +5,7 @@
 - AWS Account
 - Terminal / Git Bash
 
-## Steps to Set Up EC2 Instances
+### Step One :  to Set Up EC2 Instances
 
 #### Server Instance
 1. Open the EC2 Dashboard on the AWS Management Console.
@@ -193,8 +193,54 @@ OUTPUT: ![WP](https://github.com/citadelict/My-devops-Journey/blob/main/web%20so
     OUTPUT: ![WP](https://github.com/citadelict/My-devops-Journey/blob/main/web%20solution%20with%20wordpress/verified%20setup.png)
 
 
+### STEPS TWO: Installing MySQL Server on Amazon EC2 Instance
+
+We can now proceed to installing and configuring MYSQL server that will serve as the database for our website on the server instance, to do this, we can follow same process as we did in the server instance to create ec2 instance, create and attach the 3 ebs volumes, ssh into your nstance and create partitions
 
 
+1. Create logical volumes, ( use same process as we did in the server instance, the logical volume should be db-lv instead of apps-lv, alos create logs-lv
+2. Mount the db-lv to /db/ directory
+
+### STEPS THREE : Insalling wordpress on the server EC2 instance
+
+!. update the instance
+
+        sudo yum -y update
+
+2. Install **wget** **apache** , and all its dependencies
+
+       sudo yum -y install wget httpd php php-mysqlnd php-fpm php-json
+
+3. Enable, and start apache
+
+           sudo systemctl enable httpd
+           sudo systemctl start httpd
+   
+5. Install php and all its dependencies
+
+           sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+           sudo yum install yum-utils http://rpms.remirepo.net/enterprise/remi-release-8.rpm
+           sudo yum module list php sudo yum module reset php
+           sudo yum module enable php:remi-7.4
+           sudo yum install php php-opcache php-gd php-curl php-mysqlnd
+           sudo systemctl start php-fpm
+           sudo systemctl enable php-fpm setsebool -P httpd_execmem 1
+
+6. Restart Apache
+
+            sudo systemctl restart httpd
+
+7. Create an info.php page to test if your configuration is correct
+
+               sudo vi /var/www/html/info.php
+   
+   write the following code to check php config
+
+                <?php
+               phpinfo();
+                   ?>
+                   
+  8. Visit your IPaddress/info.php  
 
 
 
