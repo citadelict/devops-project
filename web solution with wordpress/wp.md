@@ -245,10 +245,22 @@ We can now proceed to installing and configuring MYSQL server that will serve as
      OUTPUT : ![WP](https://github.com/citadelict/My-devops-Journey/blob/main/web%20solution%20with%20wordpress/info.php.png)
 
 
+ 9.  Download and Copy wordpress to the /var/www/html directory
 
+             sudo wget http://wordpress.org/latest.tar.gz
+             sudo tar xzvf latest.tar.gz
+             sudo rm -rf latest.tar.gz
+             sudo cp wordpress/wp-config-sample.php wordpress/wp-config.php
+     
+10.  configure SElinux policies
 
+                sudo chown -R apache:apache /var/www/html/wordpress
+                 sudo chcon -t httpd_sys_rw_content_t /var/www/html/wordpress -R
+                 sudo setsebool -P httpd_can_network_connect=1
 
+### STEP FOUR :
 
+   !. Install and configure mysql server on your DB ec2 instance
 
 
 
