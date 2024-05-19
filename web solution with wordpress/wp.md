@@ -92,14 +92,84 @@ OUTPUT2 : ![WP](https://github.com/citadelict/My-devops-Journey/blob/main/web%20
 
     OUTPUT: ![WP](https://github.com/citadelict/My-devops-Journey/blob/main/web%20solution%20with%20wordpress/full%20partitioned%20all%20disks.png)
 
+6. Install lvm2 package. Lvm2 is used for managing disk drives and other storage devices
+      ```sh
+    sudo yum install lvm2
+    ```
+7. Use the **pvcreate** utility tool to mark each of the volumes as physical volumes
+     ```sh
+    sudo pvcreate /dev/nvme1n1p1
+    sudo pvcreate /dev/nvme2n1p1
+    sudo pvcreate /dev/nvme3n1p1
+    ``` 
+ OUTPUT: ![WP](https://github.com/citadelict/My-devops-Journey/blob/main/web%20solution%20with%20wordpress/made%20the%20disks%20physical%20volume.png)
 
+8. Verify that the physical volume has been created
+     ```sh
+    sudo pvs
+    ```
+  
+9. Add all 3 PVs to a volume group, lets call it webdata-vg
+     ```sh
+    sudo vgcreate webdata-vg /dev/nvme1n1p1  /dev/nvme2n1p1  /dev/nvme3n1p1
+    ```
 
+10. Verify the setup by running ** sudo vgs **\
 
+OUTPUT: ![WP](https://github.com/citadelict/My-devops-Journey/blob/main/web%20solution%20with%20wordpress/successfully%20added%20them%20to%20web%20data%20group.png)
 
+11. Create 2 logical volumes, name one **app-lv** and the other **logs-lv**. For app-lv, use half of the disk size, then use the remaining part fpor the logs-lv
 
+       ```sh
+    sudo lvcreate -n app-lv -L 14G webdata-vg
+    sudo lvcreate -n logs-lv -L 14G webdata-vg
+    ```
+12. Verify that the logical volumes has been created
+       ```sh
+    sudo lvs
+    ```
+13. Verify the entire setup to be sure all has been configured properly
+     ```sh
+    sudo vgdisplay -v #view complete setup - VG, PV, and LV sudo lsblk 
+    ```
+    
+14. format the logical volumes using **ext4** filesystems
+    ```sh
+    sudo mkfs -t ext4 /dev/webdata-vg/apps-lv
+     sudo mkfs -t ext4 /dev/webdata-vg/logs-lv
+    ```
+OUTPUT: ![WP](https://github.com/citadelict/My-devops-Journey/blob/main/web%20solution%20with%20wordpress/formatted%20the%20logical%20volumn.png)
 
+15. Create a directory to store website file
+    ```sh
+    sudo mkdir -p /var/www/html
+    ```  
 
+16. Create another directory for the log files
+    ```sh
+    sudo mkdir -p /home/recovery/logs
+    ``` 
+OUTPUT: ![WP](https://github.com/citadelict/My-devops-Journey/blob/main/web%20solution%20with%20wordpress/Screenshot_2024_05_17-20.png)
 
+17. Mount the newly created directory for website files on tyhe app logical volume we earlier created
+    ```sh
+    sudo mount /dev/webdata-vg/apps-lv/   /var/www/html/
+    ```
+    OUTPUT: ![WP](https://github.com/citadelict/My-devops-Journey/blob/main/web%20solution%20with%20wordpress/mounted%20html%20dir%20on%20apps-lv.png)
+18. Back up all the files on the logs logical volume before mounting, this is done using rsync utility
+    ```sh
+    sudo rsync -av /var/log/. /home/recovery/logs/
+    ``` 
+19.  Mount the .var/logs on the log-lv
+      ```sh
+    sudo mount /dev/webdata-vg/logs-lv/   /var/log/
+    ``` 
+
+20. Restore the log files back into /var/log/ directory
+    ```sh
+    sudo rsync -av /home/recovery/logs/log/. /var/log 
+    ```
+21. Ensure that the mount configurations persist after server restart, this can be done by updating the **UUID** of the /etc/fstab 
 
 
 
