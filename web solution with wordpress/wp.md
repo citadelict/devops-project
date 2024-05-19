@@ -169,7 +169,43 @@ OUTPUT: ![WP](https://github.com/citadelict/My-devops-Journey/blob/main/web%20so
     ```sh
     sudo rsync -av /home/recovery/logs/log/. /var/log 
     ```
-21. Ensure that the mount configurations persist after server restart, this can be done by updating the **UUID** of the /etc/fstab 
+21. Ensure that the mount configurations persist after server restart, this can be done by updating the **UUID** of the /etc/fstab
+    ```sh
+    sudo blkid
+    ``
+            
+    
+            sudo vi /etc/fstab
+            ``
+ * Replace the UUID for the log-lv with the one you copied , ave and exit. then test the configuration
+    ```sh
+    sudo mount -a
+    ```
+ * Reload the daemom
+   ```sh
+   sudo systemctl reload daemon
+   ```
+
+22. Verify the setup
+    ```sh
+    df -h
+    ```
+    OUTPUT: ![WP](https://github.com/citadelict/My-devops-Journey/blob/main/web%20solution%20with%20wordpress/verified%20setup.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
