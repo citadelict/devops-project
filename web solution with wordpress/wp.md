@@ -240,7 +240,9 @@ We can now proceed to installing and configuring MYSQL server that will serve as
                phpinfo();
                    ?>
                    
-  8. Visit your IPaddress/info.php  
+  8. Visit your IPaddress/info.php
+
+     OUTPUT : ![WP](https://github.com/citadelict/My-devops-Journey/blob/main/web%20solution%20with%20wordpress/info.php.png)
 
 
 
