@@ -262,8 +262,61 @@ We can now proceed to installing and configuring MYSQL server that will serve as
 
    !. Install and configure mysql server on your DB ec2 instance
 
+           sudo yum -y update
+           sudo yum install mysql-server
+
+   2. Configure the DB to work with wordpress , you can do this by creating a DB user that is from the web server IP address.
+
+* First , log in as root user
+
+            sudo mysql
+      
+* Then create a new db         
+
+            CREATE DATABASE woordpress2;
+
+* Next step is to create a user that can access the db from the webserver
+
+                  CREATE USER 'myuser'@'my server ipaddress' IDENTIFIED BY 'choose your password' ;
+                  
+* Grant all prvileges to the newly created user
+
+                      GRANT ALL ON wordpress2.* TO 'citatech'@'yourwebserver ip address' ;
+                      FLUSH PRIVILEGES;
+
+* Confirm DB was created
+
+              SHOW DATABASES;
+  OUTPUT: ![WP](https://github.com/citadelict/My-devops-Journey/blob/main/web%20solution%20with%20wordpress/CREATED%20DB%20FOR%20WORDPRESS.png)
+
+* Test your db connection by logging in to your db from your webserver, before that, ensure you allowed port 3306 (which is the default port for mysql) in your mysql instance  inbound rules, configure the connection to your-webserver-IP-address/32
+
+* Then access your webserver instance and also install mysql client
+
+                   sudo yum install -y mysql-client
+
+* Log in to the mysql server remotely from your webserver
+
+                  sudo mysql -u myuser -p -h (your mysql server ip address)
+
+* If logged successfully, you should get the same result below. P.S, the image below shows both my webserver which is on the left and mysql server which is on the right
+
+  OUTPUT: ![WP](https://github.com/citadelict/My-devops-Journey/blob/main/web%20solution%20with%20wordpress/CONFIGURED%20MYSQL%20AND%20ALLOWED%20SERVER%20TO%20CONNECT%20REMOTELY%20TO%20DB.png)
+
+## Now that you have successfully setup and configured mysql and connected to it remotely from your webserver, it is essential we set up wordpress to do the same.
+
+## STEP FIVE : 
 
 
+* Log into your webserver ec2 instance and access your wordpress directory
+
+          sudo cd /var/html/wordpress
+  
+* Configure wordpress to use your mysql database we created earlier, to do this , we have to access the wp-config file , this is where the configuration of wordpress is done
+
+         sudo vi wp-config.php
+
+  * replace the variables of 
 
 
 
