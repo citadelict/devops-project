@@ -304,6 +304,11 @@ We can now proceed to installing and configuring MYSQL server that will serve as
   OUTPUT: ![WP](https://github.com/citadelict/My-devops-Journey/blob/main/web%20solution%20with%20wordpress/CONFIGURED%20MYSQL%20AND%20ALLOWED%20SERVER%20TO%20CONNECT%20REMOTELY%20TO%20DB.png)
 
 ## Now that you have successfully setup and configured mysql and connected to it remotely from your webserver, it is essential we set up wordpress to do the same.
+visit your-ip-address/wordpress in your web browser and you should get the same result as below;
+
+OUTPUT: ![WP](https://github.com/citadelict/My-devops-Journey/blob/main/web%20solution%20with%20wordpress/succesfully%20installed%20wordpress.png)
+
+
 
 ## STEP FIVE : 
 
@@ -316,8 +321,30 @@ We can now proceed to installing and configuring MYSQL server that will serve as
 
          sudo vi wp-config.php
 
-  * replace the variables of 
+  * replace the variables of DB user, DB host, DB password .
+  * DB host - this should be your mysql server ip address
+  * DB password ; your database password
+  * DB user  ; the database user we created earlier
 
+
+  OUTPUT: ![WP](https://github.com/citadelict/My-devops-Journey/blob/main/web%20solution%20with%20wordpress/IMG_20240518_091028.jpg)
+
+  * Save and exit
+  * Visit your webserver IP address/wordpress directory
+
+            your-ip-address/wordpress
+
+    and you should get the installation page below :
+
+    OUTPUT : ![WP](https://github.com/citadelict/My-devops-Journey/blob/main/web%20solution%20with%20wordpress/connected%20wordpress%20db.png)
+
+  * Follow the installation process and click on install, wait a few minutes and wordpress would have been successfully installed using your remote database on the mysql server
+ 
+    OUTPUT: ![WP](https://github.com/citadelict/My-devops-Journey/blob/main/web%20solution%20with%20wordpress/finally%20installed%20wordpress.png)
+
+
+
+## In this documentation ,We have learnt how to create and attach  ebs volumes to our instance, partion and create logical volumes to store our wordpress website, we have also been able to create a wordpress website, hosted the website files on our apache webserver and hosted the database on another server and was able to connect remotely into it.
 
 
 
