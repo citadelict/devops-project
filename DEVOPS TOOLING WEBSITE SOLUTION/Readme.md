@@ -15,7 +15,7 @@
 
             lsblk
      
-      output : ![Devops](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%20TOOLING%20WEBSITE%20SOLUTION/images/checked%20available%20disks.png)
+      output : ![DEV](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%20TOOLING%20WEBSITE%20SOLUTION/images/checked%20available%20disks.png)
 
    * use the gdisk utility tpo create partitions for each disk
 
