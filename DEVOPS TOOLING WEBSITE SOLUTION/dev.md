@@ -241,12 +241,78 @@ OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%
           172.31.32.0/20:/mnt/logs  /var/log/httpd nfs defaults 0 0
 
    * save and exit
+  
     
      OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%20TOOLING%20WEBSITE%20SOLUTION/images/mounted%20nfs%20logs%20on%20both%20servers.png)
 
+  * create a file in one webserver and verify it appears on the other webservers
+
+     OUTPUT : ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%20TOOLING%20WEBSITE%20SOLUTION/images/created%20a%20txt%20file%20to%20verify%20if%20it%20will%20show%20in%20all%20servers.png)
+
+  # STEP FOUR : TEST MYSQL REMOTE CONNECTION FROM THE WEBSERVER
+
+   * Install mysql client
+
+         sudo yum install - mysql
+
+   * Check if you can connect to the mysql server remotely
+
+         sudo mysql - u webaccess -p -h (mysql server ip address)
+         SHOW DATABASES;
+
+  OUTPUT : ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%20TOOLING%20WEBSITE%20SOLUTION/images/MADE%20SURE%20I%20CAN%20CNNECT%20REMOTELY%20TO%20MYSQL%20SERVER.png)
 
 
+# STEP FIVE : DEPLOYING THE WEBSITE TO THE WEBSERVER
 
+
+ * Fork the tooling website code from my github repository
+
+    OUTPUT : ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%20TOOLING%20WEBSITE%20SOLUTION/images/forked%20to%20my%20repository.png)
+
+   
+ * Deploy the tooling website source code to the webserver
+
+     1. install git
+
+            sudo yum instal;l git
+        
+     2.  Now you clone the repository to the webserver
+  
+            git clone https://github.com/citadelict/tooling.git
+
+
+  * Ensure the contents of tooling/html directory is moved to /var/www/html directory
+  * configure db credentials to connect to the mysql server in functions.php page
+  * import **tooling-db.sql** file into the database
+
+            mysql -h 172.31.39.146 -u webserver -p <tooling-db.sql
+
+  * Create a new admin user and password, to do this, connect to mysql remotely
+
+             sudo mysql -u webaccess -p -h 172.31.39.146
+             USE DATABASE tooling;
+             INSERT INTO `users` (`id`, `username`, `password`, `email`, `user_type`, `status`) VALUES
+              (1, 'myuser', '5f4dcc3b5aa765d61d8327deb882cf99', 'user@mail.com', 'admin', '1');
+              exit
+
+   * Now, restart apache.
+
+            sudo systemctl restart httpd.service
+     
+   * (P.S) if apache doesnt restart or shows error, then you will need to allow apache to use NFS mounted directories with SElinux enabled
+
+             sudo setsebool -P httpd_use_nfs 1
+
+  * Restart apache again
+
+  * vist both webservers ipaddress/index.php on different web broswer tabs
+
+    OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%20TOOLING%20WEBSITE%20SOLUTION/images/index.php.png)
+
+ * log in using he username : myuser and password : password  , which we created earlier
+
+   OUTPUT : ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%20TOOLING%20WEBSITE%20SOLUTION/images/successfully%20deployed%20to%20both%20servers.%20i%20can%20now%20access%20my%20websites.png)
 
     
 
