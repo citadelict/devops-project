@@ -15,7 +15,7 @@
 
             lsblk
      
-     ![DEV](https://drive.google.com/file/d/1_eufeQqQI3343D2DKyr2nVHj7RD1ex3h/view?usp=sharing)
+  OUTPUT:![DEV](https://drive.google.com/file/d/1_eufeQqQI3343D2DKyr2nVHj7RD1ex3h/view?usp=sharing)
 
    * use the gdisk utility tpo create partitions for each disk
 
