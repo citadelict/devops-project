@@ -28,7 +28,8 @@
 
   * use **lsblk** to check the create3d partitions
 
-   
+ OUTPUT:    ![dev](https://github.com/citadelict/My-devops-Journey/tree/main/DEVOPS%20TOOLING%20WEBSITE%20SOLUTION/images)
+
 
   * Install **Lvm2**
 
