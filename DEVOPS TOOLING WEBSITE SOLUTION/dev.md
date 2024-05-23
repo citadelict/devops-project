@@ -182,6 +182,8 @@ OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%
          
           sudo mount -t nfs -o rw,nosuid 172.31.32.0/20:/mnt/apps /var/www
 
+    OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%20TOOLING%20WEBSITE%20SOLUTION/images/mounted%20on%20nfs%20server%20mount%20points.png)
+
   * make sure the changes persist after reboot
 
           sudo vi /etc/fstab
@@ -213,7 +215,36 @@ OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%
               
               setsebool -P httpd_execmem 1
 
-    * Verify that both the webservers **/var/www** and NFS servers  **/mnt/apps** have the same files and directories, to do this
+    * Verify that both the webservers **/var/www** and NFS servers  **/mnt/apps** have the same files and directories, to do this,
+   
+              df -h
+
+      OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%20TOOLING%20WEBSITE%20SOLUTION/images/same%20files%20on%20nfs%20server%20and%20webservers.png)
+
+
+   * make /var/log/httpd/ directory
+
+          sudo  mkdir /var/log/httpd
+
+   * Mount /var/log/httpd and target the NFS server export  for logs
+
+         
+          sudo mount -t nfs -o rw,nosuid 172.31.32.0/20:/mnt/logss /var/log/httpd
+
+ 
+   * make sure the changes persist after reboot
+
+          sudo vi /etc/fstab
+    
+   * add the following
+
+          172.31.32.0/20:/mnt/logs  /var/log/httpd nfs defaults 0 0
+
+   * save and exit
+    
+     OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%20TOOLING%20WEBSITE%20SOLUTION/images/mounted%20nfs%20logs%20on%20both%20servers.png)
+
+
 
 
 
