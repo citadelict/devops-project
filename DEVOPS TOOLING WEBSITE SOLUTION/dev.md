@@ -310,7 +310,7 @@ OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%
 
     OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%20TOOLING%20WEBSITE%20SOLUTION/images/index.php.png)
 
- * log in using he username : myuser and password : password  , which we created earlier
+ * log in using the username : myuser and password : password  , which we created earlier
 
    OUTPUT : ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%20TOOLING%20WEBSITE%20SOLUTION/images/successfully%20deployed%20to%20both%20servers.%20i%20can%20now%20access%20my%20websites.png)
 
