@@ -304,6 +304,10 @@ OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%
 
              sudo setsebool -P httpd_use_nfs 1
 
+  * Allow apache to make outside connection requests
+
+              Sudo setsebool -P httpd_can_network_connect=1
+             
   * Restart apache again
 
   * vist both webservers ipaddress/index.php on different web broswer tabs
