@@ -14,6 +14,8 @@
    * Check the disks available
 
             lsblk
+     
+      output : ![Devops](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%20TOOLING%20WEBSITE%20SOLUTION/images/checked%20available%20disks.png)
 
    * use the gdisk utility tpo create partitions for each disk
 
@@ -24,6 +26,34 @@
       3.  type **w** to write
       4.  repeat same process for other disks
 
-  * use **df -h** to check the create3d partitions
+  * use **lsblk** to check the create3d partitions
 
-    output : ![Devops](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%20TOOLING%20WEBSITE%20SOLUTION/images/checked%20available%20disks.png)
+   
+
+  * Install **Lvm2**
+
+            sudo yum install lvm2
+    
+  * Use **pvcreate** to mark  each of the partitions as physical volume
+
+            sudo pvcreate /dev/nvme1n1p1
+            sudo pvcreate /dev/nvme2n1p1
+            sudo pvcreate /dev/nvme3n1p1
+            sudo pvcreate /dev/nvme4n1p1
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
