@@ -92,6 +92,7 @@ OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%
            sudo mount /dev/webdata-vg/apt-lv /mnt/apt
            sudo mount /dev/webdata-vg/logs-lv /mnt/logs
 
+OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%20TOOLING%20WEBSITE%20SOLUTION/images/verified%20my%20mount%20points%20.png)
 OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%20TOOLING%20WEBSITE%20SOLUTION/images/mounted%20apt%2C%20apps%2C%20and%20logs%20in%20thier%20various%20mount%20points.png)
 
 * Install NFS server and configure it to start on reboot
@@ -126,15 +127,18 @@ OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%
             /mnt/logs 172.31.32.0/20;(rw,sync,no_all_squash,no_root_squash)
             /mnt/opt 172.31.32.0/20;(rw,sync,no_all_squash,no_root_squash)
 
-             Esc + :wq!
+             Esc
+             :wq!
 
           sudo exportfs -arv
 
-   * Check the NFS ports and open it in the security group inbound rules
+   * Check the NFS ports and open it in the security group inbound rules , add the ports and allow access from the subnet cidr ipv4 address
 
              rpcinfo -P | grep nfs
 
      OUTPUT : ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%20TOOLING%20WEBSITE%20SOLUTION/images/ports%20beeing%20used%20by%20nfs.png)
+
+     
 
 
 # STEP TWO : CONFIGURING MYSQL
@@ -161,6 +165,61 @@ OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%
 
 
 # STEP THREE : SETUP THE WEBSERVERS
+
+  * Launch 2 ec2 instances (or dependending on the number of webservers you need), use Redhat OS
+  * ssh into it
+  * update and upgrade the instance
+  * install NFS client (do thid for all webservers that would be client to the NFS server)
+
+            sudo yum install nfs-utils nfs4-acl-tools -y
+
+  * make /var/www/ directory
+
+             sudo mkdir /var/www
+
+  * Mount /var/www/ and target the NFS server export  for apps
+
+         
+          sudo mount -t nfs -o rw,nosuid 172.31.32.0/20:/mnt/apps /var/www
+
+  * make sure the changes persist after reboot
+
+          sudo vi /etc/fstab
+    
+  * add the following
+
+        172.31.32.0/20:/mnt/apps  /var/www nfs defaults 0 0
+
+  * save and exit
+    
+      
+  * install and configure REMI repository, apache, as well as php and all dependencies
+
+              sudo yum install httpd -y
+
+              sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+              
+              sudo dnf install dnf-utils http://rpms.remirepo.net/enterprise/remi-release-9.rpm
+              
+              sudo dnf module reset php
+              
+              sudo dnf module enable php:remi-7.4
+              
+              sudo dnf install php php-opcache php-gd php-curl php-mysqlnd
+              
+              sudo systemctl start php-fpm
+              
+              sudo systemctl enable php-fpm
+              
+              setsebool -P httpd_execmem 1
+
+    * Verify that both the webservers **/var/www** and NFS servers  **/mnt/apps** have the same files and directories, to do this
+
+
+
+    
+
+        
 
 
 
