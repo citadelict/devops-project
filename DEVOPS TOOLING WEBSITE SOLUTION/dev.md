@@ -26,9 +26,9 @@
       3.  type **w** to write
       4.  repeat same process for other disks
 
-  * use **lsblk** to check the create3d partitions
+  * use **lsblk** to check the created partitions
 
- OUTPUT:    ![dev](https://github.com/citadelict/My-devops-Journey/tree/main/DEVOPS%20TOOLING%20WEBSITE%20SOLUTION/images)
+ OUTPUT:    ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%20TOOLING%20WEBSITE%20SOLUTION/images/created%204%20partitions.png)
 
 
   * Install **Lvm2**
