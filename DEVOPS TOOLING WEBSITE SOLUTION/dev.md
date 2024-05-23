@@ -103,7 +103,7 @@ OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%
         sudo systemctl enable nfs-server.service
         sudo systemctl status nfs-server.service
 
-  OUTPUT: 1[wp](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%20TOOLING%20WEBSITE%20SOLUTION/images/instaled%20and%20enabled%20nfs%20server.png)
+  OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%20TOOLING%20WEBSITE%20SOLUTION/images/instaled%20and%20enabled%20nfs%20server.png)
 
 * Setup permissions that will allow the webservers read, and write and execute files on the NFS
 
