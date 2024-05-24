@@ -180,7 +180,7 @@ OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%
   * Mount /var/www/ and target the NFS server export  for apps
 
          
-          sudo mount -t nfs -o rw,nosuid 172.31.32.0/20:/mnt/apps /var/www
+          sudo mount -t nfs -o rw,nosuid <nfs-server-private-ipv4>:/mnt/apps /var/www
 
     OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%20TOOLING%20WEBSITE%20SOLUTION/images/mounted%20on%20nfs%20server%20mount%20points.png)
 
@@ -190,7 +190,7 @@ OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%
     
   * add the following
 
-        172.31.32.0/20:/mnt/apps  /var/www nfs defaults 0 0
+        <nfs-server-ipv4-address>:/mnt/apps  /var/www nfs defaults 0 0
 
   * save and exit
     
@@ -229,7 +229,7 @@ OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%
    * Mount /var/log/httpd and target the NFS server export  for logs
 
          
-          sudo mount -t nfs -o rw,nosuid 172.31.32.0/20:/mnt/logss /var/log/httpd
+          sudo mount -t nfs -o rw,nosuid <nfs-server-ipv4>:/mnt/logss /var/log/httpd
 
  
    * make sure the changes persist after reboot
@@ -238,7 +238,7 @@ OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%
     
    * add the following
 
-          172.31.32.0/20:/mnt/logs  /var/log/httpd nfs defaults 0 0
+          <nfs-server-ippv4-address>:/mnt/logs  /var/log/httpd nfs defaults 0 0
 
    * save and exit
   
