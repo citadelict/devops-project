@@ -275,7 +275,7 @@ OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%
 
      1. install git
 
-            sudo yum instal;l git
+            sudo yum install git
         
      2.  Now you clone the repository to the webserver
   
