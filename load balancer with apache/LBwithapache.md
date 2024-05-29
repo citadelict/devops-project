@@ -8,6 +8,7 @@ This documentation will guide you through the process of how i was able to setup
 - Existing 3-tier architecture with two web servers
 - Apache installed on both web servers
 - EC2 instance for the load balancer, yo can name it **project-9-apache-lb**
+- Set up security group and allow port 80 to be accessed from anywhere **0.0.0.0/0**
 
 ![load balancer](https://github.com/citadelict/My-devops-Journey/blob/main/load%20balancer%20with%20apache/images/lb%20instance.png)
 
@@ -20,7 +21,7 @@ This documentation will guide you through the process of how i was able to setup
       ssh -i /path/to/your-key.pem ubuntu@your-load-balancer-public-ip
       ```
 
-![SSH Connection](image_url_here)
+
 
 2. **Install Apache**:
     - Update the package index and install Apache:
@@ -42,10 +43,22 @@ This documentation will guide you through the process of how i was able to setup
 4. **Configure Apache for Load Balancing**:
     - Install the necessary Apache modules:
       ```bash
-      sudo a2enmod proxy
-      sudo a2enmod proxy_balancer
-      sudo a2enmod proxy_http
-      sudo a2enmod lbmethod_byrequests
+         #Install apache2
+        sudo apt update
+        sudo apt install apache2 -y
+        sudo apt-get install libxml2-dev
+
+        #Enable following modules:
+        sudo a2enmod rewrite
+        sudo a2enmod proxy
+        sudo a2enmod proxy_balancer
+        sudo a2enmod proxy_http
+        sudo a2enmod headers
+        sudo a2enmod lbmethod_bytraffic
+        
+        #Restart apache2 service
+        sudo systemctl restart apache2
+
       ```
 
     - Open the Apache configuration file:
@@ -67,6 +80,9 @@ This documentation will guide you through the process of how i was able to setup
 
     - Replace `webserver1-private-ip` and `webserver2-private-ip` with the private IP addresses of your two web servers.
     - Save and close the file.
+![permissions](https://github.com/citadelict/My-devops-Journey/blob/main/load%20balancer%20with%20apache/images/installed%20LB%20and%20configured%20permisiions.png)
+![config](https://github.com/citadelict/My-devops-Journey/blob/main/load%20balancer%20with%20apache/images/configuring%20LB.png)
+
 
 5. **Restart Apache**:
     - Restart Apache to apply the changes:
@@ -74,17 +90,8 @@ This documentation will guide you through the process of how i was able to setup
       sudo systemctl restart apache2
       ```
 
-![Restart Apache](image_url_here)
 
-## Step 3: Update Security Groups
 
-1. **Update Security Group for Web Servers**:
-    - Ensure the security group for your web servers allows inbound traffic from the load balancer instance.
-
-![Update Security Group](image_url_here)
-
-2. **Update Security Group for Load Balancer**:
-    - Ensure the security group for your load balancer allows inbound traffic on port 80 from anywhere (or restrict it to known IP ranges for added security).
 
 ## Step 4: Verify the Load Balancer Setup
 
@@ -92,20 +99,10 @@ This documentation will guide you through the process of how i was able to setup
     - Open a web browser and navigate to the public IP address of your load balancer instance.
     - You should see the content served by your web servers.
 
-![Access Load Balancer](image_url_here)
+![Access Load Balancer](https://github.com/citadelict/My-devops-Journey/blob/main/load%20balancer%20with%20apache/images/lb%20successfully%20configured.png)
+![Access Load Balancer](https://github.com/citadelict/My-devops-Journey/blob/main/load%20balancer%20with%20apache/images/logged%20in.png)
 
-2. **Check Load Balancing**:
-    - Refresh the page multiple times to ensure traffic is being distributed between your two web servers. You can modify the content on each web server to verify this (e.g., add a unique identifier on each server's index page).
 
-![Check Load Balancing](image_url_here)
-
-## Step 5: Monitor and Maintain
-
-1. **Monitoring**:
-    - Regularly monitor the load balancer and web servers for performance and availability. Use AWS CloudWatch for monitoring metrics.
-
-2. **Maintenance**:
-    - Keep Apache and your EC2 instances updated with the latest security patches.
 
 ---
 
