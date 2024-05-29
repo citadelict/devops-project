@@ -131,6 +131,8 @@ we have successfully set up an Apache load balancer on AWS to distribute traffic
       ```
     - Save and exit.
   
+    ![etc/hosts](https://github.com/citadelict/My-devops-Journey/blob/main/load%20balancer%20with%20apache/images/etchosts.png)
+  
       
 2. **Go back to apache config**:
       ```bash
@@ -142,6 +144,10 @@ we have successfully set up an Apache load balancer on AWS to distribute traffic
          BalancerMember http://webserver2-private-ip  to  BalancerMember http://web2
          ```
     - Save and exit.
-
-
+    - You can use curl to see if it works. P.S, the dns name was set locally and as such cannot be accessed from the internet or from another server
+       ```bash
+            curl http://web1
+            curl http://web2
+         ```
+    ![curl](https://github.com/citadelict/My-devops-Journey/blob/main/load%20balancer%20with%20apache/images/using%20curl.png)
         
