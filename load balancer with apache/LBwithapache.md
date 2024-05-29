@@ -63,7 +63,7 @@ This documentation will guide you through the process of how i was able to setup
 
     - Open the Apache configuration file:
       ```bash
-      sudo nano /etc/apache2/sites-available/000-default.conf
+      sudo vi /etc/apache2/sites-available/000-default.conf
       ```
 
     - Add the following configuration to set up load balancing:
@@ -117,5 +117,31 @@ This documentation will guide you through the process of how i was able to setup
 
 we have successfully set up an Apache load balancer on AWS to distribute traffic between our two web servers.
 
-## However, 
+## However, we can setup local dns name resolution in order to be able to identify between webservers, this can be done through :
 
+1. **Using the /etc/hosts/ file**:
+    - open the /etc/hosts/ file
+         ```bash
+      sudo vi /etc/hosts
+      ```
+    - Add the following lines
+       ```bash
+      webserver1-ipaddress web1
+      webserver2-ipaddress web2 
+      ```
+    - Save and exit.
+  
+      
+2. **Go back to apache config**:
+      ```bash
+      sudo nano /etc/apache2/sites-available/000-default.conf
+      ```
+    - update the webservers ipaddress with the local dns name , that is :
+        ```bash
+         BalancerMember http://webserver1-private-ip  to  BalancerMember http://web1
+         BalancerMember http://webserver2-private-ip  to  BalancerMember http://web2
+         ```
+    - Save and exit.
+
+
+        
