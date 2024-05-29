@@ -90,7 +90,16 @@ This documentation will guide you through the process of how i was able to setup
       sudo systemctl restart apache2
       ```
 
-
+6.  **Unmount **/var/log/httpd/++ and ensure each webservers has thier own log directory  **:
+   
+      ```bash
+      sudo umount /var/log/httpd
+      ```
+     - Refresh the load balancer ip address in order to observe the different requests sent by the browser and to which webservers: use the command below to view the log directory on each webserver
+     ```bash
+      sudo tail -f /var/log/httpd/access_log
+      ```
+![log](https://github.com/citadelict/My-devops-Journey/blob/main/load%20balancer%20with%20apache/images/logged%20on%20both%20servers.png)   
 
 
 ## Step 4: Verify the Load Balancer Setup
