@@ -7,7 +7,7 @@ This documentation will guide you through the process of how i was able to setup
 - AWS account
 - Existing 3-tier architecture with two web servers
 - Apache installed on both web servers
-- EC2 instance for the load balancer, yo can name it **project-9-apache-lb**
+- EC2 instance for the load balancer, yo can name it **project-8-apache-lb**
 - Set up security group and allow port 80 to be accessed from anywhere **0.0.0.0/0**
 
 ![load balancer](https://github.com/citadelict/My-devops-Journey/blob/main/load%20balancer%20with%20apache/images/lb%20instance.png)
