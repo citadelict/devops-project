@@ -115,7 +115,7 @@ This documentation will guide you through the process of how i was able to setup
 
 ---
 
-That's it! You have successfully set up an Apache load balancer on AWS to distribute traffic between your two web servers. If you have any questions or run into issues, feel free to reach out for help.
+we have successfully set up an Apache load balancer on AWS to distribute traffic between our two web servers.
 
-![Output Image Placeholder](image_url_here)
+## However, 
 
