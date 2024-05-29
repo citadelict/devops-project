@@ -1,11 +1,11 @@
 # Setting Up an Apache Load Balancer on AWS with Ubuntu 24.04
 
-This guide will walk you through the process of setting up an Apache load balancer on a new EC2 instance running Ubuntu 24.04 to distribute traffic between your two web servers. We assume you already have a 2-tier architecture running on AWS.
+This documentation will guide you through the process of how i was able to setup an Apache load balancer on a new EC2 instance running Ubuntu 24.04 to distribute traffic between my two web servers. In the previous documentation , i already configured the 3 tier architecture with 2 webservers
 
 ## Prerequisites
 
 - AWS account
-- Existing 2-tier architecture with two web servers
+- Existing 3-tier architecture with two web servers
 - Apache installed on both web servers
 - EC2 instance for the load balancer
 
