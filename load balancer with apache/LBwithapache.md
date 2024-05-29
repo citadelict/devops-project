@@ -7,29 +7,12 @@ This documentation will guide you through the process of how i was able to setup
 - AWS account
 - Existing 3-tier architecture with two web servers
 - Apache installed on both web servers
-- EC2 instance for the load balancer
+- EC2 instance for the load balancer, yo can name it **project-9-apache-lb**
 
-## Step 1: Launch a New EC2 Instance for the Load Balancer
+![load balancer](https://github.com/citadelict/My-devops-Journey/blob/main/load%20balancer%20with%20apache/images/lb%20instance.png)
 
-1. **Log in to AWS Management Console**:
-    - Go to the AWS Management Console and log in with your credentials.
 
-![AWS Management Console](image_url_here)
-
-2. **Launch an EC2 Instance**:
-    - Navigate to the EC2 Dashboard.
-    - Click on `Launch Instance`.
-    - Choose an Amazon Machine Image (AMI). Select the latest Ubuntu 24.04 AMI.
-    - Select an instance type. For a load balancer, a `t2.micro` instance is usually sufficient.
-    - Configure instance details as needed. Ensure it is in the same VPC and subnet as your web servers.
-    - Add storage. The default configuration is usually sufficient.
-    - Add tags to identify your instance (e.g., `Name: Apache Load Balancer`).
-    - Configure the security group. Allow inbound traffic on ports 80 (HTTP) and 22 (SSH).
-    - Review and launch the instance. Ensure you download the key pair for SSH access.
-
-![Launch EC2 Instance](image_url_here)
-
-## Step 2: Install and Configure Apache on the Load Balancer Instance
+## Step 1: Install and Configure Apache on the Load Balancer Instance
 
 1. **SSH into the Load Balancer Instance**:
     - Use your terminal or an SSH client to connect to your instance:
@@ -46,7 +29,7 @@ This documentation will guide you through the process of how i was able to setup
       sudo apt install apache2 -y
       ```
 
-![Install Apache](image_url_here)
+![Install Apache](https://github.com/citadelict/My-devops-Journey/blob/main/load%20balancer%20with%20apache/images/installed%20apache.png)
 
 3. **Enable and Start Apache**:
     - Enable Apache to start on boot and then start the service:
@@ -55,7 +38,6 @@ This documentation will guide you through the process of how i was able to setup
       sudo systemctl start apache2
       ```
 
-![Start Apache](image_url_here)
 
 4. **Configure Apache for Load Balancing**:
     - Install the necessary Apache modules:
