@@ -86,9 +86,20 @@ OUTPUT: ![webhooks](https://github.com/citadelict/My-devops-Journey/blob/main/To
      
   OUTPUT ![build](https://github.com/citadelict/My-devops-Journey/blob/main/Tooling%20Website%20deployment%20automation%20with%20Continuous%20Integration.%20Introduction%20to%20Jenkins-%20104/images/build%20successful.png)
 
-  OTPUT2: ![build2](https://github.com/citadelict/My-devops-Journey/blob/main/Tooling%20Website%20deployment%20automation%20with%20Continuous%20Integration.%20Introduction%20to%20Jenkins-%20104/images/build%20successful(1).png)
+  OUTPUT2: ![build2](https://github.com/citadelict/My-devops-Journey/blob/main/Tooling%20Website%20deployment%20automation%20with%20Continuous%20Integration.%20Introduction%20to%20Jenkins-%20104/images/build%20successful(1).png)
 
 
+ ### The whole idea behind using jenkins is to make Continious integration very seamless , to achieve this, we have to configure jenkins to build everytime we push a new code to our repository or update an existing code. 
+
+   3. Click on configure and scroll down to build trigger, and select **GitHub hook trigger for GITScm polling**
+   4. Scroll down to post build actions and click on **Add post build actions**
+        - From the drop down that appears when you click add post build actions, select Archive artifacts. (NB) files resulting from a build action is what is reffred to as Artifacts
+        - Under the form field for Files to archive, use ** to select all .
+   5. Save the configuration
+
+ ### To test this, we made slight changes to the README.md file of our github repo.  a build was launched automatically and the artifacts saved
+
+ OUTPUT: ![artifacts](https://github.com/citadelict/My-devops-Journey/blob/main/Tooling%20Website%20deployment%20automation%20with%20Continuous%20Integration.%20Introduction%20to%20Jenkins-%20104/images/aritifacts%20saved%20on%20jenkins.png)
 
 
 
