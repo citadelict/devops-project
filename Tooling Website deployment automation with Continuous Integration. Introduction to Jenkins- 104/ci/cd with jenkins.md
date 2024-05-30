@@ -80,7 +80,13 @@ OUTPUT: ![webhooks](https://github.com/citadelict/My-devops-Journey/blob/main/To
    2. Log into your jenkins server
         - Select new item from the side nav bar
         - Input your desired name <eg> tooling , and select freestye project from the list below it
-        -  Choose Git repository and input your github repository link, also enter your github username and password.
+        -  under source code management, Choose Git repository and input your github repository link, also enter your github username and password.
+        -  set branch to build as main. (ie) */main and save the configuration.
+        -  Click on **build now** button to build
+     
+  OUTPUT ![build](https://github.com/citadelict/My-devops-Journey/blob/main/Tooling%20Website%20deployment%20automation%20with%20Continuous%20Integration.%20Introduction%20to%20Jenkins-%20104/images/build%20successful.png)
+
+  OTPUT2: ![build2](https://github.com/citadelict/My-devops-Journey/blob/main/Tooling%20Website%20deployment%20automation%20with%20Continuous%20Integration.%20Introduction%20to%20Jenkins-%20104/images/build%20successful(1).png)
 
 
 
