@@ -136,12 +136,41 @@ OUTPUT: ![webhooks](https://github.com/citadelict/My-devops-Journey/blob/main/To
 
    ### save configurations
    
-  3.
+  3.  Create another Post build actions
+     - In the drop down, select as **send buiold artifacts over ssh**
+     - Under remote directory, set the source file as ( ** )
+     - Click on save
+      
+      
+  ### make changes again to README.md , the build should trigger immediately and deploy to the nfs server.
+
+  OUTPUT : ![auto](https://github.com/citadelict/My-devops-Journey/blob/main/Tooling%20Website%20deployment%20automation%20with%20Continuous%20Integration.%20Introduction%20to%20Jenkins-%20104/images/auto%20build%20successful.png)
+
+  OUTPUT: ![deployed](https://github.com/citadelict/My-devops-Journey/blob/main/Tooling%20Website%20deployment%20automation%20with%20Continuous%20Integration.%20Introduction%20to%20Jenkins-%20104/images/deployed%20successfully.png)
+
+  # BLOCKER - getting permission denied when jeenkins tried to connect via ssh to the nfs server
+
   
-    
+  # solution : ENSURE YOUR JENKINS SERVER IS IN THE SAME AVAILABILITY ZONE AS YOUR WEBSERVERS AND ENSURE THEY USE THE SAME SUBNET CIDR, if they do not use the same subnet cidr, you will need to  Configure access to the nfs servers  to do this : we have to export the mounts we created on nfs to allow jenkins connect as clients
 
+  - ssh into your nfs server
+  - open the exports file
 
+           sudo vi /etc/exports
 
+   - Add the line for the jenkins server
+
+           /mnt/apps 172.31.16.0/20;(rw,sync,no_all_squash,no_root_squash)
+
+   - save and exit
+   - export the file
+
+            sudo exportfs -arv
+     
+   - Restart the nfs daemon
+   - open the nfs ports of tcp 2049, udp 2049, tcp 111, udp 111, and allow the subnet cidr of the jenkins server.
+
+# Now we able to automate the build process and send to the NFS server
 
 
   
