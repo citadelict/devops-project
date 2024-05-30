@@ -62,9 +62,25 @@ OUTPUT: ![broswer](https://github.com/citadelict/My-devops-Journey/blob/main/Too
  OUTPUT: ![installed](https://github.com/citadelict/My-devops-Journey/blob/main/Tooling%20Website%20deployment%20automation%20with%20Continuous%20Integration.%20Introduction%20to%20Jenkins-%20104/images/completely%20installed%20jenkins.png)
 
 
-
 ## Step 2: Configuring Jenkins to retrieve source code from github using webhooks
 
+  1. Enable webhooks in your github repo settings
+      - Navigate tto your github repository page
+      - Click on settings, scroll down and click on webhooks
+      - Click on add webhook
+      - in the form field for payload URL, add your jenkins server ip:8080/github-webhooks/ , example :
+
+               http://<jenkins-server-address:8080/github-webhook/
+        
+      -  Set content type to application/json
+
+OUTPUT: ![webhooks](https://github.com/citadelict/My-devops-Journey/blob/main/Tooling%20Website%20deployment%20automation%20with%20Continuous%20Integration.%20Introduction%20to%20Jenkins-%20104/images/added%20webhook.png)
+
+
+   2. Log into your jenkins server
+        - Select new item from the side nav bar
+        - Input your desired name <eg> tooling , and select freestye project from the list below it
+        -  Choose Git repository and input your github repository link, also enter your github username and password.
 
 
 
