@@ -36,6 +36,39 @@ OUTPUT: ![JDK](https://github.com/citadelict/My-devops-Journey/blob/main/Tooling
  OUTPUT: ![jenkins](https://github.com/citadelict/My-devops-Journey/blob/main/Tooling%20Website%20deployment%20automation%20with%20Continuous%20Integration.%20Introduction%20to%20Jenkins-%20104/images/installed%20jenkins.png)
 
 
+   6. Ensure Jenkins is properly installed and running
+
+          sudo systemctl status jenkins
+
+ OUTPUT: ![status](https://github.com/citadelict/My-devops-Journey/blob/main/Tooling%20Website%20deployment%20automation%20with%20Continuous%20Integration.%20Introduction%20to%20Jenkins-%20104/images/installed%20jenkins.png)
+
+
+   7. The defaul port for jenkins is **8080** , go to your jenkins ec2 instance security group, and open an inbound rule , set port 8080 to be accessible from any where
+
+   8. Visit your <jenkins-ip-address>:8080
+
+OUTPUT: ![broswer](https://github.com/citadelict/My-devops-Journey/blob/main/Tooling%20Website%20deployment%20automation%20with%20Continuous%20Integration.%20Introduction%20to%20Jenkins-%20104/images/unlock%20jrnkins.png)
+
+   9.  You will be required to input a password, you can retrieve the password from termianl, using
+
+            sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+       - Copy the password that displays as out put and paste it into your jenkins page opened in the browser, you should get the same output below :
+     
+ OUTPUT: ![password](https://github.com/citadelict/My-devops-Journey/blob/main/Tooling%20Website%20deployment%20automation%20with%20Continuous%20Integration.%20Introduction%20to%20Jenkins-%20104/images/signed%20in%20to%20jenkins%20admin.png)
+
+   10. Install suggested plugins and wait for the installation to be complete, then create an admin user and password, when this is done, you will get the jenkins server address
+
+ OUTPUT: ![installed](https://github.com/citadelict/My-devops-Journey/blob/main/Tooling%20Website%20deployment%20automation%20with%20Continuous%20Integration.%20Introduction%20to%20Jenkins-%20104/images/completely%20installed%20jenkins.png)
+
+
+
+## Step 1: Configuring Jenkins to retrieve source code from github using webhooks
+
+
+
+
+
 
 
 
