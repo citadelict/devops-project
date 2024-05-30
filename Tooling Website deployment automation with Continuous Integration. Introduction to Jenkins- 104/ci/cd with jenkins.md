@@ -63,7 +63,7 @@ OUTPUT: ![broswer](https://github.com/citadelict/My-devops-Journey/blob/main/Too
 
 
 
-## Step 1: Configuring Jenkins to retrieve source code from github using webhooks
+## Step 2: Configuring Jenkins to retrieve source code from github using webhooks
 
 
 
