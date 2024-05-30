@@ -101,9 +101,24 @@ OUTPUT: ![webhooks](https://github.com/citadelict/My-devops-Journey/blob/main/To
 
  OUTPUT: ![artifacts](https://github.com/citadelict/My-devops-Journey/blob/main/Tooling%20Website%20deployment%20automation%20with%20Continuous%20Integration.%20Introduction%20to%20Jenkins-%20104/images/aritifacts%20saved%20on%20jenkins.png)
 
+ ### The artifacts are also stored on jenkins server, to view, use the command below:
+
+           sudo ls /var/lib/jenkins/jobs/tooling_github/<build number>/archive/
+
+ OUTPUT: ![server](https://github.com/citadelict/My-devops-Journey/blob/main/Tooling%20Website%20deployment%20automation%20with%20Continuous%20Integration.%20Introduction%20to%20Jenkins-%20104/images/build%20archive%20history%20on%20terminal.png)
 
 
 
+## Step 3: Configuring Jenkins to copy files to NFS server via ssh
+
+   1. Install **publish over ssh ** plugin
+       - On the left sidebar, click on `Manage Jenkins`.
+       - In the Manage Jenkins page, click on `Manage Plugins`.
+       - In the Plugin Manager, go to the `Available` tab.
+       - Use the search box to find `Publish Over SSH Plugin
+       - Check the box next to `Publish Over SSH Plugin`.
+       - Click on install and wait for it to download and install
+   
 
 
 
