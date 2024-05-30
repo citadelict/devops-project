@@ -118,8 +118,30 @@ OUTPUT: ![webhooks](https://github.com/citadelict/My-devops-Journey/blob/main/To
        - Use the search box to find `Publish Over SSH Plugin
        - Check the box next to `Publish Over SSH Plugin`.
        - Click on install and wait for it to download and install
+     
+  OUTPUT: ![publish](https://github.com/citadelict/My-devops-Journey/blob/main/Tooling%20Website%20deployment%20automation%20with%20Continuous%20Integration.%20Introduction%20to%20Jenkins-%20104/images/installed%20publish%20over%20ssh.png)
    
+   2. Configure the publish over ssh plugin
+      - Go to the Jenkins dashboard.
+      - Click on `Manage Jenkins` and select 'configure system'
+      -  Scroll down to the `Publish over SSH` section.
+      -  Under key, paste the content of your key pair (same keypairr to access nfs server)
+      -  add a hostname : (nfs-server-private-ip)
+      -  Add a username
+      -  set the remote directory to /mnt/apps , this is because it is the same directory our webservers use to retrieve files from the nfs server
+      -  Test the configuration to make sure it returns success
+     
+     
+  OUTPUT: ![sucess](https://github.com/citadelict/My-devops-Journey/blob/main/Tooling%20Website%20deployment%20automation%20with%20Continuous%20Integration.%20Introduction%20to%20Jenkins-%20104/images/testing%20config.png)
+
+   ### save configurations
+   
+  3.
+  
+    
 
 
 
 
+
+  
