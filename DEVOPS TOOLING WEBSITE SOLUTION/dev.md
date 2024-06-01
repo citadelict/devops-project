@@ -60,9 +60,9 @@ OUTPUT: ![dev](https://github.com/citadelict/My-devops-Journey/blob/main/DEVOPS%
 
  * Create 3 logical volumes, one should be apps-lv, another should be apt-lv and the last should be logs-lv
 
-           sudo lvcreate apps-lv -L 12G webdata-vg
-           sudo lvcreate apt-lv -L 12G webdata=-vg
-           sudo lvcreate logs-lv -L 12G webdata-vg
+           sudo lvcreate -n apps-lv -L 12G webdata-vg
+           sudo lvcreate -n apt-lv -L 12G webdata=-vg
+           sudo lvcreate -n logs-lv -L 12G webdata-vg
    
  * verify that the logical volumes have been created
 
