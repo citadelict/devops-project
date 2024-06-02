@@ -72,6 +72,10 @@ OUTPUT: ![a records](https://github.com/citadelict/My-devops-Journey/blob/main/L
 
 OUTPUT: ![dnschecker](https://github.com/citadelict/My-devops-Journey/blob/main/Load%20Balancer%20Solution%20With%20Nginx%20and%20SSL/images/dns%20checker.png)
 
+   - Confirm if your domain loads the website
+
+OUTPUT: ![website](https://github.com/citadelict/My-devops-Journey/blob/main/Load%20Balancer%20Solution%20With%20Nginx%20and%20SSL/images/berryplug%20connected%20to%20LB.png)
+
  ## 5. Install 'Certbot' and request for a SSL/TLS certificate
 
    - Ensure 'snapd' service is active and running
@@ -86,13 +90,48 @@ OUTPUT: ![dnschecker](https://github.com/citadelict/My-devops-Journey/blob/main/
 
  OUTPUT: ![certbot installed](https://github.com/citadelict/My-devops-Journey/blob/main/Load%20Balancer%20Solution%20With%20Nginx%20and%20SSL/images/certbot%20installed.png)
 
+ 
+   - Create a symlink for certbot
+
+              sudo ln -s /snap/bin/certbot /usr/bin/certbot
+     
    - Follow the prompt to configure and request for ssl certificate
-   - 
+
+             sudo certbot --nginx
+
+OUTPUT: ![sslinstalled](https://github.com/citadelict/My-devops-Journey/blob/main/Load%20Balancer%20Solution%20With%20Nginx%20and%20SSL/images/installed%20ssl.png)
+
+ Visit your website to confirm SSL has been successfully installed
+
+ OUTPUT: ![website ssl](https://github.com/citadelict/My-devops-Journey/blob/main/Load%20Balancer%20Solution%20With%20Nginx%20and%20SSL/images/ssl%20installed.png)
+
+ OUTPUT: ![logged in](https://github.com/citadelict/My-devops-Journey/blob/main/Load%20Balancer%20Solution%20With%20Nginx%20and%20SSL/images/logged.png)
 
 
+## Note: Letsencrypt ssl certificate is usually valid for 90 days, in order to make this continually renew itself, this can be achieved using a service known as **Cron Job**;
+A cron job is a scheduled task on Unix-like operating systems, such as Linux. The cron service runs these scheduled tasks at specified times and intervals. Cron jobs are useful for automating repetitive tasks, such as system maintenance, backups, and running scripts.
+
+  
+ - First test the renewal command
+
+                sudo certbot renew --dry-run
+
+OUTPUT: ![renewa](https://github.com/citadelict/My-devops-Journey/blob/main/Load%20Balancer%20Solution%20With%20Nginx%20and%20SSL/images/testing%20renewal.png)
+        
+ - setting up a cron job to automate checking the server for ssl and renewal constantly
+
+    * edit the cron tab
+
+              crontab -e
+
+    * add the following line
+
+              * */12 * * *   root /usr/bin/certbot renew > /dev/null 2>&1
+
+    * save changes and exit
 
 
-
+ # . We have now successfuly configured a Nginx based Load Balancer for our webservers, ensured it can be accessed by a domain name and has SSL installed for security.
 
 
 
