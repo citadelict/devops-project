@@ -239,7 +239,23 @@ Feel free to add additional tasks such as `creating a directory`, `changing the 
 
   ![pull main](./images/pull-main.png)
 
-### Step 10. 
+### Step 10. Run Your first Ansible test
+
+- **SSH into your Jenkins-Ansible instance Using the VSC `SSH-Agent`.**
+  -  Configure SSH keys for Ansible:
+        ```sh
+        eval `ssh-agent -s`
+        ssh-add <path-to-private-key>
+        ssh-add -l
+        ```
+     ![Configure SSH Agent](./images/configure-ssh-access.PNG)
+
+  - SSH into your Jenkins-Ansible server using `ssh-agent`:
+    ```sh
+    ssh -A ubuntu@<public-ip>
+    ```
+    ![SSH Agent Connect](./images/accessing-jenkins-ansible-server-using-ssh-agent.PNG)
+ 
 
 
 
