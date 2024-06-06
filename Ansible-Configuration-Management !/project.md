@@ -236,6 +236,19 @@ Feel free to add additional tasks such as `creating a directory`, `changing the 
 
                git checkout main
                git pull origin main
+
+  ![pull main](./images/pull-main.png)
+
+### Step 10. 
+
+
+
+
+
+
+
+
+  
          
      
 
