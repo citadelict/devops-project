@@ -56,7 +56,16 @@ This guide details the process for deploying and managing EC2 instances using An
 
 - **Post-build actions**:
   - **Purpose**: Saves all necessary files and ensures that any deployment artifacts are stored properly.
+    
+- **Test the setup:**
+- Make changes to the `README.md` file in the `main` branch.
 
+- Ensure builds start automatically and Jenkins saves the files in:
+  ![Console Output](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible-Configuration-Management%20!/images/readme%20build%20auto.png)
+
+         ls /var/lib/jenkins/jobs/ansible/builds/1/archive/
+  
+    ![Test](./images/readme.png)
 
 ## Preparing Your Development Environment
 
@@ -91,17 +100,20 @@ This guide details the process for deploying and managing EC2 instances using An
 - **Configure inventory files**:
   - **Purpose**: Defines which hosts are managed by which playbooks, crucial for targeting the correct environments.
   - **Files**: `inventory/dev`, `inventory/staging`, `inventory/uat`, and `inventory/prod`.
-  ```bash
-       [nfs]
-      172.31.57.222 ansible_ssh_user=ec2-user
-      
-      [webservers]
-      172.31.189.178 ansible_ssh_user=ec2-user
-      172.31.222.77 ansible_ssh_user=ec2-user
-      
-      [db]
-      172.31.176.122 ansible_ssh_user=ubuntu
-      
-      [lb]
-      18.194.126.158 ansible_ssh_user=ubuntu
-       
+
+      ![files](/images/files.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
