@@ -93,15 +93,15 @@ This guide details the process for deploying and managing EC2 instances using An
   - **Files**: `inventory/dev`, `inventory/staging`, `inventory/uat`, and `inventory/prod`.
   ```bash
        [nfs]
-      172.31.57.222; ansible_ssh_user=ec2-user
+      172.31.57.222 ansible_ssh_user=ec2-user
       
       [webservers]
-      172.31.189.178; ansible_ssh_user=ec2-user
-      172.31.222.77; ansible_ssh_user=ec2-user
+      172.31.189.178 ansible_ssh_user=ec2-user
+      172.31.222.77 ansible_ssh_user=ec2-user
       
       [db]
-      172.31.176.122; ansible_ssh_user=ubuntu
+      172.31.176.122 ansible_ssh_user=ubuntu
       
       [lb]
-      18.194.126.158; ansible_ssh_user=ubuntu
+      18.194.126.158 ansible_ssh_user=ubuntu
        
