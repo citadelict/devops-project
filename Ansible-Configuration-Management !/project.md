@@ -25,16 +25,16 @@ This guide details the process for deploying and managing EC2 instances using An
 
 - **Install Ansible on your EC2 instance**:
   - **Purpose**: Ansible automates and simplifies application deployment, systems configuration, and other IT needs.
-  - **Command**:
+
     ```bash
     sudo apt update && sudo apt upgrade -y
     sudo apt install ansible -y
     ```
-  - **Verification**: Ensure the installation was successful by checking the Ansible version.
+  -  Ensure the installation was successful by checking the Ansible version.
     ```bash
     ansible --version
     ```
-  ![Verify Ansible Installation](./images/ansible-version.PNG)
+  ![Verify Ansible Installation](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible-Configuration-Management%20!/images/installed%20ansible.png)
 
 ### Step 4: Configuring Jenkins
 
