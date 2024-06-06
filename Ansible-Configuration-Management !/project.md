@@ -291,7 +291,14 @@ Feel free to add additional tasks such as `creating a directory`, `changing the 
  ![nfs-server](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible-Configuration-Management%20!/images/nfs-server.png)
 
 
+## Optional Step: Repeat the Process
+- Update your Ansible playbook with new tasks and repeat the full cycle of:
+    > Checkout -> Change codes -> Commit -> PR -> Merge -> Build -> ansible-playbook
 
+## Conclusion
+congratulations, you have successfully created and automated routine tasks using ansible playbooks and running the builds through jenkins pipeline
+
+---
 
   
          
