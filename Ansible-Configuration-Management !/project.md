@@ -277,9 +277,17 @@ Feel free to add additional tasks such as `creating a directory`, `changing the 
 
                wireshark --version
 
+     
+### Webserver A
  ![output webserver](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible-Configuration-Management%20!/images/webserver%20a.png)
+
+### webserver B
  ![server2](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible-Configuration-Management%20!/images/server2%20.png)
+
+### DB server
  ![output db server](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible-Configuration-Management%20!/images/db-server.png)
+
+### NFS server
  ![nfs-server](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible-Configuration-Management%20!/images/nfs-server.png)
 
 
