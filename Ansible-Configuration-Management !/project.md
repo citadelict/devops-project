@@ -207,9 +207,20 @@ Feel free to add additional tasks such as `creating a directory`, `changing the 
     ```
 
 
+ ### Step 9: Update GIT with the Latest Code
 
+  - Commit your code changes to GitHub:
 
+        git status
+        git add .
+        git commit -m "commit message"
+        git push origin <branch-name>
 
+![push](./images/gitpush.png)
+
+   - Create a pull request and review the changes.
+
+![pull request](./images/pull.png)
 
 
 
