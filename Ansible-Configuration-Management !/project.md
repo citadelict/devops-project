@@ -248,13 +248,13 @@ Feel free to add additional tasks such as `creating a directory`, `changing the 
         ssh-add <path-to-private-key>
         ssh-add -l
         ```
-     ![Configure SSH Agent](./images/configure-ssh-access.PNG)
+     ![Configure SSH Agent](./images/)
 
   - SSH into your Jenkins-Ansible server using `ssh-agent`:
     ```sh
     ssh -A ubuntu@<public-ip>
     ```
-    ![SSH Agent Connect](./images/accessing-jenkins-ansible-server-using-ssh-agent.PNG)
+    ![SSH Agent Connect](./images/)
  
 
 
