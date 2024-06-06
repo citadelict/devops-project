@@ -222,10 +222,22 @@ Feel free to add additional tasks such as `creating a directory`, `changing the 
 
 ![pull request](./images/pull.png)
 
+   - Act as a reviewer and ensure he code is okay
+
+![review](./images/review-code.png)
+
+   - merge the pull request to the master branch.
 
 
+![merge](./images/merge.png)
 
+   - pull the Latest Changes On Local Repository:
+       - Checkout from the feature branch into the master branch
 
+               git checkout main
+               git pull origin main
+         
+     
 
 
 
