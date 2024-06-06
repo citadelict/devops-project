@@ -248,13 +248,23 @@ Feel free to add additional tasks such as `creating a directory`, `changing the 
         ssh-add <path-to-private-key>
         ssh-add -l
         ```
-     ![Configure SSH Agent](./images/)
+     ![Configure SSH Agent](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible-Configuration-Management%20!/images/configure%20ssh.png)
 
   - SSH into your Jenkins-Ansible server using `ssh-agent`:
     ```sh
     ssh -A ubuntu@<public-ip>
     ```
-    ![SSH Agent Connect](./images/)
+    ![SSH Agent Connect](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible-Configuration-Management%20!/images/ssh%20into%20ansible.png)
+
+
+   - Navigate to `jenkins artifact archive directory for the latest build`
+ 
+          cd /var/lib/jenkins/jobs/ansible/builds/13/archive/
+
+   - Run the ansible test
+
+           #run the playbook command
+            ansible-playbook -i inventory/dev.yml playbooks/common.yml
  
 
 
