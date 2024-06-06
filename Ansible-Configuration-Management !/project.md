@@ -101,8 +101,110 @@ This guide details the process for deploying and managing EC2 instances using An
   - **Purpose**: Defines which hosts are managed by which playbooks, crucial for targeting the correct environments.
   - **Files**: `inventory/dev`, `inventory/staging`, `inventory/uat`, and `inventory/prod`.
 
-      ![files](/images/files.png)
+      ![files](./images/files.png)
 
+### Step 8: Running Your First Playbook    
+
+  - Create a `common.yml`
+
+   - **Edit `playbooks/common.yml` to include the following tasks:**
+
+            - name: update web, nfs servers
+          hosts: webservers, nfs, 
+          become: yes
+          tasks:
+            - name: ensure wireshark is at the latest version
+              yum:
+                name: wireshark
+                state: latest
+           
+    
+            - name: update LB server and db server
+              hosts: lb , db
+              become: yes
+              tasks:
+                - name: Update apt repo
+                  apt: 
+                    update_cache: yes
+            
+                - name: ensure wireshark is at the latest version
+                  apt:
+                    name: wireshark
+                    state: latest
+            
+
+        
+Feel free to add additional tasks such as `creating a directory`, `changing the timezone`, or `running shell scripts`.
+
+- **Here is the full `common.yml` playbook with all the additional tasks included:**
+    ```yml
+    ---
+    - name: update web and nfs servers
+      hosts: webservers, nfs
+      become: yes
+      tasks:
+        - name: ensure wireshark is at the latest version
+          yum:
+            name: wireshark
+            state: latest
+
+        - name: create a directory
+          file:
+            path: /path/to/directory
+            state: directory
+            mode: '0755'
+
+        - name: add a file into the directory
+          copy:
+            content: "This is a sample file content"
+            dest: /path/to/directory/samplefile.txt
+            mode: '0644'
+
+        - name: set timezone to UTC
+          timezone:
+            name: UTC
+
+        - name: run a shell script
+          shell: |
+            #!/bin/bash
+            echo "This is a shell script"
+            echo "Executed on $(date)" >> /path/to/directory/script_output.txt
+
+    - name: update LB and db servers
+      hosts: lb, db
+      become: yes
+      tasks:
+        - name: Update apt repo
+          apt:
+            update_cache: yes
+
+        - name: ensure wireshark is at the latest version
+          apt:
+            name: wireshark
+            state: latest
+
+        - name: create a directory
+          file:
+            path: /path/to/directory
+            state: directory
+            mode: '0755'
+
+        - name: add a file into the directory
+          copy:
+            content: "This is a sample file content"
+            dest: /path/to/directory/samplefile.txt
+            mode: '0644'
+
+        - name: set timezone to UTC
+          timezone:
+            name: UTC
+
+        - name: run a shell script
+          shell: |
+            #!/bin/bash
+            echo "This is a shell script"
+            echo "Executed on $(date)" >> /path/to/directory/script_output.txt
+    ```
 
 
 
