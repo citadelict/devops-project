@@ -259,17 +259,28 @@ Feel free to add additional tasks such as `creating a directory`, `changing the 
 
    - Navigate to `jenkins artifact archive directory for the latest build`
  
-          cd /var/lib/jenkins/jobs/ansible/builds/13/archive/
+       ```sh
+            #navigate to ansible build files
+            cd /var/lib/jenkins/jobs/ansible/builds/1/archive/
 
    - Run the ansible test
 
-           #run the playbook command
+             #run the playbook command
             ansible-playbook -i inventory/dev.yml playbooks/common.yml
- 
+            ```
+
+  ![commons](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible-Configuration-Management%20!/images/run-ansible-common.png)
+  ![common2](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible-Configuration-Management%20!/images/run-ansible-common2.png)
 
 
+   - Verify that wire shark is running in each of the servers by running
 
+               wireshark --version
 
+ ![output webserver](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible-Configuration-Management%20!/images/webserver%20a.png)
+ ![server2](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible-Configuration-Management%20!/images/server2%20.png)
+ ![output db server](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible-Configuration-Management%20!/images/db-server.png)
+ ![nfs-server](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible-Configuration-Management%20!/images/nfs-server.png)
 
 
 
