@@ -130,7 +130,7 @@ Before we begin, we need to optimize our Jenkins setup to handle artifacts more 
 
       OUTPUT: ![del-wirehsark mysql](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/wireshark-del-mysql.png)
            
-
+ # Step 3. Configure UAT Webservers with a Role 'Webserver'
 
 
 
