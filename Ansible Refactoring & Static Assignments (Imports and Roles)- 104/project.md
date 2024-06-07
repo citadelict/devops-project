@@ -37,9 +37,45 @@ Before we begin, we need to optimize our Jenkins setup to handle artifacts more 
   OUTPUT: ![build successful](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/build%20succesful.png)
 
 # Step 2 .  Refactor Ansible Code by Importing Other Playbooks
+   * Setting Up for Refactoring
+       - Ensure you have pulled the latest code from the master (main) branch. This is best practice and to ensure your project is always updated with the latest code
 
+                 git pull origin <branch>
+         
+       - Create a new branch and name it `refactor`
 
+                 git branch refactor
+         
+       - Select the created refactor branch
 
+                 git checkout refactor
+  OUTPUT: ![new branch](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/create%20a%20new%20branch-refactor.png)
+       -  Create a `site.yml` file in the playbooks folder. This will serve as the entry point to all configurations.
+       -  Create a `static-assignments` folder at the root of the repository for organizing child playbooks.
+       -  Move the `common.yml` file into the newly created static-assignments folder.
+       -  In site.yml, import common.yml:
+
+                 ---
+                - hosts: all
+                - import_playbook: ../static-assignments/common.yml
+
+* Your folder structure should like this below
+
+  OUTPUT: ![folder structure](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/folder%20structure.png)
+
+* Push to your github repo and create a pull request, carefully check your codes and merge into your main branch
+
+ OUTPUT: ![git add](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/git%20add%2C%20git%20commit.png)
+ 
+* Access your jenkins-ansible server via ssh agent and navigate to `ansible-config-artifact` directory and run the playbook command against the dev environment
+
+                  ansible-playbook -i inventory/dev.yml playbooks/site.yml
+  
+  OUTPUT: ![playbook command](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/running%20site-yml%20playbook.png)
+
+  OUTPUT2 : ![playbook 2](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/running%20site-yml%20playbook%202.png)
+
+          
 
 
 
