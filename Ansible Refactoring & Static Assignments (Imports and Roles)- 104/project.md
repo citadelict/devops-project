@@ -106,7 +106,30 @@ Before we begin, we need to optimize our Jenkins setup to handle artifacts more 
                               autoclean: yes
                             - 
           
-  
+        - Update site.yml to import `common-del.yml` instead of common.yml.
+        - Push to github 
+
+      OUTPUT : ![confirm code ](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/confirm%20code%20.png)
+
+        - Access your ansible-jenkins server, navigate to the directory where the artifacts are saved and run the playbook command again
+     
+                  cd /home/ubuntu/ansible-config-artifact/
+                  ansible-playbook -i inventory/dev.yml playbooks/site.yml
+
+      OUTPUT: ![delete wireshark](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/running%20playbook%20to%20delete%20wireshark.png)
+
+        - Ensure wireshark is deleted on all servers by running `wireshark --version`
+
+      OUTPUT: ![del-wireshark-web A](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/webserver%20a%20del-wireshark.png)
+      
+      OUTPUT: ![del-wireshark-web-B](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/wireshark%20del%20-web%20b.png)
+      
+      OUTPUT: ![del-wireshark-nfs](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/wireshark%20del-nfs.png)
+      
+      OUTPUT: ![del-wireshark-lb](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/del-%20wireshark%20lb.png)
+
+      OUTPUT: ![del-wirehsark mysql](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/wireshark-del-mysql.png)
+           
 
 
 
