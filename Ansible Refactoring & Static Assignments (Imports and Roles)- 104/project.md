@@ -132,8 +132,80 @@ Before we begin, we need to optimize our Jenkins setup to handle artifacts more 
            
  # Step 3. Configure UAT Webservers with a Role 'Webserver'
 
+ ## Overview
+After setting up a clean development environment, we will now configure two new Web Servers as UAT environments using Red Hat Enterprise Linux (RHEL) 8. This step involves using Ansible roles to ensure our configurations are reusable and maintainable.
 
+## Initial Setup
+1. **Launch two EC2 instances** using the RHEL 8 image. Name them `Web1-UAT` and `Web2-UAT`.
+2. **Remember to stop EC2 instances** that you are not using to avoid unnecessary charges.
 
+## Role Creation
+You can create the Ansible role using either the `ansible-galaxy` command or manually: However , since we use github as version control, it is advisable to manually create the roles directory and the chikd fikes in it, so in your vs code terminal, run the following code to create the roles directory and child files
+
+                mkdir roles
+                cd roles
+                mkdir webserver
+                cd webserver
+                touch README.md
+                mkdir defaults, handlers, meta, tasks, templates
+
+   * Navigate into each of the created directories and create a `main.yml` file in each directory
+  
+ - Update your `inventory file` at ansible-config-mgt/inventory/uat.yml with the IP addresses of your two UAT Web servers:
+
+                   [uat-webservers]
+                <Web1-UAT-Server-Private-IP-Address> ansible_ssh_user='ec2-user'
+                <Web2-UAT-Server-Private-IP-Address> ansible_ssh_user='ec2-user'
+
+  - Configure ansible.cfg : Ensure that your ansible.cfg file (usually located at /etc/ansible/ansible.cfg) has the roles_path uncommented and correctly set:
+
+             roles_path = /home/ubuntu/ansible-config-artifact/roles
+
+  - Navigate to the `tasks` directory of your webserver role and add tasks to install Apache, clone the GitHub repository, and configure the server:
+
+  - Open the `tasks>main.yml` file and update it with the code to perform the above tasks i mentioned, 
+
+                        
+                              ---
+                        - name: install apache
+                          become: true
+                          ansible.builtin.yum:
+                            name: "httpd"
+                            state: present
+                        
+                        - name: install git
+                          become: true
+                          ansible.builtin.yum:
+                            name: "git"
+                            state: present
+                        
+                        - name: clone a repo
+                          become: true
+                          ansible.builtin.git:
+                            repo: https://github.com/citadelict/tooling2.git
+                            dest: /var/www/html
+                            force: yes
+                        
+                        - name: copy html content to one level up
+                          become: true
+                          command: cp -r /var/www/html/html/ /var/www/
+                        
+                        - name: Start service httpd, if not started
+                          become: true
+                          ansible.builtin.service:
+                            name: httpd
+                            state: started
+                        
+                        - name: recursively remove /var/www/html/html/ directory
+                          become: true
+                          ansible.builtin.file:
+                            path: /var/www/html/html
+                            state: absent
+
+### NB- These tasks will ensure that your UAT servers are configured with Apache serving content cloned from your specified GitHub repository.
+
+  - save and exit
+  - 
 
 
 
