@@ -17,6 +17,7 @@ Before we begin, we need to optimize our Jenkins setup to handle artifacts more 
         sudo chmod -R 0777 /home/ubuntu/ansible-config-artifact
 
 - Go to Jenkins web console -> `Manage Jenkins` -> `Manage Plugins`.search for `copy Artifacts` and then install it
+  
   OUTPUT:![save artifacts plugin](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/installed%20copy%20artifacts%20plugin.png)
   
 - Create a new Freestyle project and call it `save_artifacts`
