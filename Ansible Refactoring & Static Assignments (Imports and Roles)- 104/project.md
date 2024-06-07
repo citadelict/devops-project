@@ -151,7 +151,7 @@ You can create the Ansible role using either the `ansible-galaxy` command or man
 
    * Navigate into each of the created directories and create a `main.yml` file in each directory
   
- - Update your `inventory file` at ansible-config-mgt/inventory/uat.yml with the IP addresses of your two UAT Web servers:
+ - Update your `uat.yml` at ansible-config-mgt/inventory/uat.yml with the IP addresses of your two UAT Web servers:
 
                    [uat-webservers]
                 <Web1-UAT-Server-Private-IP-Address> ansible_ssh_user='ec2-user'
@@ -163,7 +163,7 @@ You can create the Ansible role using either the `ansible-galaxy` command or man
 
   - Navigate to the `tasks` directory of your webserver role and add tasks to install Apache, clone the GitHub repository, and configure the server:
 
-  - Open the `tasks>main.yml` file and update it with the code to perform the above tasks i mentioned, 
+  - Open the `tasks/main.yml` file and update it with the code to perform the above tasks i mentioned, 
 
                         
                               ---
@@ -204,10 +204,51 @@ You can create the Ansible role using either the `ansible-galaxy` command or man
 
 ### NB- These tasks will ensure that your UAT servers are configured with Apache serving content cloned from your specified GitHub repository.
 
+OUTPUT: ![tasks-main](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/tasksmain.yml.png)
+
   - save and exit
-  - 
+
+     # Step 4 :  Reference 'Webserver' Role in Playbook
+
+       - Within the `static-assignments` folder, create a new playbook file named `uat-webservers.yml`. This playbook will specifically configure your UAT web servers by utilizing the 'Webserver' role. update the file with the code below to reference the webserver role
+
+                                 ---
+                                - hosts: uat-webservers
+                                  roles:
+                                     - webserver
+  OUTPUT: ![refrence](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/uat-webserver.yml.png)
+
+ - Make sure to add a reference to this new playbook in `site.yml`, alongside your existing playbook settings. By doing this, site.yml will continue to serve as the central point for all your Ansible configurations. therefore update the `site.yml` file with the code below :
+
+                         ---
+                        ##- hosts: all
+                        ##- import_playbook: ../static-assignments/common.yml
+                        - hosts: uat-webservers
+                        - import_playbook: ../static-assignments/uat-webservers.yml
+
+OUTPUT: ![updated site.yml](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/updated%20site.yml.png)
+
+ # Step 5: Commit & Test
+
+  - Commit your changes to your Git repository.
+  - Create a Pull Request and merge it into the main branch
+  - Access your ansible-jenkins server and navigate to the `ansible-config-artifact` directory
+  - Run the playbook command
+
+          cd /home/ubuntu/ansible-config-artifact
+          ansible-playbook -i inventory/uat.yml playbooks/site.yml
+
+ OUTPUT: ![playbook command](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/playbook%20command.png)
+
+  - Please check that your UAT Web servers are set up correctly. You should be able to visit your servers using any web browser.
+
+OUTPUT: ![uat-server a and b](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/accessed%20tooling%20website%20via%20uat%20servers.png)
 
 
+
+
+
+ 
 
 
 
