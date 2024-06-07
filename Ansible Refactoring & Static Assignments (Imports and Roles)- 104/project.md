@@ -244,10 +244,35 @@ OUTPUT: ![updated site.yml](https://github.com/citadelict/My-devops-Journey/blob
 
 OUTPUT: ![uat-server a and b](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/accessed%20tooling%20website%20via%20uat%20servers.png)
 
+# Blockers  1. "Jenkins Job Creation" : in a situation where you get an access denied from your jenkins save artifact job when trying to build , this is caused by jenkins not been able to access the specified folder to save the artifacts
+- "How i solved it" :
+  1. In your ansible-jenkins server, change user from `ubuntu` to `jenkins` 
+      
+                                sudo su - jenkins
+
+  2. try accessing the the "/home/ubuntu/ansible-config-artifact" directory,If you get a permission denied, you need to ensure jenkins user has all the permision to read, write and execute on that directory. To do this , 
+  3.  Add jenkins to the same sudo group as ubuntu
+
+                               sudo usermod -a -G ubuntu jenkins
+                               # verify jenkins has been added to the group
+                               groups jenkins
 
 
 
 
+   4. it should now show that jenkins is in the same group as ubuntu,
+   5. Verify jenkins can now access the "/home/ubuntu/ansible-config-artifact" directory
+
+                  cd /home/ubuntu/ansible-config-artifact
+      NB-if it can now access the directory,
+   6. Restart jenkins server
+
+                   sudo systemctl restart jenkins
+
+       7. Run your build again, this time , it should save artifacts to the server diectory
+
+
+# Blockers  2.
  
 
 
