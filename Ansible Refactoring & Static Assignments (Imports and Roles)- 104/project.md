@@ -49,11 +49,13 @@ Before we begin, we need to optimize our Jenkins setup to handle artifacts more 
        - Select the created refactor branch
 
                  git checkout refactor
+         
   OUTPUT: ![new branch](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/create%20a%20new%20branch-refactor.png)
-       -  Create a `site.yml` file in the playbooks folder. This will serve as the entry point to all configurations.
-       -  Create a `static-assignments` folder at the root of the repository for organizing child playbooks.
-       -  Move the `common.yml` file into the newly created static-assignments folder.
-       -  In site.yml, import common.yml:
+  
+ -  Create a `site.yml` file in the playbooks folder. This will serve as the entry point to all configurations.
+ -  Create a `static-assignments` folder at the root of the repository for organizing child playbooks.
+ -  Move the `common.yml` file into the newly created static-assignments folder
+ -  In site.yml, import common.yml:
 
                  ---
                 - hosts: all
@@ -75,8 +77,36 @@ Before we begin, we need to optimize our Jenkins setup to handle artifacts more 
 
   OUTPUT2 : ![playbook 2](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/running%20site-yml%20playbook%202.png)
 
-          
+    - Create another playbook `common-del.yml` under static-assignments for deleting Wireshark. inside it, place the following code in it and save
 
+                        ---
+                        - name: update web, nfs servers
+                          hosts: webservers, nfs
+                          remote_user: ec2-user
+                          become: yes
+                          become_user: root
+                          tasks:
+                          - name: delete wireshark
+                            yum:
+                              name: wireshark
+                              state: removed
+                        
+                        - name: update LB and db servers
+                          hosts: lb, db
+                          remote_user: ubuntu
+                          become: yes
+                          become_user: root
+                          tasks:
+                          - name: delete wireshark
+                            apt:
+                              name: wireshark
+                              state: absent
+                              autoremove: yes
+                              purge: yes
+                              autoclean: yes
+                            - 
+          
+  
 
 
 
