@@ -4,7 +4,7 @@
 ## Overview
 This project enhances our Jenkins setup and refactors Ansible code to improve scalability and maintainability by introducing more structured organization and deployment strategies through Jenkins and Ansible.
 
-## Step 1: Jenkins Job Enhancement
+# Step 1: Jenkins Job Enhancement
 
 ### Initial Setup
 Before we begin, we need to optimize our Jenkins setup to handle artifacts more efficiently:
