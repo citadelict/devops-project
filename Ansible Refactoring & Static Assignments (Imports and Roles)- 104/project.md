@@ -269,11 +269,8 @@ OUTPUT: ![uat-server a and b](https://github.com/citadelict/My-devops-Journey/bl
 
                    sudo systemctl restart jenkins
 
-       7. Run your build again, this time , it should save artifacts to the server diectory
+   7. Run your build again, this time , it should save artifacts to the server diectory
 
-
-# Blockers  2.
- 
 
 
 
