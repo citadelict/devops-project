@@ -33,6 +33,7 @@ Before we begin, we need to optimize our Jenkins setup to handle artifacts more 
   OUTPUT : ![build steps](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/configure%20build%20steps.png)
 
     - Save the configurations and make changes to your `README.md` file in your github `ansible-config-mgt` and ensure the build triggers upon changes made on the file, also confirm the new save artifact job build also triggers from the completion of the ansible build
+ 
 
   OUTPUT: ![build successful](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/build%20succesful.png)
 
@@ -109,16 +110,17 @@ Before we begin, we need to optimize our Jenkins setup to handle artifacts more 
         - Update site.yml to import `common-del.yml` instead of common.yml.
         - Push to github 
 
+    OUTPUT: ![create common-del.yml](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/create%20common-del.yml.png)
       OUTPUT : ![confirm code ](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/confirm%20code%20.png)
 
-        - Access your ansible-jenkins server, navigate to the directory where the artifacts are saved and run the playbook command again
+   - Access your ansible-jenkins server, navigate to the directory where the artifacts are saved and run the playbook command again
      
                   cd /home/ubuntu/ansible-config-artifact/
                   ansible-playbook -i inventory/dev.yml playbooks/site.yml
 
       OUTPUT: ![delete wireshark](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/running%20playbook%20to%20delete%20wireshark.png)
 
-        - Ensure wireshark is deleted on all servers by running `wireshark --version`
+   - Ensure wireshark is deleted on all servers by running `wireshark --version`
 
       OUTPUT: ![del-wireshark-web A](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/webserver%20a%20del-wireshark.png)
       
@@ -151,7 +153,7 @@ You can create the Ansible role using either the `ansible-galaxy` command or man
 
    * Navigate into each of the created directories and create a `main.yml` file in each directory
   
- - Update your `uat.yml` at ansible-config-mgt/inventory/uat.yml with the IP addresses of your two UAT Web servers:
+ - Update your `uat.yml` at "ansible-config-mgt/inventory/uat.yml" with the IP addresses of your two UAT Web servers:
 
                    [uat-webservers]
                 <Web1-UAT-Server-Private-IP-Address> ansible_ssh_user='ec2-user'
@@ -244,7 +246,7 @@ OUTPUT: ![updated site.yml](https://github.com/citadelict/My-devops-Journey/blob
 
 OUTPUT: ![uat-server a and b](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Refactoring%20%26%20Static%20Assignments%20(Imports%20and%20Roles)-%20104/images/accessed%20tooling%20website%20via%20uat%20servers.png)
 
-# Blockers  1. "Jenkins Job Creation" : in a situation where you get an access denied from your jenkins save artifact job when trying to build , this is caused by jenkins not been able to access the specified folder to save the artifacts
+# Blockers  . "Jenkins Job Creation" : in a situation where you get an access denied from your jenkins save artifact job when trying to build , this is caused by jenkins not been able to access the specified folder to save the artifacts
 - "How i solved it" :
   1. In your ansible-jenkins server, change user from `ubuntu` to `jenkins` 
       
