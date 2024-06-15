@@ -414,8 +414,7 @@
 
   Output: ![1](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Dynamic%20Assignments/images/ran%20task%20for%20mysql.png)
   Output: ![2](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Dynamic%20Assignments/images/ran%20tasks%20for%20mysql.png)
-  Output: ![uat-servers](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Dynamic%20Assignments/images/uat-servers%20configured.png)
-  Output: ![lb](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Dynamic%20Assignments/images/apache%20load%20balancer%20configured.png)
+  Output: ![lb](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Dynamic%20Assignments/images/lb%20configured.png)
 
 
 ### Additional step :   To be able to login to your database from the tooling website uploaded,
@@ -425,7 +424,15 @@
   - import the  tooling-db.sql file into the database. ( check previous projects for how to do this ).
   - Create a user in the tooling database, use `myuser` for username and `password` for password. exit .
   - visit your uat servers ip address and attempt to login. use same password and username we inputed into the db table.
-  - As well visit yor load balncer and ensure you can login as well 
+  - As well visit yor load balncer and ensure you can login as well
+
+Output: ![logged](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Dynamic%20Assignments/images/uat-servers%20configured.png)).
+
+### Now you can comment out the references for the db-servers and uat-webservers playbook in the site.yml file so as not to rerun the tasks again aagain, leave only the reference to import only the load balancer playbook, go to the env-vars/uat.yml and change the values of the variables to use nginx as load balancer instead of apache . now rerun the playbook command again.
+
+ Output: ![nginx-](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Dynamic%20Assignments/images/apache%20is%20disbaled%20while%20nginx%20i%20active.png)
+
+## Conclusion: We have been able to perform numerous devops principles using ansible as bastian host to connect to other ec2-instances.
 
                               
 
