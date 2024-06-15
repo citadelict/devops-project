@@ -278,7 +278,7 @@
                                  [db-servers]
                                  <db-isntance-ip> ansible_ssh_user=<ec2-user>  
 
-### Additional step : Configure your webserver roles to install php and all its dependencies , as well as cloning your tooling website from your github repo
+### step 5 : Configure your webserver roles to install php and all its dependencies , as well as cloning your tooling website from your github repo
 
    - In the `roles/webserver/tasks/main.yml` , write the following tasks. use the code below :
 
@@ -409,6 +409,14 @@
                              git pull origin main
 
 ### Finally, run the playbook comman against the inventory/uat files
+
+                              ansible-playbook -i inventory/uat.yml playbooks/site.yml
+
+  Output: ![1](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Dynamic%20Assignments/images/ran%20task%20for%20mysql.png)
+  Output: ![2](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Dynamic%20Assignments/images/ran%20tasks%20for%20mysql.png)
+
+
+  
 
                               
 
