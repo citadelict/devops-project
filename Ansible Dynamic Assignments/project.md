@@ -191,8 +191,8 @@
                               path: /etc/apache2/sites-available/000-default.conf
                               block: |
                                 <Proxy "balancer://mycluster">
-                                  BalancerMember http://172.31.26.225:80
-                                  BalancerMember http://172.31.25.75:80
+                                  BalancerMember http://<webserver1-ip-address>:80
+                                  BalancerMember http://<webserver2-ip-address>:80
                                   ProxySet lbmethod=byrequests
                                 </Proxy>
                                 ProxyPass "/" "balancer://mycluster/"
