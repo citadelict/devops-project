@@ -149,7 +149,18 @@
 
   #### For Apache
 
-  - 
+  - in the  `roles/apache/tasks/main.yml` file, wwe need to include a task that tells ansible to first check if nginx  is currently running and enabled, if it is, ansible should first stop and disable nginx before proceeding to install and enable apache. this is to avoid confliction and should always free up the port 80 for the required load balancer. ue the code beow to achieve this :
+
+                        - name: Check if nginx is running
+                          ansible.builtin.service_facts:
+                        
+                        - name: Stop and disable nginx if it is running
+                          ansible.builtin.service:
+                            name: nginx 
+                            state: stopped
+                            enabled: no
+                          when: "'nginx' in services and services['nginx'].state == 'running'"
+                          become: yes
 
 
 
