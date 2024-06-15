@@ -162,7 +162,9 @@
                           when: "'nginx' in services and services['nginx'].state == 'running'"
                           become: yes
 
+   Output: ![disable nginx](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Dynamic%20Assignments/images/disable-nginx.png)
 
+  - 
 
 
 
