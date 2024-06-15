@@ -164,7 +164,7 @@
 
    Output: ![disable nginx](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Dynamic%20Assignments/images/disable-nginx.png)
 
-  - 
+  - To use apache as a load balancer, we will need to allow certain apache modules that will enable the load balancer
 
 
 
