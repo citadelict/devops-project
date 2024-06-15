@@ -162,11 +162,45 @@
                           when: "'nginx' in services and services['nginx'].state == 'running'"
                           become: yes
 
+  - Save and exit
+    
    Output: ![disable nginx](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Dynamic%20Assignments/images/disable-nginx.png)
 
-  - To use apache as a load balancer, we will need to allow certain apache modules that will enable the load balancer
+  ##### To use apache as a load balancer, we will need to allow certain apache modules that will enable the load balancer. this is the APACHE A2ENMOD
 
+  - Create a task to install and enable the required `apache a2enmod modules`, use the code below :
 
+                          - name: Enable Apache modules
+                            ansible.builtin.shell:
+                              cmd: "a2enmod {{ item }}"
+                            loop:
+                              - rewrite
+                              - proxy
+                              - proxy_balancer
+                              - proxy_http
+                              - headers
+                              - lbmethod_bytraffic
+                              - lbmethod_byrequests
+                            notify: restart apache
+                            become: yes
+                          
+   - Create another task to update the apache configurations with required code block needed for the load balancer to function. use the code below :
+
+                          - name: Insert load balancer configuration into Apache virtual host
+                            ansible.builtin.blockinfile:
+                              path: /etc/apache2/sites-available/000-default.conf
+                              block: |
+                                <Proxy "balancer://mycluster">
+                                  BalancerMember http://172.31.26.225:80
+                                  BalancerMember http://172.31.25.75:80
+                                  ProxySet lbmethod=byrequests
+                                </Proxy>
+                                ProxyPass "/" "balancer://mycluster/"
+                                ProxyPassReverse "/" "balancer://mycluster/"
+                              marker: "# {mark} ANSIBLE MANAGED BLOCK"
+                              insertbefore: "</VirtualHost>"
+                            notify: restart apache
+                            become: yes  
 
   
 
