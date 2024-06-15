@@ -403,6 +403,14 @@
 
    - The code block above tels ansible to install apache on the webservers , install git, install php and all its dependencies, clone the website from out github repo,as well ascopy the website files into the /var/www/html directory.
    - Save and exit.
+   - Create a pull request and merge with your main branch of your github repo
+   - Login to your ansible server via terminal and change directory into your ansible project, pull the recent changes done into your server
+
+                             git pull origin main
+
+### Finally, run the playbook comman against the inventory/uat files
+
+                              
 
     
 
