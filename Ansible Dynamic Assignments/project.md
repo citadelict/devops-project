@@ -278,7 +278,130 @@
                                  [db-servers]
                                  <db-isntance-ip> ansible_ssh_user=<ec2-user>  
 
+### Additional step : Configure your webserver roles to install php and all its dependencies , as well as cloning your tooling website from your github repo
 
+   - In the `roles/webserver/tasks/main.yml` , write the following tasks. use the code below :
+
+                            - name: Install Apache
+                              remote_user: ec2-user
+                              become: true
+                              become_user: root
+                              ansible.builtin.yum:
+                                name: "httpd"
+                                state: present
+                            
+                            - name: Install Git
+                              remote_user: ec2-user
+                              become: true
+                              become_user: root
+                              ansible.builtin.yum:
+                                name: "git"
+                                state: present
+                            
+                            - name: Install EPEL release
+                              remote_user: ec2-user
+                              become: true
+                              become_user: root
+                              ansible.builtin.command:
+                                cmd: sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm -y
+                            
+                            - name: Install dnf-utils and Remi repository
+                              remote_user: ec2-user
+                              become: true
+                              become_user: root
+                              ansible.builtin.command:
+                                cmd: sudo dnf install dnf-utils http://rpms.remirepo.net/enterprise/remi-release-9.rpm -y
+                            
+                            - name: Reset PHP module
+                              remote_user: ec2-user
+                              become: true
+                              become_user: root
+                              ansible.builtin.command:
+                                cmd: sudo dnf module reset php -y
+                            
+                            - name: Enable PHP 7.4 module
+                              remote_user: ec2-user
+                              become: true
+                              become_user: root
+                              ansible.builtin.command:
+                                cmd: sudo dnf module enable php:remi-7.4 -y
+                            
+                            - name: Install PHP and extensions
+                              remote_user: ec2-user
+                              become: true
+                              become_user: root
+                              ansible.builtin.yum:
+                                name:
+                                  - php
+                                  - php-opcache
+                                  - php-gd
+                                  - php-curl
+                                  - php-mysqlnd
+                                state: present
+                            
+                            - name: Install MySQL client
+                              remote_user: ec2-user
+                              become: true
+                              become_user: root
+                              ansible.builtin.yum:
+                                name: "mysql"
+                                state: present
+                            
+                            - name: Start PHP-FPM service
+                              remote_user: ec2-user
+                              become: true
+                              become_user: root
+                              ansible.builtin.service:
+                                name: php-fpm
+                                state: started
+                            
+                            - name: Enable PHP-FPM service
+                              remote_user: ec2-user
+                              become: true
+                              become_user: root
+                              ansible.builtin.service:
+                                name: php-fpm
+                                enabled: true
+                            
+                            - name: Set SELinux boolean for httpd_execmem
+                              remote_user: ec2-user
+                              become: true
+                              become_user: root
+                              ansible.builtin.command:
+                                cmd: sudo setsebool -P httpd_execmem 1
+                            
+                            - name: Clone a repo
+                              remote_user: ec2-user
+                              become: true
+                              become_user: root
+                              ansible.builtin.git:
+                                repo: https://github.com/citadelict/tooling.git
+                                dest: /var/www/html
+                                force: yes
+                            
+                            - name: Copy HTML content to one level up
+                              remote_user: ec2-user
+                              become: true
+                              become_user: root
+                              command: cp -r /var/www/html/html/ /var/www/
+                            
+                            - name: Start httpd service, if not started
+                              remote_user: ec2-user
+                              become: true
+                              become_user: root
+                              ansible.builtin.service:
+                                name: httpd
+                                state: started
+                            
+                            - name: Recursively remove /var/www/html/html directory
+                              remote_user: ec2-user
+                              become: true
+                              become_user: root
+                              ansible.builtin.file:
+                                path: /var/www/html/html
+                                state: absent
+
+   - The code block above tels ansible to install apache on the webservers
 
     
 
