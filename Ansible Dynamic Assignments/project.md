@@ -203,8 +203,13 @@
                             become: yes  
 
   
+   - Save and create a pull request to merge with the main branch of your github repo.
 
+     output: ![apache](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Dynamic%20Assignments/images/apache.png)
 
+   #### For Nginx
+
+   - 
 
 
 
