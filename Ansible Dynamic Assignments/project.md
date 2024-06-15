@@ -168,7 +168,7 @@
 
   ##### To use apache as a load balancer, we will need to allow certain apache modules that will enable the load balancer. this is the APACHE A2ENMOD
 
-  - Create a task to install and enable the required `apache a2enmod modules`, use the code below :
+  - in the `roles/apache/tasks/configure-debian.yml` file, Create a task to install and enable the required `apache a2enmod modules`, use the code below :
 
                           - name: Enable Apache modules
                             ansible.builtin.shell:
@@ -209,7 +209,18 @@
 
    #### For Nginx
 
-   - 
+   - In the `roles/nginx/tasks/main.yml` file, create a similar task like we did above to check if apache is active and enabled, if it is, it should disable and stop apache before proceeding with the tasks of installing nginx. use the code below :
+
+                              - name: Check if Apache is running
+                                ansible.builtin.service_facts:
+                              
+                              - name: Stop and disable Apache if it is running
+                                ansible.builtin.service:
+                                  name: apache2 
+                                  state: stopped
+                                  enabled: no
+                                when: "'apache2' in services and services['apache2'].state == 'running'"
+                                become: yes
 
 
 
