@@ -401,7 +401,8 @@
                                 path: /var/www/html/html
                                 state: absent
 
-   - The code block above tels ansible to install apache on the webservers
+   - The code block above tels ansible to install apache on the webservers , install git, install php and all its dependencies, clone the website from out github repo,as well ascopy the website files into the /var/www/html directory.
+   - Save and exit.
 
     
 
