@@ -104,7 +104,25 @@
 
                          mv geerlingguy.nginx/ nginx
      
-   - 
+   #### Since we cannot use both apache and nginx load balancer at the same time, it is advisable to create a codition that enables eithr one of the two, to do this ,
+
+   - Declare a variable in `roles/apache/defaults/main.yml` file inside the apache role , name the variable  `enable_apache_lb`
+   - Declare a variable in `roles/nginx/defaults/main.yml` file inside the Nginx role , name the variable  `enable_nginx_lb`
+
+   - declare another variable that ensures either one of the load balancer is required and set it to `false`.
+
+                         load_balancer_is_required : false
+
+   - Create a new playbook in `static-assignments` and call it `loadbalancers.yml`, update it with code below:
+
+                         ---
+                        - hosts: lb
+                          roles:
+                            - { role: nginx, when: enable_nginx_lb and load_balancer_is_required }
+                            - { role: apache, when: enable_apache_lb and load_balancer_is_required }
+                        
+     Output: ![loadbalncer](./images/LB code.png)
+                         
 
 
 
