@@ -251,8 +251,32 @@
                                 template: "{{ nginx_vhost_template }}" # Can be used to override the `nginx_vhost_template` per host.
                                 state: "present" # To remove the vhost configuration.
 
-     Output : ![nginx_vhost]()
+     Output : ![nginx_vhost](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Dynamic%20Assignments/images/nginx_vhosts.png)
 
+     - Under the `nginx_upstream` section, you wil need to update the servers address to include your webservers or uat servers.
+
+                              nginx_upstreams: 
+                              - name: myapp1
+                                strategy: "ip_hash" # "least_conn", etc.
+                                keepalive: 16 # optional
+                                servers:
+                                  - "<uat-server2-ip-address> weight=5"
+                                  - "<uat-server1-ip-address> weight=5"
+
+      Output: ![upstream](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Dynamic%20Assignments/images/nginx_upstream.png)
+
+     - Save and exit.
+     - finally, update the `inventory/uat.yml` to include the neccesary details for ansible to connect to each of these servers to perform all the roles we have specified. use the code below :
+
+                                 [uat-webservers]
+                                 <server1-ipaddress> ansible_ssh_user=<ec2-username> 
+                                 <server2-ip address> ansible_ssh_user=<ec2-username> 
+                                
+                                 [lb]
+                                 <lb-instance-ip> ansible_ssh_user=<ec2-username> 
+                                
+                                 [db-servers]
+                                 <db-isntance-ip> ansible_ssh_user=<ec2-user>  
 
 
 
