@@ -106,7 +106,7 @@
 
                          mv geerlingguy.nginx/ nginx
      
-   #### Since we cannot use both apache and nginx load balancer at the same time, it is advisable to create a codition that enables eithr one of the two, to do this ,
+   #### Since we cannot use both apache and nginx load balancer at the same time, it is advisable to create a condition that enables eithr one of the two, to do this ,
 
    - Declare a variable in `roles/apache/defaults/main.yml` file inside the apache role , name the variable  `enable_apache_lb`
    - Declare a variable in `roles/nginx/defaults/main.yml` file inside the Nginx role , name the variable  `enable_nginx_lb`
@@ -149,7 +149,7 @@
 
   #### For Apache
 
-  - in the  `roles/apache/tasks/main.yml` file, wwe need to include a task that tells ansible to first check if nginx  is currently running and enabled, if it is, ansible should first stop and disable nginx before proceeding to install and enable apache. this is to avoid confliction and should always free up the port 80 for the required load balancer. ue the code beow to achieve this :
+  - in the  `roles/apache/tasks/main.yml` file, wwe need to include a task that tells ansible to first check if nginx  is currently running and enabled, if it is, ansible should first stop and disable nginx before proceeding to install and enable apache. this is to avoid confliction and should always free up the port 80 for the required load balancer. use the code beow to achieve this :
 
                         - name: Check if nginx is running
                           ansible.builtin.service_facts:
@@ -222,9 +222,36 @@
                                 when: "'apache2' in services and services['apache2'].state == 'running'"
                                 become: yes
 
+   - In the `roles/nginx/handlers/main.yml` file, set nginx to always perform the tasks with sudo privileges, use the function : `become: yes` to achieve this
+   - Do the same for all tasks that require sudo privileges
 
+   output: ![sudo](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Dynamic%20Assignments/images/sudo.png)
 
+   - In the `role/nginx/defaults/main.yml` file, uncomment the **nginx_vhosts, and nginx_upstream section**
+   - Under the nginx_vhosts section, ensure you have the same code :
 
+                             nginx_vhosts:
+                              - listen: "80" # default: "80"
+                                server_name: "example.com" 
+                                server_name_redirect: "example.com"
+                                root: "/var/www/html" 
+                                index: "index.php index.html index.htm" # default: "index.html index.htm"
+                                # filename: "nginx.conf" # Can be used to set the vhost filename.
+                            
+                                locations:
+                                          - path: "/"
+                                            proxy_pass: "http://myapp1"
+                            
+                              # Properties that are only added if defined:
+                                server_name_redirect: "www.example.com" # default: N/A
+                                error_page: ""
+                                access_log: ""
+                                error_log: ""
+                                extra_parameters: "" # Can be used to add extra config blocks (multiline).
+                                template: "{{ nginx_vhost_template }}" # Can be used to override the `nginx_vhost_template` per host.
+                                state: "present" # To remove the vhost configuration.
+
+     Output : ![nginx_vhost]()
 
 
 
