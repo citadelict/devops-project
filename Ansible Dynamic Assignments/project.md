@@ -418,7 +418,14 @@
   Output: ![lb](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Dynamic%20Assignments/images/apache%20load%20balancer%20configured.png)
 
 
-### Additional step :   
+### Additional step :   To be able to login to your database from the tooling website uploaded,
+
+  - Login to the uat-webservers , update the functions.php in the `/var/www/html` directory, input the credentials we specified in the mysql roles, in our case, admin, admin, use the mysql db server private ip as host name. save and exit.
+  - Ensure you can login remotely to the mysql server from the uat-server.
+  - import the  tooling-db.sql file into the database. ( check previous projects for how to do this ).
+  - Create a user in the tooling database, use `myuser` for username and `password` for password. exit .
+  - visit your uat servers ip address and attempt to login. use same password and username we inputed into the db table.
+  - As well visit yor load balncer and ensure you can login as well 
 
                               
 
