@@ -79,6 +79,8 @@
                       roles:
                         - role: mysql
 
+ Output: ![db-servers](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Dynamic%20Assignments/images/db%20code.png)
+ 
    - Save , now return to your general playbook which is the `playbooks/site.yml` and reference the newly created db-servers playbook, add the code below to import it into the main playbook
 
                       - import_playbook: ../static-assignments/db-servers.yml
@@ -121,14 +123,33 @@
                             - { role: nginx, when: enable_nginx_lb and load_balancer_is_required }
                             - { role: apache, when: enable_apache_lb and load_balancer_is_required }
                         
-     Output: ![loadbalncer](./images/LB code.png)
+     Output: ![loadbalancer](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Dynamic%20Assignments/images/LB%20code%20.png)
                          
 
+   - Now , inside your generaal playbook (site.yml) file, dynamically import the load balancer playbook so it can use the roles weve created
 
+                         - import_playbook: ../static-assignments/loadbalancers.yml
+                           when: load_balancer_is_required
 
+      Your `site.yml` should like the output below
 
+     Output: ![site](.images/site.yml)
 
+   - To activate load balancer, and enable either of Apache or Nginx load balancer, we can achieve this  by setting these in the respective environment's env-vars file.
+   - Open the `env-vars/uat.yml` file and set it . here is how is how the code should be
 
+                         ---
+                        load_balancer_is_required: true
+                        enable_nginx_lb: true
+                        enable_apache_lb: false
+     
+   - To use apache, we can set the `enable_apache_lb` variable to true, and `enable_nginx_lb` to false. do the same thing for nginx if you want to enable nginx load balancer
+
+### Step 4 : Configuring the apache and Nginx roles to work as load balancer
+
+  #### For Apache
+
+  - 
 
 
 
