@@ -133,7 +133,7 @@
 
       Your `site.yml` should like the output below
 
-     Output: ![site](.images/site.yml)
+     Output: ![site](https://github.com/citadelict/My-devops-Journey/blob/main/Ansible%20Dynamic%20Assignments/images/site.yml.png)
 
    - To activate load balancer, and enable either of Apache or Nginx load balancer, we can achieve this  by setting these in the respective environment's env-vars file.
    - Open the `env-vars/uat.yml` file and set it . here is how is how the code should be
