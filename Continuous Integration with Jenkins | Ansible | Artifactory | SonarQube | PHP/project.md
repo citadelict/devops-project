@@ -91,7 +91,7 @@ To do this, follow the step below:
 
 ### `Running Ansible playbook from Jenkins`
 
- Now that we have undertsanding of how a typical jenkins pipeline works, lets go further by integratiing `Ansible` into our setup
+ Now that we have understanding of how a typical jenkins pipeline works, lets go further by integratiing `Ansible` into our setup
 
 ### `Install Ansible`
 
