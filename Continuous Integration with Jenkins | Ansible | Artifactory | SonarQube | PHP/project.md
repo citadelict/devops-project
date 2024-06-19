@@ -24,6 +24,14 @@ To do this , follow the steps below :
 
 ## `Configure the Blue Ocean plugin pipeline with our github repo`
 
+To do this, follow the step below:
+
+  - Open the blue oceans plugin and `create a new pipeline`
+  - Select github
+  - Connect github with jenkins using your github personal access token
+  - Select the repository
+  - Create the pipeline
+
 ![jenkins server](./images/3.png)
 
 
