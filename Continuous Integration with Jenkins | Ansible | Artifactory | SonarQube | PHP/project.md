@@ -40,7 +40,7 @@ To do this, follow the step below:
 
   - Let's create a simple pipeline with one stage `build`. This has a shell command to echo a text "echo "Building Stage".
 
-          ```bash
+         
               pipeline {
                   agent any
               
@@ -54,7 +54,7 @@ To do this, follow the step below:
                   }
                   }
               }
-          ```
+       
               
   - Now go back into the Ansible pipeline in Jenkins, and select `configure` then Scroll down to `Build Configuration`, inside `script Path` specify the location of the Jenkinsfile at `deploy/Jenkinsfile`
 
@@ -95,10 +95,10 @@ To do this, follow the step below:
 
 ### `Install Ansible`
 
-            ```bash
+          
           sudo apt update && sudo apt upgrade -y
           sudo apt install ansible -y
-          ```
+          
 ![jenkins server](./images/14.png)
 
 
