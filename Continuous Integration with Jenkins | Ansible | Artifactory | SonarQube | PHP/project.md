@@ -83,6 +83,8 @@ To do this, follow the step below:
        2. Deploy 
        3. Clean up
 
+![jenkins server](./images/13.png)
+
    - Scan the repo again and allow jenkins build
 
 ![jenkins server](./images/12.png)
