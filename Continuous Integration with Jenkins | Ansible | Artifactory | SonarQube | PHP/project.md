@@ -102,7 +102,11 @@ To do this, follow the step below:
 ![jenkins server](./images/14.png)
 
 
-### `RInstall Ansible Plugin on Jenkins`
+### `Install Ansible Plugin on Jenkins`
+
+   - On the dashboard page, click on `Manage Jenkins` > `Manage plugins` > Under `Available` type in `ansible` and install without restart
+
+![jenkins server](./images/15.png)
 
 
 
