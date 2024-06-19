@@ -38,7 +38,22 @@ To do this, follow the step below:
 
 ![jenkins server](./images/5.png)
 
+  - Let's create a simple pipeline with one stage `build`. This has a shell command to echo a text "echo "Building Stage".
 
-
-
+          ```bash
+              pipeline {
+                  agent any
+              
+                stages {
+                  stage('Build') {
+                    steps {
+                      script {
+                        sh '"echo "Building Stage"'
+                      }
+                    }
+                  }
+                  }
+              }
+          ```
+              
 
