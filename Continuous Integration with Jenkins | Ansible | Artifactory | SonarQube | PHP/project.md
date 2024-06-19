@@ -8,3 +8,5 @@ I would be using a copy of the  `ansible-config-mgt` repo which I have renamed `
 
 Start by launching an AWS EC2 instance with a RedHat OS and set up the Jenkins server.
 
+![jenkins server](./images/1.png)
+
