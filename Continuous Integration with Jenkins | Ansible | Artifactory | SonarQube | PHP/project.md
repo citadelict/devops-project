@@ -74,9 +74,18 @@ To do this, follow the step below:
 
 ![jenkins server](./images/11.png)
 
+`additinal Tasks to perform tp better understand the whole process`.
 
+  - Let's create a pull request to merge the latest code into the main branch, after merging the PR, go back into your terminal and switch into the main branch.Pull the latest change.
+  - Create a new branch, add more stages into the Jenkins file to simulate below phases. (Just add an echo command like we have in build and test stages)
 
+       1. Package 
+       2. Deploy 
+       3. Clean up
 
+   - Scan the repo again and allow jenkins build
+
+![jenkins server](./images/12.png)
 
 
 
