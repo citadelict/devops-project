@@ -36,7 +36,7 @@ To do this, follow the step below:
 
   - In order for Jenkins to reconginze our repo, we need to add a Jenkinsfile. Create a `deploy` folder and add a `Jenkinsfile` to it.
 
-![jenkins server](./images/4.png)
+![jenkins server](./images/5.png)
 
 
 
