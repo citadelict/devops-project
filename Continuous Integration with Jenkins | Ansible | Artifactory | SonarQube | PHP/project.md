@@ -21,3 +21,12 @@ To do this , follow the steps below :
   - Search for BLUE OCEAN PLUGIN  and install
 
 ![jenkins server](./images/2.png)
+
+## `Configure the Blue Ocean plugin pipeline with our github repo`
+
+![jenkins server](./images/3.png)
+
+
+
+
+
