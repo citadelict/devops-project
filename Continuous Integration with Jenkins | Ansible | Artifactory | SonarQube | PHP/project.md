@@ -95,7 +95,14 @@ To do this, follow the step below:
 
 ### `Install Ansible`
 
+            ```bash
+          sudo apt update && sudo apt upgrade -y
+          sudo apt install ansible -y
+          ```
+![jenkins server](./images/14.png)
 
+
+### `RInstall Ansible Plugin on Jenkins`
 
 
 
