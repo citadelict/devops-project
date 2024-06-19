@@ -56,4 +56,6 @@ To do this, follow the step below:
               }
           ```
               
+  - Now go back into the Ansible pipeline in Jenkins, and select `configure` then Scroll down to `Build Configuration`, inside `script Path` specify the location of the Jenkinsfile at `deploy/Jenkinsfile`
 
+![jenkins server](./images/6.png)
