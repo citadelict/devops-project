@@ -63,6 +63,7 @@ To do this, follow the step below:
   - Go back to the pipeline again, this time click `Build` now and then click on `blue ocean` on the right menu.
 
 ![jenkins server](./images/7.png)
+![jenkins server](./images/8.png)
 
 
 
