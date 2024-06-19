@@ -65,6 +65,15 @@ To do this, follow the step below:
 ![jenkins server](./images/7.png)
 ![jenkins server](./images/8.png)
 
+  - Jenkins usually scan all branches to build. Let see this in action. Create a new branch `feature/jenkinspipeline-stages` and add one more stage `test`to the pipeline`
+
+![jenkins server](./images/10.png)
+
+  - Click on `scan repository now` to build all available branches on the repository.
+  - In `Blue Ocean`, you can now see how the Jenkinsfile has caused a new step in the pipeline launch build for the new branch.
+
+![jenkins server](./images/11.png)
+
 
 
 
