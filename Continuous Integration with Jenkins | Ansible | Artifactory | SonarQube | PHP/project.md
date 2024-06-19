@@ -108,6 +108,13 @@ To do this, follow the step below:
 
 ![jenkins server](./images/15.png)
 
+   - Click on `Dashboard` > `Manage Jenkins` > `Tools` > `Add Ansible`. Add a name and the path ansible is installed on the jenkins server.
+   - To get the ansible path on the jnekins server, run :
+
+           > $ which ansible
+
+![jenkins server](./images/16.png)
+
 
 
 
