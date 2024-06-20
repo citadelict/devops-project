@@ -304,6 +304,15 @@ Our goal here is to deploy the application onto servers directly from `Artifacto
 ![jenkins server](./images/32.png)
 
 
+   - Install the required jenkins plugin, which is `plot` and `Artifactory` plugins
+
+ `Plot Plugin Installation`
+
+![jenkins server](./images/33.png)
+
+  ` Artifactory Plugin Installation`
+
+![jenkins server](./images/34.png)
 
 
 
