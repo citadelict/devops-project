@@ -189,6 +189,23 @@ To do this, follow the step below:
                             }
 
 
+![jenkins server](./images/17.png)
+  * ### Here is what each part of my jenkinsfile does :
+      - Environment variables are set for the pipeline: `ANSIBLE_CONFIG` specifies the path to the Ansible configuration file. while `ANSIBLE_HOST_KEY_CHECKING` disables host key checking to avoid interruptions during SSH connections.
+      - Stage: `Initial cleanup` : This cleans up the workspace to ensure a fresh environment for the build by deleting all files in the workspace directory.
+      - Stage: `Checkout SCM` : This checks out the source code from the specified Git repository, and alos uses `git` step to clone the repository.
+      - Stage:` Prepare Ansible For Execution` : Prepares the Ansible environment by configuring the Ansible roles path by printing the workspace path, and modifying the Ansible configuration file to add the roles path.
+      - Stage: `Test SSH Connections` : Verifies SSH connectivity to each server.
+      - Stage: `Run Ansible playbook` : Executes the Ansible playbook. :
+            - Uses the sshagent step to ensure the SSH key is available for Ansible.
+            - Runs the ansiblePlaybook step with the specified parameters .
+            ####  To ensure jenkins properly connects to all servers, you will need to install another plugin known as `ssh agent` , after that, go to `manage jenkins` > `credentials` > `global` > `add credentials` , usee `ssh username and password` , fill out the neccesary details and save.
+
+    - Now back to your `inventory/dev.yml` , update the inventory with thier respective servers private ip address
+
+      
+         
+
 
 
 
