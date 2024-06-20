@@ -251,6 +251,48 @@ There are always several environments that need configuration, such as CI, site,
 
 ![jenkins server](./images/24.png)
 
+### Add another Parameter to better understand the use, Introduce tagging in ansible , and limit the playbook execution to just specific roles,  for this task, ensure only the webserver roles are implemented when you run the playbook. To do this ,
+
+
+   -  Add another parameter to the one we added above. specify the parameter name as `ansible_tags` and the default value to webserver
+
+                       string(name: 'ansible_tags', defaultValue: 'webserver', description: 'Ansible tags to run specific roles or tasks')
+
+![jenkins server](./images/26.png)
+
+   - Update the playbook with tags to all the tasks to easily differentiate between them
+
+![jenkins server](./images/27.png)
+
+   - update the jenkins file to included the ansible tags before it runs playbook
+
+![jenkins server](./images/28.png)
+
+   - Click on build with parameters and update the inventory field to sit and the the ansible_tags to webserver
+
+![jenkins server](./images/29.png)
+
+   - Run your build .
+
+![jenkins server](./images/30.png)
+
+![jenkins server](./images/31.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
