@@ -115,6 +115,78 @@ To do this, follow the step below:
 
 ![jenkins server](./images/16.png)
 
+   - Now, delete all you have in your Jenkinsfile and start writing it again. to do this, we can make use of pipeline syntax to ensure we get the exact command for what we intend to achieve. here is how the Jenkinsfile should look eventually .
+
+                       pipeline {
+                              agent any
+                            
+                              environment {
+                                ANSIBLE_CONFIG = "${WORKSPACE}/deploy/ansible.cfg"
+                                ANSIBLE_HOST_KEY_CHECKING = 'False'
+                              }
+                            
+                              stages {
+                                stage("Initial cleanup") {
+                                  steps {
+                                    dir("${WORKSPACE}") {
+                                      deleteDir()
+                                    }
+                                  }
+                                }
+
+                                stage('Checkout SCM') {
+                                  steps {
+                                    git branch: 'main', url: 'https://github.com/citadelict/ansibllle-config-mgt.git'
+                                  }
+                                }
+                            
+                                stage('Prepare Ansible For Execution') {
+                                  steps {
+                                    sh 'echo ${WORKSPACE}'
+                                    sh 'sed -i "3 a roles_path=${WORKSPACE}/roles" ${WORKSPACE}/deploy/ansible.cfg'
+                                  }
+                                }
+                            
+                                stage('Test SSH Connections') {
+                                  steps {
+                                    script {
+                                      def hosts = [
+                                        [group: 'tooling', ip: '172.31.30.46', user: 'ec2-user'],
+                                        [group: 'tooling', ip: '172.31.25.209', user: 'ec2-user'],
+                                        [group: 'nginx', ip: '172.31.26.108', user: 'ubuntu'],
+                                        [group: 'db', ip: '172.31.24.250', user: 'ubuntu']
+                                      ]
+                                      for (host in hosts) {
+                                        sshagent(['private-key']) {
+                                          sh "ssh -o StrictHostKeyChecking=no -i /home/ubuntu/.ssh/key.pem ${host.user}@${host.ip} exit"
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                            
+                                stage('Run Ansible playbook') {
+                                  steps {
+                                    sshagent(['private-key']) {
+                                      ansiblePlaybook(
+                                        become: true,
+                                        credentialsId: 'private-key',
+                                        disableHostKeyChecking: true,
+                                        installation: 'ansible',
+                                        inventory: "${WORKSPACE}/inventory/dev.yml",
+                                        playbook: "${WORKSPACE}/playbooks/site.yml"
+                                      )
+                                    }
+                                  }
+                                }
+                            
+                                stage('Clean Workspace after build') {
+                                  steps {
+                                    cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenUnstable: true, deleteDirs: true)
+                                  }
+                                }
+                              }
+                            }
 
 
 
