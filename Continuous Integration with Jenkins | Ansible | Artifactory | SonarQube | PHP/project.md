@@ -217,8 +217,19 @@ To do this, follow the step below:
 
 There are always several environments that need configuration, such as CI, site, and pentest environments etc. To manage and run these environments dynamically, we need to update the Jenkinsfile.
 
-                  
-         
+                     parameters {
+              string(name: 'inventory', defaultValue: 'dev',  description: 'This is the inventory file for the environment to deploy configuration')
+            }
+
+![jenkins server](./images/22.png)
+
+- Update the inventory path with this : `${inventory}`
+                 
+![jenkins server](./images/23.png)
+
+- Notice the `Build Now` is changed to `Build with Parameters` and this enables us to run differenet environment easily.
+
+![jenkins server](./images/24.png)
 
 
 
