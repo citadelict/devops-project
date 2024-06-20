@@ -201,7 +201,9 @@ To do this, follow the step below:
             - Runs the ansiblePlaybook step with the specified parameters .
             ####  To ensure jenkins properly connects to all servers, you will need to install another plugin known as `ssh agent` , after that, go to `manage jenkins` > `credentials` > `global` > `add credentials` , usee `ssh username and password` , fill out the neccesary details and save.
 
-    - Now back to your `inventory/dev.yml` , update the inventory with thier respective servers private ip address
+ - Now back to your `inventory/dev.yml` , update the inventory with thier respective servers private ip address , and run the playbook against the dev.
+
+![jenkins server](./images/18.png)
 
       
          
