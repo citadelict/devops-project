@@ -317,6 +317,11 @@ Our goal here is to deploy the application onto servers directly from `Artifacto
 
 ### `Phase 2 – Set up Ansible roles for artifactory`
 
+  -  Create roles to install artifactory just the same way we set up apache, mysql and nginx in the previous project.
+  -  Run the playbook against the `inventory/ci.yml`
+
+ 
+
 
 
 
