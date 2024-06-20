@@ -233,6 +233,8 @@ To do this, follow the step below:
                     [db]
                     <SIT-DB-Server-Private-IP-Address>
 
+  ![jenkins server](./images/25.png)
+
 There are always several environments that need configuration, such as CI, site, and pentest environments etc. To manage and run these environments dynamically, we need to update the Jenkinsfile.
 
                      parameters {
