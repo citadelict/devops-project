@@ -213,7 +213,11 @@ To do this, follow the step below:
 
 ![jenkins server](./images/21.png)
 
-      
+### `Parameterizing Jenkinsfile For Ansible Deployment`      
+
+There are always several environments that need configuration, such as CI, site, and pentest environments etc. To manage and run these environments dynamically, we need to update the Jenkinsfile.
+
+                  
          
 
 
