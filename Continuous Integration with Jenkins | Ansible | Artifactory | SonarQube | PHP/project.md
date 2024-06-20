@@ -306,13 +306,17 @@ Our goal here is to deploy the application onto servers directly from `Artifacto
 
    - Install the required jenkins plugin, which is `plot` and `Artifactory` plugins
 
- `Plot Plugin Installation`
+ `Plot Plugin Installation`  :  We will use plot plugin to display tests reports, and code coverage information.
 
 ![jenkins server](./images/33.png)
 
-  ` Artifactory Plugin Installation`
+  ` Artifactory Plugin Installation`  :  The Artifactory plugin will be used to easily upload code artifacts into an Artifactory server.
 
 ![jenkins server](./images/34.png)
+
+
+### `Phase 2 – Set up Ansible roles for artifactory`
+
 
 
 
