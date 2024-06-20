@@ -279,7 +279,29 @@ There are always several environments that need configuration, such as CI, site,
 ![jenkins server](./images/31.png)
 
 
+### `CI/CD Pipeline for TODO application`
 
+We already have tooling website as a part of deployment through Ansible. Here we will introduce another PHP application to add to the list of software products we are managing in our infrastructure. The good thing with this particular application is that it has unit tests, and it is an ideal application to show an end-to-end CI/CD pipeline for a particular application.
+
+Our goal here is to deploy the application onto servers directly from `Artifactory` rather than from `git`.
+
+### `Phase 1 – Prepare Jenkins`
+
+  - Fork the todo repository below into your GitHub account
+
+                  https://github.com/StegTechHub/php-todo.git
+
+  - On you Jenkins server, install PHP dependencies for app, its dependencies and Composer tool
+
+                  sudo apt update
+                  sudo apt install -y zip libapache2-mod-php phploc php-{xml,bcmath,bz2,intl,gd,mbstring,mysql,zip}
+                  php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+                  sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+                  php -r "unlink('composer-setup.php');"
+                  php -v
+                  composer -v
+
+![jenkins server](./images/32.png)
 
 
 
