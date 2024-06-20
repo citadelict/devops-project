@@ -215,6 +215,24 @@ To do this, follow the step below:
 
 ### `Parameterizing Jenkinsfile For Ansible Deployment`      
 
+- Update your `/inventory/sit.yml file with the code below
+
+                    [tooling]
+                    <SIT-Tooling-Web-Server-Private-IP-Address>
+                    
+                    [todo]
+                    <SIT-Todo-Web-Server-Private-IP-Address>
+                    
+                    [nginx]
+                    <SIT-Nginx-Private-IP-Address>
+                    
+                    [db:vars]
+                    ansible_user=ec2-user
+                    ansible_python_interpreter=/usr/bin/python
+                    
+                    [db]
+                    <SIT-DB-Server-Private-IP-Address>
+
 There are always several environments that need configuration, such as CI, site, and pentest environments etc. To manage and run these environments dynamically, we need to update the Jenkinsfile.
 
                      parameters {
