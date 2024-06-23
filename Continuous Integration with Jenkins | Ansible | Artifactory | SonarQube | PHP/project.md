@@ -444,8 +444,14 @@ Our goal here is to deploy the application onto servers directly from `Artifacto
 
 ![jenkins server](./images/54.png)
 
-           
+  - Update the Jenkinsfile to include Unit tests step
 
+                               stage('Execute Unit Tests') {
+                              steps {
+                                     sh './vendor/bin/phpunit'
+                              } 
+                                   
+### Phase 3 – Code Quality Analysis
 
 
 
