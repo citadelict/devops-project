@@ -475,7 +475,7 @@ This plugin provides generic plotting (or graphing) capabilities in Jenkins. It 
 
 View in the `Plot` chart in Jenkins
 
-![jenkins server](./images/55.png)
+![jenkins server](./images/59.png)
 
 ### `Phase 4 – Bundle and deploy` : Bundle the todo application code into an artifact and upload to jfrog artifactory. 
 
@@ -522,6 +522,8 @@ View in the `Plot` chart in Jenkins
                                       }
                                   }
                               }
+
+![jenkins server](./images/61.png)
                                 
   - Write the tasks neccesary for setting up the dev environment in order to preapre it for deployment, like installing php, apache, creating html directories , etc , here is a sample of the tasks.
 
@@ -599,7 +601,7 @@ View in the `Plot` chart in Jenkins
                                 state: restarted
 
 
-     
+    ![jenkins server](./images/62.png)
                                 
 
 
