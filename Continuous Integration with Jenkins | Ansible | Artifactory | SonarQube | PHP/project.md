@@ -477,10 +477,55 @@ View in the `Plot` chart in Jenkins
 
 ![jenkins server](./images/55.png)
 
+### `Phase 4 – Bundle and deploy` : Bundle the todo application code into an artifact and upload to jfrog artifactory. 
 
+ - to do this, we have to add a stage to our todo jenkinsfile to save ethe artifact as a zip file, to do this : 
+       * Edit your `php-todo/Jenkinsfile` , add the code below
+   
+                                              stage('Package Artifact') {
+                                              steps {
+                                                  sh 'zip -qr php-todo.zip ${WORKSPACE}/*'
+                                              }
+                                          }
+                        
+ -  Add another stage to upload the zipped artifact into our already configured artifactory repository.
 
+                                            stage('Upload Artifact to Artifactory') {
+                                            steps {
+                                                script {
+                                                    def server = Artifactory.server 'artifactory-server'
+                                                    def uploadSpec = """{
+                                                        "files": [
+                                                          {
+                                                            "pattern": "php-todo.zip",
+                                                            "target": "Todo-dev-local/php-todo",
+                                                            "props": "type=zip;status=ready"
+                                                          }
+                                                        ]
+                                                    }"""
+                                                    println "Upload Spec: ${uploadSpec}"
+                                                    try {
+                                                        server.upload spec: uploadSpec
+                                                        println "Upload successful"
+                                                    } catch (Exception e) {
+                                                        println "Upload failed: ${e.message}"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                
+   - Deploy the application to the dev envionment :  `todo server` by launching the ansible playbook.
 
+                                      stage('Deploy to Dev Environment') {
+                                      steps {
+                                          build job: 'ansibllle-config-mgt/main', parameters: [[$class: 'StringParameterValue', name: 'inventory', value: 'dev']], propagate: false, wait: true
+                                      }
+                                  }
+                              }
+                                
 
+     
+                                
 
 
 
