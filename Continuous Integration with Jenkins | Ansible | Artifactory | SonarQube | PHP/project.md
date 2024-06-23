@@ -390,8 +390,10 @@ Our goal here is to deploy the application onto servers directly from `Artifacto
                               MAIL_USERNAME=null
                               MAIL_PASSWORD=null
                               MAIL_ENCRYPTION=null
+    
+![jenkins server](./images/51.png)
 
-    - php artisan uses the .env file to setup the required database objects – (After successful run of this step, login to the database, run show tables and you will see the tables being created for you)
+   - php artisan uses the .env file to setup the required database objects – (After successful run of this step, login to the database, run show tables and you will see the tables being created for you)
    
 ![jenkins server](./images/48.png)
 
@@ -400,8 +402,6 @@ Our goal here is to deploy the application onto servers directly from `Artifacto
                             
                             # install mysql client on jenkins server
                             sudo yum install mysql -y 
-
- ![jenkins server](./images/48.png)
 
 
    - Update Jenkinsfile with proper pipeline configuration
@@ -436,8 +436,15 @@ Our goal here is to deploy the application onto servers directly from `Artifacto
                                     }
                                   }
                                 }
-                                
-                                 
+     
+     - Ensure that all neccesary php extensions are already installed .
+     - Run the pipeline build , you will notice that the database has been populated with tables using a method in laravel known as migration and seeding.      
+    
+![jenkins server](./images/53.png)
+
+![jenkins server](./images/54.png)
+
+           
 
 
 
