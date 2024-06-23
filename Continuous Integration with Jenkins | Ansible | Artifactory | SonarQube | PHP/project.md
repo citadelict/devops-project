@@ -364,6 +364,43 @@ Our goal here is to deploy the application onto servers directly from `Artifacto
 
 ![jenkins server](./images/47.png)
 
+  - Create a .env.sample file and update it with the credentials to connect the database, use sample the code  below :
+
+                              APP_ENV=local
+                              APP_DEBUG=true
+                              APP_KEY=SomeRandomString
+                              APP_URL=http://localhost
+                              
+                              DB_HOST=172.31.24.250
+                              DB_DATABASE=homestead
+                              DB_USERNAME=homestead
+                              DB_PASSWORD=sePret^i
+                              
+                              CACHE_DRIVER=file
+                              SESSION_DRIVER=file
+                              QUEUE_DRIVER=sync
+                              
+                              REDIS_HOST=127.0.0.1
+                              REDIS_PASSWORD=null
+                              REDIS_PORT=6379
+                              
+                              MAIL_DRIVER=smtp
+                              MAIL_HOST=mailtrap.io
+                              MAIL_PORT=2525
+                              MAIL_USERNAME=null
+                              MAIL_PASSWORD=null
+                              MAIL_ENCRYPTION=null
+
+    - php artisan uses the .env file to setup the required database objects – (After successful run of this step, login to the database, run show tables and you will see the tables being created for you)
+   
+![jenkins server](./images/48.png)
+
+                            #update database server configuration
+                            sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf
+                            
+                            # install mysql client on jenkins server
+                            sudo yum install mysql -y 
+
 
 
  
