@@ -475,6 +475,8 @@ This plugin provides generic plotting (or graphing) capabilities in Jenkins. It 
 
 View in the `Plot` chart in Jenkins
 
+![jenkins server](./images/55.png)
+
 
 
 
