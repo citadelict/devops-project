@@ -523,6 +523,81 @@ View in the `Plot` chart in Jenkins
                                   }
                               }
                                 
+  - Write the tasks neccesary for setting up the dev environment in order to preapre it for deployment, like installing php, apache, creating html directories , etc , here is a sample of the tasks.
+
+                              - name: install remi and rhel repo
+                              ansible.builtin.yum:
+                                name: 
+                                  - https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+                                  - dnf-utils
+                                  - http://rpms.remirepo.net/enterprise/remi-release-9.rpm
+                                disable_gpg_check: yes
+                            
+                            - name: install httpd on the webserver
+                              ansible.builtin.yum:
+                                name: httpd
+                                state: present
+                            
+                            - name: ensure httpd is started and enabled
+                              ansible.builtin.service:
+                                name: httpd
+                                state: started 
+                                enabled: yes
+                              
+                            - name: install PHP
+                              ansible.builtin.yum:
+                                name:
+                                  - php 
+                                  - php-mysqlnd
+                                  - php-gd 
+                                  - php-curl
+                                  - unzip
+                                  - php-common
+                                  - php-mbstring
+                                  - php-opcache
+                                  - php-intl
+                                  - php-xml
+                                  - php-fpm
+                                  - php-json
+                                enablerepo: remi-7.4
+                                state: present
+                            
+                            - name: ensure php-fpm is started and enabled
+                              ansible.builtin.service:
+                                name: php-fpm
+                                state: started 
+                                enabled: yes
+                            
+                            - name: Download the artifact
+                              get_url:
+                                url: http://18.192.100.8:8082/artifactory/Todo-dev-local/php-todo/php-todo.zip
+                                dest: /home/ec2-user/php-todo.zip
+                                url_username: admin
+                                url_password: guessWhat232@
+                            
+                            - name: unzip the artifacts
+                              ansible.builtin.unarchive:
+                                src: /home/ec2-user/php-todo.zip
+                                dest: /home/ec2-user/
+                                remote_src: yes
+                            
+                            - name: deploy the code
+                              ansible.builtin.copy:
+                                src: /home/ec2-user/php-todo/
+                                dest: /var/www/html/
+                                force: yes
+                                remote_src: yes
+                            
+                            - name: remove nginx default page
+                              ansible.builtin.file:
+                                path: /etc/httpd/conf.d/welcome.conf
+                                state: absent
+                            
+                            - name: restart httpd
+                              ansible.builtin.service:
+                                name: httpd
+                                state: restarted
+
 
      
                                 
