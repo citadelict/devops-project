@@ -490,29 +490,31 @@ View in the `Plot` chart in Jenkins
                         
  -  Add another stage to upload the zipped artifact into our already configured artifactory repository.
 
-                                            stage('Upload Artifact to Artifactory') {
-                                            steps {
-                                                script {
-                                                    def server = Artifactory.server 'artifactory-server'
-                                                    def uploadSpec = """{
-                                                        "files": [
-                                                          {
-                                                            "pattern": "php-todo.zip",
-                                                            "target": "Todo-dev-local/php-todo",
-                                                            "props": "type=zip;status=ready"
-                                                          }
-                                                        ]
-                                                    }"""
-                                                    println "Upload Spec: ${uploadSpec}"
-                                                    try {
-                                                        server.upload spec: uploadSpec
-                                                        println "Upload successful"
-                                                    } catch (Exception e) {
-                                                        println "Upload failed: ${e.message}"
-                                                    }
-                                                }
-                                            }
-                                        }
+                                     stage('Upload Artifact to Artifactory') {
+                                      steps {
+                                          script {
+                                              def server = Artifactory.server 'artifactory-server'
+                                              def uploadSpec = """{
+                                                  "files": [
+                                                  {
+                                                      "pattern": "php-todo.zip",
+                                                      "target": "Todo-dev/php-todo.zip",
+                                                      "props": "type=zip;status=ready"
+                                                  }
+                                                  ]
+                                              }"""
+                                              println "Upload Spec: ${uploadSpec}"
+                                              try {
+                                                  server.upload spec: uploadSpec
+                                                  println "Upload successful"
+                                              } catch (Exception e) {
+                                                  println "Upload failed: ${e.message}"
+                                              }
+                                          }
+                                      }
+                                  }
+
+
                                 
    - Deploy the application to the dev envionment :  `todo server` by launching the ansible playbook.
 
