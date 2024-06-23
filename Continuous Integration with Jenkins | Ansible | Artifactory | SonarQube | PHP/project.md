@@ -352,6 +352,20 @@ Our goal here is to deploy the application onto servers directly from `Artifacto
 
 ![jenkins server](./images/45.png)
 
+  - Update the database configuration in  `roles/mysql/vars/main.yml` to create a new database and user for the Todo App. use the details below :
+
+                        Create database homestead;
+                        CREATE USER 'homestead'@'%' IDENTIFIED BY 'sePret^i';
+                        GRANT ALL PRIVILEGES ON * . * TO 'homestead'@'%';
+
+![jenkins server](./images/46.png)
+
+  - Create a Multibranch pipeline for the Php Todo App.
+
+![jenkins server](./images/47.png)
+
+
+
  
 
 
