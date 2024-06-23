@@ -318,8 +318,28 @@ Our goal here is to deploy the application onto servers directly from `Artifacto
 ### `Phase 2 – Set up Ansible roles for artifactory`
 
   -  Create roles to install artifactory just the same way we set up apache, mysql and nginx in the previous project.
+
+![jenkins server](./images/35.png)
+
+![jenkins server](./images/36.png)
+
   -  Run the playbook against the `inventory/ci.yml`
 
+![jenkins server](./images/37.png)
+
+![jenkins server](./images/43.png)
+
+  -  After installation, open port `8081` and port `8082` in your artifactory security group in bound rules
+
+![jenkins server](./images/39.png)
+
+![jenkins server](./images/40.png)
+
+  -  Visit your `<your-artifactory-ip-address:8081`
+  -  Sign in using the default artifactory credentials : `admin` and `password`
+
+
+![jenkins server](./images/42.png)
  
 
 
