@@ -602,7 +602,9 @@ View in the `Plot` chart in Jenkins
 
 
     ![jenkins server](./images/62.png)
-                                
+
+    
+    ![jenkins server](./images/58.png)                            
 
 
 
