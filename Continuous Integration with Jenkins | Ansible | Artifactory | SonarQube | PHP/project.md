@@ -335,11 +335,23 @@ Our goal here is to deploy the application onto servers directly from `Artifacto
 
 ![jenkins server](./images/40.png)
 
+  - Configure Artifactory plugin by going to `manage jenkins` > `system configurations`, scroll down to jfrog and click on `add instance`
+  - Input the ID, artifactory url , username and password
+  - Click on `test connection` to test your url
+
+![jenkins server](./images/44.png)
+
   -  Visit your `<your-artifactory-ip-address:8081`
   -  Sign in using the default artifactory credentials : `admin` and `password`
 
 
 ![jenkins server](./images/42.png)
+
+  - Create a local repository and call it `todo-dev-local`, set the repository type to `generic`
+
+
+![jenkins server](./images/45.png)
+
  
 
 
