@@ -609,5 +609,10 @@ View in the `Plot` chart in Jenkins
     ![jenkins server](./images/58.png)                            
 
 
-     ![jenkins server](./images/63.png) 
+     ![jenkins server](./images/63.png)
+
+    Visit the todo ip address to access the todo application
+
+     ![jenkins server](./images/64.png)
+    
 
