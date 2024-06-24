@@ -616,3 +616,25 @@ View in the `Plot` chart in Jenkins
      ![jenkins server](./images/64.png)
     
 
+### `Install SonarQube on Ubuntu 20.04 With PostgreSQL as Backend Database`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
