@@ -733,12 +733,96 @@ View in the `Plot` chart in Jenkins
 
                   sudo mv /opt/sonarqube-7.9.3 /opt/sonarqube
 
+  - Configure SonarQube  - Sonarqube cannot be run as a root user, if you log in as a root user, it will stop automatically., so we need to configure sonarqube with a different user.
 
+       * Create a group sonar
 
+                   sudo groupadd sonar
 
+       * Now add a user with control over the /opt/sonarqube directory
 
+                    sudo useradd -c "user to run SonarQube" -d /opt/sonarqube -g sonar sonar 
+                     sudo chown sonar:sonar /opt/sonarqube -R
 
+       * Open SonarQube configuration file
 
+                     sudo vim /opt/sonarqube/conf/sonar.properties
+
+       * Find the following lines:  `#sonar.jdbc.username=` , `#sonar.jdbc.password=` , uncomment them and add the username and password we earlier created for postgres
+![jenkins server](./images/69.png)
+
+       * Edit the sonar script file and set RUN_AS_USER
+
+                     sudo nano /opt/sonarqube/bin/linux-x86-64/sonar.sh
+                     ```
+![jenkins server](./images/70.png)
+
+  - Now, to start SonarQube we need to do following:
+
+      * Switch to sonar user
+
+                          sudo su sonar
+
+      * Move to the script directory
+
+                          cd /opt/sonarqube/bin/linux-x86-64/
+
+      * Run the script to start SonarQube , and Check SonarQube running status:
+
+                          ./sonar.sh start
+                          ./sonar.sh status
+
+![jenkins server](./images/71.png)
+
+![jenkins server](./images/72.png)
+
+  * To check SonarQube logs, navigate to /opt/sonarqube/logs/sonar.log directory
+
+                          tail /opt/sonarqube/logs/sonar.log
+
+![jenkins server](./images/73.png)
+
+ - Configure SonarQube to run as a systemd service, To do this, Stop the currently running SonarQube service
+
+                           ./sonar.sh stop
+![jenkins server](./images/74.png)
+
+   
+ - Create a systemd service file for SonarQube to run as System Startup.
+
+                              sudo nano /etc/systemd/system/sonar.service
+
+ - Add the configuration below for systemd to determine how to start, stop, check status, or restart the SonarQube service.
+
+                             [Unit]
+                            Description=SonarQube service
+                            After=syslog.target network.target
+                            
+                            [Service]
+                            Type=forking
+                            
+                            ExecStart=/opt/sonarqube/bin/linux-x86-64/sonar.sh start
+                            ExecStop=/opt/sonarqube/bin/linux-x86-64/sonar.sh stop
+                            
+                            User=sonar
+                            Group=sonar
+                            Restart=always
+                            
+                            LimitNOFILE=65536
+                            LimitNPROC=4096
+                            
+                            [Install]
+                            WantedBy=multi-user.target
+
+  ![jenkins server](./images/75.png)
+
+   - Save exit. now you can go ahead and control the service using systemctl
+
+                           sudo systemctl start sonar
+                           sudo systemctl enable sonar
+                           sudo systemctl status sonar
+
+  ![jenkins server](./images/76.png)
 
 
 
