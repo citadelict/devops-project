@@ -616,10 +616,48 @@ View in the `Plot` chart in Jenkins
      ![jenkins server](./images/64.png)
     
 
-### `Install SonarQube on Ubuntu 20.04 With PostgreSQL as Backend Database`
+### `Install SonarQube on Ubuntu 24.04 With PostgreSQL as Backend Database`
 
+ SonarQube is a tool that can be used to create quality gates for software projects, and the ultimate goal is to be able to ship only quality software code.
 
+ #### `steps to Install SonarQube on Ubuntu 24.04 With PostgreSQL as Backend Database`
 
+   - First thing we need to do is to tune linux to ensure optimum performance
+
+                  sudo sysctl -w vm.max_map_count=262144
+                  sudo sysctl -w fs.file-max=65536
+                  ulimit -n 65536
+                  ulimit -u 4096
+
+  - Ensure a permanent change by editing the `/etc/security/limits.conf` , add the code below into it
+
+                  sonarqube   -   nofile   65536
+                  sonarqube   -   nproc    4096
+
+  - Update and upgrade system packages
+
+                  sudo apt-get update
+                  sudo apt-get upgrade
+
+  - Install wget and unzip packages
+
+                  sudo apt-get install wget unzip -y
+
+  - Install OpenJDK and Java Runtime Environment (JRE) 11
+
+                  sudo apt-get install openjdk-11-jdk -y
+                   sudo apt-get install openjdk-11-jre -y
+
+  - Set default JDK - To set default JDK or switch to OpenJDK, to achieve this , use the command below :
+
+                   sudo update-alternatives --config java
+    
+  - select your java from the list, that is if you already have mutiple installations of diffrent jdk versions
+  - Verify the set JAVA Version:
+
+                    java -version
+
+ ![jenkins server](./images/64.png)
 
 
 
