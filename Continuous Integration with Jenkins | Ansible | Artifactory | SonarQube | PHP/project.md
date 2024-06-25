@@ -657,14 +657,81 @@ View in the `Plot` chart in Jenkins
 
                     java -version
 
- ![jenkins server](./images/64.png)
+ ![jenkins server](./images/64.png
+
+  - Install and Setup PostgreSQL 10 Database for SonarQube
+
+      * PostgreSQL repo to the repo list:
+
+                  sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
+     
+      * Download PostgreSQL software
+
+                  wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | sudo apt-key add -
+
+      * Install, start and ensure  PostgreSQL Database Server enables automatically during booting
+
+                  sudo apt-get -y install postgresql postgresql-contrib
+                  sudo systemctl start postgresql
+                  sudo systemctl enable postgresql
+        
+      * Change the password for the default postgres user
+
+                  sudo passwd postgres
 
 
+![jenkins server](./images/66.png)
+
+  - Set up User and password for postgres
+
+      * Switch to the postgres user
+
+                  su - postgres
+        
+      * Create a new user
+   
+                 createuser sonar
+
+      * Switch to the PostgreSQL shell
+
+                  psql
+
+      * Set a password for the newly created user for SonarQube database
+   
+                      ALTER USER sonar WITH ENCRYPTED password 'sonar';
 
 
+      * Create a new database for PostgreSQL database by running:
+
+                  CREATE DATABASE sonarqube OWNER sonar;
+
+      * Grant all privileges to sonar user on sonarqube Database.
+
+                  grant all privileges on DATABASE sonarqube to sonar;
+
+      * Exit from the psql shell and switch back to sudo user
+
+                  \q
+                  exit
+        
+![jenkins server](./images/67.png)
+
+![jenkins server](./images/68.png)
+
+#### Install SonarQube on Ubuntu 24.04
+
+  - Navigate to the tmp directory to temporarily download the installation files
+
+                  cd /tmp && sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.9.3.zip
+    
+  - Unzip the archive setup to /opt directory
+
+                  sudo unzip sonarqube-7.9.3.zip -d /opt
 
 
+  - Move extracted setup to /opt/sonarqube directory
 
+                  sudo mv /opt/sonarqube-7.9.3 /opt/sonarqube
 
 
 
