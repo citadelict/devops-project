@@ -824,6 +824,117 @@ View in the `Plot` chart in Jenkins
 
   ![jenkins server](./images/76.png)
 
+   - Visit sonarqube config file and uncomment the line of `sonar.web.port=9000`
+
+   ![jenkins server](./images/77.png)   
+
+   - Open port 9000 in your security group for the sonarqube server and access your `<ip-address>:9000`
+
+  ![jenkins server](./images/78.png)
+
+
+
+### `Configure SonarQube and Jenkins For Quality Gate` : 
+
+- In jenkins , install the `sonarqubescanner plugin`
+- Go to jenkins global configuration and add sonarqube server as shown below
+
+  ![jenkins server](./images/79.png)
+
+- Generate authentication token in SonarQube by `User > My Account > Security > Generate Tokens`
+
+  ![jenkins server](./images/80.png)
+
+- Configure Quality Gate Jenkins Webhook in SonarQube – The URL should point to your Jenkins server http://{JENKINS_HOST}/sonarqube-webhook/ , go to `Administration > Configuration > Webhooks > Create`
+
+ ![jenkins server](./images/81.png)
+
+- Setup SonarQube scanner from Jenkins – Global Tool Configuration
+
+ ![jenkins server](./images/84.png)
+
+
+- Update Jenkins Pipeline to include SonarQube scanning and Quality Gate and run Jenkinsfile
+
+  > Note this will fail but enable us update the sonar-scanner.properties below
+
+                          ```bash
+                             stage('SonarQube Quality Gate') {
+                                  environment {
+                                      scannerHome = tool 'SonarQubeScanner'
+                                  }
+                                  steps {
+                                      withSonarQubeEnv('sonarqube') {
+                                          sh "${scannerHome}/bin/sonar-scanner"
+                                      }
+                          
+                                  }
+                              }
+                          ```
+
+
+     ![jenkins server](./images/86.png)
+    ![jenkins server](./images/82.png)
+
+
+  - Configure `sonar-scanner.properties` – From the step above, Jenkins will install the scanner tool on the Linux server. You will need to go into the tools directory on the server to configure the properties file in which SonarQube will require to function during pipeline execution.
+
+                          ```bash
+                            cd /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQubeScanner/conf/
+                            
+                            sudo vi sonar-scanner.properties
+                            ```
+    ![jenkins server](./images/85.png)
+    
+ - Add configuration related to php-todo project
+
+
+                                  ```bash
+                                    sonar.host.url=http://<SonarQube-Server-IP-address>:9000
+                                    sonar.projectKey=php-todo
+                                    #----- Default source code encoding
+                                    sonar.sourceEncoding=UTF-8
+                                    sonar.php.exclusions=**/vendor/**
+                                    sonar.php.coverage.reportPaths=build/logs/clover.xml
+                                    sonar.php.tests.reportPath=build/logs/junit.xml
+   
+                                    ```
+  ![jenkins server](./images/87.png)
+
+  - To further examine the configuration of the scanner tool on the Jenkins server - navigate into the tools directory
+
+                                cd /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQubeScanner/bin
+
+  - List the content to see the scanner tool sonar-scanner. That is what we are calling in the pipeline script.
+
+    Output of `ls -latr`
+
+    ![jenkins server](./images/88.png)  
+
+  - Run your pipeline script and View the Quailty gate for the Php-Todo app in Sonarqube
+
+   ![jenkins server](./images/90.png)  
+   
+   ![jenkins server](./images/91.png)  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
