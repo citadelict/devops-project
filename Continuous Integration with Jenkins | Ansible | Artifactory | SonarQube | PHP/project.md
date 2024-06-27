@@ -1021,9 +1021,30 @@ View in the `Plot` chart in Jenkins
     ![jenkins server](./images/101.png)
 
 
+### `Optional Step` 
 
+Using ansible roles, Install wireshark in the pentest env server. here are a list of ansible roles you could use : 
 
+  - https://github.com/ymajik/ansible-role-wireshark (Ubuntu)
+  - https://github.com/wtanaka/ansible-role-wireshark (RedHat)
 
+* Add the roles to your ansible configuration managenment project
+  
+  ![jenkins server](./images/106.png)
+  
+* Import the playbook in your `playbooks/site.yml` file
+  
+  ![jenkins server](./images/106.png)
+  
+* Add the `wireshark.yml` playbook inside the static-assignments directory
+  
+  ![jenkins server](./images/108.png)
+  
+* Push to your repository and allow your pipeline build and eploy ansible playbook tasks
+  
+![jenkins server](./images/104.png)
+
+![jenkins server](./images/105.png)
 
 
 
