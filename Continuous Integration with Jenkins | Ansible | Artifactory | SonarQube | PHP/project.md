@@ -918,6 +918,45 @@ View in the `Plot` chart in Jenkins
    ![jenkins server](./images/91.png)  
 
 
+  ### `Conditionally deploy to higher environments`
+
+   - Let us update our Jenkinsfile to implement this:
+      * First, we will include a When condition to run Quality Gate whenever the running branch is either develop, hotfix, release, main, or master
+
+                            when { branch pattern: "^develop*|^hotfix*|^release*|^main*", comparator: "REGEXP"}
+
+      * Then we add a timeout step to wait for SonarQube to complete analysis and successfully finish the pipeline only when code quality is acceptable.
+
+                                timeout(time: 1, unit: 'MINUTES') {
+                                  waitForQualityGate abortPipeline: true
+                              }
+
+      * The complete stage will now look like this
+
+                                stage('SonarQube Quality Gate') {
+                                  when { branch pattern: "^develop*|^hotfix*|^release*|^main*", comparator: "REGEXP"}
+                                    environment {
+                                        scannerHome = tool 'SonarQubeScanner'
+                                    }
+                                    steps {
+                                        withSonarQubeEnv('sonarqube') {
+                                            sh "${scannerHome}/bin/sonar-scanner -Dproject.settings=sonar-project.properties"
+                                        }
+                                        timeout(time: 1, unit: 'MINUTES') {
+                                            waitForQualityGate abortPipeline: true
+                                        }
+                                    }
+                                }
+
+      * To test, create different branches and push to GitHub. You will realise that only branches other than develop, hotfix, release, main, ormaster will be able to deploy the code.
+
+     ![jenkins server](./images/92.png)
+
+     ![jenkins server](./images/94.png)  
+
+
+
+                              
 
 
 
