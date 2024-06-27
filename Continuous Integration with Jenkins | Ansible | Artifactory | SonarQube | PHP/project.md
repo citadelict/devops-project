@@ -954,18 +954,71 @@ View in the `Plot` chart in Jenkins
 
      ![jenkins server](./images/94.png)  
 
+  ### `Introduce Jenkins agents/slaves`
+  Jenkins architecture is fundamentally "Master+Agent". The master is designed to do co-ordination and provide the GUI and API endpoints, and the Agents are designed to perform the     work. The reason being that workloads are often best "farmed out" to distributed servers.
+
+  - Let's add 2 more servers to be used as Jenkins slave. Launch 2 more instances for Jenkins slave and install java in them
+
+                                # install  java on slave nodes
+                                  sudo yum install java-11-openjdk-devel -y
+                                  
+                                  #verify Java is installed
+                                  java --version
+                                  
+ - Configure Jenkins to run its pipeline jobs randomly on any available slave nodes. Let's Configure the new nodes on Jenkins Server. Navigate to `Dashboard > Manage Jenkins > Nodes`, click on New node and enter a Name and click on create.                                                                
+
+  ![jenkins server](./images/95.png)  
+
+- At this point, Only one slave is  created but not connected. 
+
+  ![jenkins server](./images/96.png)
+
+- To connect to slave_one, click on the slave_one and completed this fields and save.
+    * `Name`: slave_one
+    * `Remote root directory`: /opt/build (This can be any directory for the builds)
+    * `Labels`: slave_one and save
+    * Click back on Slave_one to configure and navigate to status
+    * Use any options. But since i am making use of a UNIX system ,I would use the first option.
+
+   ![jenkins server](./images/102.png)
+
+    * In the Slave_one terminal, enter the following
+ 
+        
+                  # Download agent.jar to /opt/build. Make sure to Jenkins IP here
+                  curl -sO http://18.197.153.7:8080/jnlpJars/agent.jar
+
+                  # If added a `Remote root directory` like above /opt/build. Create it and allow permission
+
+                  Sudo mkdir /opt/build
+                  
+                  sudo chmod 777 /opt/build
 
 
-                              
+      * Go to `dashboard > manage jenkins > security > Agents`
+      * Set the TCP port for inbound agents to fixed and set the port at 5000 ( or any one you choose )
+        
+        ![jenkins server](./images/103.png)
+        
+      * Go to the security group on jenkins ec2 instance and open port 5000
+      * go back to slave terminal and run the command
+     
+        ![jenkins server](./images/98.png)
+      
+                                    java -jar agent.jar -url http://18.197.153.7:8080/ -secret c2d38f8cd0ae08fc1930f1a486adfe095fc4a38f83d7948a273cfaa506e05aa7 -name "slave_one" -workDir "/opt/build"
 
+      * Verify that slave is connected in jenkins
+        
+       ![jenkins server](./images/99.png)
+      
+      * Repeat same process for slave two
+     
+         ![jenkins server](./images/100.png)
 
+      
+ - Configure webhook between Jenkins and GitHub to automatically run the pipeline when there is a code push. The PHP -Todo repo, click on `settings > Webhooks`. Enter `/github-webhook/` and in content type, select application/json and save
 
-
-
-
-
-
-
+    ![jenkins server](./images/101.png)
 
 
 
