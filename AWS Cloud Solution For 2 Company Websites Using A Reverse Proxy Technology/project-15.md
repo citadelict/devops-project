@@ -91,6 +91,19 @@ There are few requirements that must be met before you begin:
 
    ![](./images/16.png)
 
+10. Create a Security Group for the following
+
+   - `Nginx Servers`: Access to Nginx should only be allowed from a Application Load balancer (ALB). At this point, we have not created a load balancer, therefore we will          update the rules later. For now, just create it and put some dummy records as a place holder.
+   - `Bastion Servers`: Access to the Bastion servers should be allowed only from workstations that need to SSH into the bastion servers. Hence, you can use your workstation       public IP address. To get this information, simply go to your terminal and type curl www.canhazip.com
+   - `Application Load Balancer`: ALB will be available from the Internet
+   - `Webservers`: Access to Webservers should only be allowed from the `Nginx` servers. Since we do not have the servers created yet, just put some dummy records as a place       holder, we will update it later.
+   - `Data Layer`: Access to the Data layer, which is comprised of `Amazon Relational Database Service (RDS)` and `Amazon Elastic File System (EFS)` must be carefully               desinged – only `webservers` should be able to connect to `RDS`, while `Nginx` and `Webservers` will have access to `EFS` Mountpoint.
+
+   ![](./images/17.png)
+
+
+### TLS Certificates From Amazon Certificate Manager (ACM)
+
 
 
 
