@@ -99,10 +99,86 @@ There are few requirements that must be met before you begin:
    - `Webservers`: Access to Webservers should only be allowed from the `Nginx` servers. Since we do not have the servers created yet, just put some dummy records as a place       holder, we will update it later.
    - `Data Layer`: Access to the Data layer, which is comprised of `Amazon Relational Database Service (RDS)` and `Amazon Elastic File System (EFS)` must be carefully               desinged – only `webservers` should be able to connect to `RDS`, while `Nginx` and `Webservers` will have access to `EFS` Mountpoint.
 
-   ![](./images/17.png)
+   ![](./images/18.png)
 
 
 ### TLS Certificates From Amazon Certificate Manager (ACM)
+
+   You will need TLS certificates to handle secured connectivity to your Application Load Balancers (ALB). to do this, 
+   navigate to `amazon certificate manager (acm)` > `request certificate` and fill in rquired details
+
+   ![](./images/19.png)
+
+   ![](./images/20.png)
+
+   ![](./images/21.png)
+
+### Configure EFS
+---
+
+   * Create a new EFS File system. Create an EFS mount target per AZ in the VPC, associate it with both subnets dedicated for data layer. Associate the Security groups             created earlier for data layer.
+
+   ![](./images/22.png)
+
+   ![](./images/23.png)
+
+   ![](./images/24.png)
+
+   * Create 2 access points - For each of the website (wordpress and tooling) so that the files do not overwrite each other when we moun
+
+   ![](./images/25.png)
+
+   ![](./images/26.png)
+
+   ![](./images/27.png)
+
+   ![](./images/28.png)
+
+### Configure RDS
+-----
+#### Pre-requisite:
+
+   * Create a KMS Key
+
+   ![](./images/29.png)
+
+   ![](./images/30.png)
+
+   ![](./images/31.png)
+
+   ![](./images/32.png)
+
+   * To ensure that yout databases are highly available and also have failover support in case one availability zone fails, we will configure a multi-AZ set up of RDS MySQL       database instance. In our case, since we are only using 2 AZs, we can only failover to one, but the same concept applies to 3 Availability Zones.
+
+   * To configure RDS, follow steps below:
+
+   
+   1. Create a subnet group and add 2 private subnets (data Layer)
+
+      ![](./images/33.png)
+
+      ![](./images/34.png)
+
+      ![](./images/35.png)
+      
+
+   2. Create the DataBase by navigating to `amazon rds` > `databases` > `create database`
+
+      ![](./images/36.png)
+
+      ![](./images/37.png)
+
+      ![](./images/38.png)
+
+      ![](./images/39.png)
+
+      ![](./images/40.png)
+
+      ![](./images/41.png)
+      
+
+
+
 
 
 
