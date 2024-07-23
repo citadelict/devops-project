@@ -387,6 +387,55 @@ We will use instance to create an ami for launching instances in Auto-scaling gr
     ![](./images/58.png)
 
 
+   The default target configured on the listener while creating the internal load balancer is to forward traffic to wordpress on port 443. Hence, we need to create a rule to route traffic to tooling as well.
+
+    !. Select internal load balancer from the list of load balancers created:
+        * Choose the load balancer where you want to add the rule.
+    2. Listeners Tab:
+        * Click on the Listeners tab.
+        * Select the listener (HTTPS:443) and click Manage listener.
+    3. Add Rules:
+        * Click on Add rule.
+    4. Configure the Rule:
+        * Give the rule a name and click next.
+        * Add a condition by selecting Host header.
+        * Enter the hostnames for which you want to route traffic. (tooling.com and www.tooling.com).
+        * Choose the appropriate target group for the hostname.
+      
+    ![](./images/59.png)
+
+    ![](./images/60.png)
+
+    ![](./images/61.png)
+
+    ![](./images/62.png)
+
+    ![](./images/63.png)
+
+    ![](./images/64.png)
+
+    ![](./images/65.png)
+
+    ![](./images/66.png)
+
+    ![](./images/67.png)
+
+
+PREPARE LAUNCH TEMPLATE FOR NGINX (ONE PER SUBNET)
+
+   1. Make use of the AMI to set up a launch template
+   2. Ensure the Instances are launched into a public subnet.
+   3. Assign appropriate security group.
+   4. Configure [userdata](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html) to update yum package repository and install nginx. Ensure to enable auto-            assign public IP in the Advance Network Configuration
+
+   ![](./images/68.png)
+
+   ![](./images/69.png)
+
+   ![](./images/70.png)
+
+   ![](./images/71.png)
+
 
 
 
