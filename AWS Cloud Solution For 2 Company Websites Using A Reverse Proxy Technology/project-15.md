@@ -426,7 +426,7 @@ PREPARE LAUNCH TEMPLATE FOR NGINX (ONE PER SUBNET)
    1. Make use of the AMI to set up a launch template
    2. Ensure the Instances are launched into a public subnet.
    3. Assign appropriate security group.
-   4. Configure [userdata](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html) to update yum package repository and install nginx. Ensure to enable auto-            assign public IP in the Advance Network Configuration
+   4. Configure [userdata](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html) to update yum package repository and install nginx. Ensure to enable auto-            assign public IP in the Advance Network Configuration. you can access my repo on this project to get the userdata [repo](https://github.com/citadelict/citatech-project-config) and edit it with your details
 
    ![](./images/68.png)
 
@@ -435,6 +435,74 @@ PREPARE LAUNCH TEMPLATE FOR NGINX (ONE PER SUBNET)
    ![](./images/70.png)
 
    ![](./images/71.png)
+
+ We need to update the reverse.conf file by updating proxy_pass value to the end point of the internal load balancer (DNS name) before using the userdata so as to clone the updated repository
+
+   ![](./images/72.png)
+
+Repeat the same setting for Bastion, the difference here is the userdata input, AMI and security group.
+
+   
+   ![](./images/73.png)
+
+Wordpress Userdata
+
+NB: Both Wordpress and Tooling make use of Webserver AMI.
+
+Update the mount point to the file system, this should be done on access points for tooling and wordpress respectively., to get the mount point for each access points, 
+* Go to `EFS` > `access points` and select wordpress, click on attach, and there you can seen the command to attach the access points mount points
+
+  ![](./images/73.png)
+
+  ![](./images/74.png)
+
+  ![](./images/75.png)
+
+
+The RDS end point is also needed. Go to `RDS` > `Databases` > `select the database you created earlier`
+
+  ![](./images/76.png)
+
+  ![](./images/77.png)
+
+
+Tooling userdata ( Repeat same steps as you did for wordpress user-data for tooling, difference is, get the tooling access points mount point command instead)
+
+  ![](./images/78.png)
+
+All launch templates created.
+
+  ![](./images/79.png)
+
+
+### CONFIGURE AUTOSCALING FOR NGINX
+
+   * Select the right launch template
+   * Select the VPC
+   * Select both public subnets
+   * Enable Application Load Balancer for the AutoScalingGroup (ASG)
+   * Select the target group you created before
+   * Ensure that you have health checks for both EC2 and ALB
+   * The desired capacity is 2
+   * Minimum capacity is 2
+   * Maximum capacity is 4
+   * Set [scale out](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-lifecycle.html) if CPU utilization reaches 90%
+   * Ensure there is an [SNS](https://docs.aws.amazon.com/sns/latest/dg/welcome.html) topic to send scaling notifications
+
+### Create Auto Scaling Group for Bastion
+
+   ![](./images/80.png)
+
+   ![](./images/81.png)
+
+Access RDS through Bastion connection to craete database for wordpress and tooling.
+
+Copy the RDS endpoint to be used as host
+
+   ![](./images/82.png)
+
+   ![](./images/83.png)
+
 
 
 
