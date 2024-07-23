@@ -504,6 +504,60 @@ Copy the RDS endpoint to be used as host
    ![](./images/83.png)
 
 
+### Create Auto Scaling Group for Nginx
+
+   ![](./images/84.png)
+
+   ![](./images/85.png)
+
+   ![](./images/86.png)
+
+   ![](./images/87.png)
+
+### Repeat the Nginx Auto Scaling Group steps above for Wordpress and Tooling with their right launch template
+
+   ![](./images/88.png)
+
+   ![](./images/89.png)
+
+
+# Configuring DNS with Route53
+
+Earlier in this project we registered a free domain with `Hostinger` and configured a hosted zone in [Route53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html). But that is not all that needs to be done as far as `DNS` configuration is concerned.
+
+We need to ensure that the main domain for the WordPress website can be reached, and the subdomain for Tooling website can also be reached using a browser.
+
+Create other records such as [CNAME, alias and A records](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/route-53-concepts.html).
+
+NOTE: You can use either CNAME or alias records to achieve the same thing. But alias record has better functionality because it is a faster to resolve DNS record, and can coexist with other records on that name. Read [here](https://support.dnsimple.com/articles/differences-between-a-cname-alias-url/#:~:text=The%20A%20record%20maps%20a,a%20name%20to%20another%20name.&text=The%20ALIAS%20record%20maps%20a,the%20HTTP%20301%20status%20code) to get to know more about the differences.
+
+- Create an alias record for the root domain and direct its traffic to the ALB DNS name.
+- Create an alias record for `tooling.citatech.online` and direct its traffic to the ALB DNS name.
+
+  ![](./images/90.png)
+
+  ![](./images/91.png)
+
+
+### Test your websites.
+
+
+__Now let us access our tooling website via a browser using our DNS name__ 
+
+   
+   ![](./images/92.png)
+
+__Let's access our wordpress website__
+
+   ![](./images/93.png)
+
+
+We have sucessfully created a secured, scalable and cost-effective infrastructure to host 2 enterprise websites using various Cloud services from AWS. At this point, our infrastructure is ready to host real websites' load.
+
+
+
+
+
 
 
 
