@@ -1280,7 +1280,7 @@ Declare the variables in our resources that has not been declared in the variabl
 
 
 
-* Don't forget to terraform destroy the resources to avoid cost.  `tf destroy -auto-approve`
+* Don't forget to terraform destroy the resources to avoid cost.  `terraform destroy -auto-approve`
 
 
 
