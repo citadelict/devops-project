@@ -389,12 +389,13 @@ iv. Click on `install to <Selected slack workspace name>` to install the Notific
 
 v. Select Incoming Webhooks and copy the webhook URL.
 
+![](./images/hooks.png)
 
 
 Now, let's create the slack notification (paste the webhook url)
 
 
-The bastion instance type was changed back to t2.small in order to test it
+The bastion instance type was changed back to t3.small in order to test it
 
 ![](./images/42.png)
 
@@ -422,27 +423,27 @@ As your Terraform code base grows, your DevOps team might want to create you own
 
 1. Create a simple Terraform repository (you can clone one [from here](https://github.com/hashicorp/learn-private-module-aws-s3-webapp)) that will be your module.
 
-![](./images/module-repo.png)
+![](./images/51.png)
 
 - Under the repository's tab, clicking on `tag` to create tag. click `Create a new release` and adding `v1.0.0` to the tag version field setting the release title to `First module release`
 
-![](./images/release-v1.png)
+![](./images/52.png)
 
 2. Import the module into your private registry
 
 Go to Registery > Module > Add Module > select GitHub (Custom)
 
-![](./images/add-module.png)
+![](./images/53.png)
 
-![](./images/publish-module.png)
+
 
 Click on __`configure credentials`__ from here
 
-![](./images/bucket-webapp.png)
+![](./images/54.png)
 
 Click on `create an API toekn` from here
 
-![](./images/create-api-token.png)
+![](./images/55.png)
 
 Configure the token generated, in the Terraform CLI configuration file `.terraformrc`.
 
@@ -469,22 +470,18 @@ export TERRAFORM_CLOUD_TOKEN="xxxxxxxxx.atlasv1.zzzzzzzzzzzzzzzzz"
 Create a `main.tf` file to use the module.
 Then click on `Copy configuration` under Usage instructions and paste it into main.tf
 
-![](./images/usage-instruction.png)
-
-![](./images/module-usage.png)
 
 __Initialize the Configuration__
 
 ```bash
 terraform init
 ```
-![](./images/terraform-init.png)
+![](./images/56.png)
 
 4. Create a workspace for the configuration, Select CLI-driven workflow Name the workspace s3-webapp-workspace
 
-![](./images/create-new-workspace.png)
 
-![](./images/cli-driven.png)
+![](./images/57.png)
 
 Add the code block below to the terraform configuration file to setup the cloud integration.
 
@@ -492,36 +489,39 @@ Add the code block below to the terraform configuration file to setup the cloud 
 terraform {
   cloud {
 
-    organization = "fnc-project-19"
+    organization = "citatech"
 
     workspaces {
-      name = "s3-webapp-workspace"
+      name = "s3-webapp"
     }
   }
 }
 ```
-![](./images/add-org-worksp.png)
+
+
+![](./images/60.png)
+![](./images/58.png)
 
 5. Deploy the infrastructure
 
 Run `terraform apply` to deploy the infrastructure.
 
-![](./images/tform-apply.png)
+![](./images/59.png)
 
-![](./images/tf-cloud-run.png)
+![](./images/62.png)
 
-![](./images/s3.png)
-![](./images/s3-object.png)
-
-![](./images/game-website.png)
+![](./images/61.png)
+![](./images/64.png)
+![](./images/65.png)
+![](./images/63.png)
 
 6. Destroy your deployment
 
 Run `terraform destroy` to destory the infrastructure
 
-![](./images/tf_destroy.png)
+![](./images/66.png)
 
-![](./images/tf-cloud-destroy.png)
+![](./images/67.png)
 
 
 ## Conclusion
