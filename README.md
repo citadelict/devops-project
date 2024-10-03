@@ -36,13 +36,13 @@ This repository is designed to be informative for both experienced professionals
 
 - __Project 13: [Ansible Dynamic Assignments (Include) and Community Roles](https://github.com/citadelict/devops-project/blob/main/Ansible%20Dynamic%20Assignments/project.md)__
 
-- __Project 14: [Experience Continuous Integration with Jenkins | Ansible | Artifactory | SonarQube | PHP]((https://github.com/citadelict/devops-project/blob/main/Continuous%20Integration%20with%20Jenkins%20%7C%20Ansible%20%7C%20Artifactory%20%7C%20SonarQube%20%7C%20PHP/project.md))__
+- __Project 14: [Experience Continuous Integration with Jenkins | Ansible | Artifactory | SonarQube | PHP](https://github.com/citadelict/devops-project/blob/main/Continuous%20Integration%20with%20Jenkins%20%7C%20Ansible%20%7C%20Artifactory%20%7C%20SonarQube%20%7C%20PHP/project.md))__
 
-- __Project 15: [AWS Cloud Solution For 2 Company Websites Using A Reverse Proxy Technology]((https://github.com/citadelict/devops-project/blob/main/AWS%20Cloud%20Solution%20For%202%20Company%20Websites%20Using%20A%20Reverse%20Proxy%20Technology/project-15.md))__
+- __Project 15: [AWS Cloud Solution For 2 Company Websites Using A Reverse Proxy Technology](https://github.com/citadelict/devops-project/blob/main/AWS%20Cloud%20Solution%20For%202%20Company%20Websites%20Using%20A%20Reverse%20Proxy%20Technology/project-15.md))__
 
-- __Project 16: [Automate Infrastructure With IaC using Terraform 1]((https://github.com/citadelict/devops-project/blob/main/AUTOMATE-INFRASTRUCTURE-WITH-IAC-USING-TERRAFORM-PART-1/project_16.md))__
+- __Project 16: [Automate Infrastructure With IaC using Terraform 1](https://github.com/citadelict/devops-project/blob/main/AUTOMATE-INFRASTRUCTURE-WITH-IAC-USING-TERRAFORM-PART-1/project_16.md))__
 
-- __Project 17: [Automate Infrastructure With IaC using Terraform 2]((https://github.com/citadelict/devops-project/blob/main/AUTOMATE-INFRASTRUCTURE-WITH-IAC-USING-TERRAFORM-PART-2/project_17.md))__
+- __Project 17: [Automate Infrastructure With IaC using Terraform 2](https://github.com/citadelict/devops-project/blob/main/AUTOMATE-INFRASTRUCTURE-WITH-IAC-USING-TERRAFORM-PART-2/project_17.md))__
 
 - __Project 18: [Automate Infrastructure With IaC using Terraform 3 (Refactoring)](https://github.com/citadelict/devops-project/blob/main/Automate%20Infrastructure%20With%20IaC%20using%20Terraform%203%20(Refactoring)-%20301/project_18.md)__
 
