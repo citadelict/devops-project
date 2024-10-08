@@ -56,7 +56,7 @@ This repository is designed to be informative for both experienced professionals
 
 - __Project 23: [Persisting Data in Kubernetes](https://github.com/citadelict/devops-project/blob/main/Persisting%20Data%20in%20Kubernetes/project-23.md)__
 
-- __Project 24: [Building Elastic Kubernetes Service (EKS) With Terraform](....................................)__
+- __Project 24: [Building Elastic Kubernetes Service (EKS) With Terraform](https://github.com/citadelict/devops-project/blob/main/Building%20Elastic%20Kubernetes%20Service%20(EKS)%20With%20Terraform/project_24.md)__
 
 - __Project 25: [Deploying and Packaging applications into Kubernetes](..........................................)__
 
