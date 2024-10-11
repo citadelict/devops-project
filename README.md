@@ -58,7 +58,7 @@ This repository is designed to be informative for both experienced professionals
 
 - __Project 24: [Building Elastic Kubernetes Service (EKS) With Terraform](https://github.com/citadelict/devops-project/blob/main/Building%20Elastic%20Kubernetes%20Service%20(EKS)%20With%20Terraform/project_24.md)__
 
-- __Project 25: [Deploying and Packaging applications into Kubernetes](..........................................)__
+- __Project 25: [Deploying and Packaging applications into Kubernetes](https://github.com/citadelict/devops-project/blob/main/Deploying_and_Packaging_applications_into_Kubernetes/project_25.md)__
 
 
 <br>
