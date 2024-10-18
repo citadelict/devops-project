@@ -194,6 +194,8 @@ helm upgrade --install artifactory jfrog/artifactory --version 107.90.10 -n tool
 ```
 ![](./images/new-upgrade.png)
 
+Ensure you open port 5432 for postgresSQL and 8081 ,8082 for jfrog artifactory, 443 and 80 https and http in your security inbound rules, also open the outbound rules as well
+
 Now, let's get the pods
 
 ```bash
