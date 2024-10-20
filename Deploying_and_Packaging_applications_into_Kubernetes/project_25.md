@@ -616,4 +616,4 @@ Next, its time to fix the TLS/SSL configuration so that we will have a trusted _
 
 ### Part B : TLS/SSL IMPLEMENTATION FOR ARTIFACTORY 
 
-- __Project 2B-part B: [Implementing Secure HTTPS with Cert-Manager and Let's Encrypt 101](https://github.com/citadelict/devops-project/blob/main/Implementing%20Secure%20HTTPS%20with%20Cert-Manager%20and%20Let%E2%80%99s%20Encrypt%20103/project_26.md)__
+- __Project 25-part B: [Implementing Secure HTTPS with Cert-Manager and Let's Encrypt 101](https://github.com/citadelict/devops-project/blob/main/Implementing-Secure-HTTPS-with-Cert-Manager-and-Let's-Encrypt-101/project_26.md)__
