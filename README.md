@@ -60,7 +60,7 @@ This repository is designed to be informative for both experienced professionals
 
 - __Project 25: [Deploying and Packaging applications into Kubernetes](https://github.com/citadelict/devops-project/blob/main/Deploying_and_Packaging_applications_into_Kubernetes/project_25.md)__
 
-- __Project 2B-part B: [Implementing Secure HTTPS with Cert-Manager and Let's Encrypt 101](https://github.com/citadelict/devops-project/blob/main/Implementing%20Secure%20HTTPS%20with%20Cert-Manager%20and%20Let%E2%80%99s%20Encrypt%20103/project_26.md)__
+- __Project 25-part B: [Implementing Secure HTTPS with Cert-Manager and Let's Encrypt 101](https://github.com/citadelict/devops-project/blob/main/Implementing-Secure-HTTPS-with-Cert-Manager-and-Let's-Encrypt-101/project_26.md)__
 
 <br>
 <br>
