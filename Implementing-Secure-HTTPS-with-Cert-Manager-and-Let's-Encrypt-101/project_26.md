@@ -356,3 +356,9 @@ We've successfully implemented HTTPS for our Artifactory deployment with a trust
 - [Let's Encrypt Documentation](https://letsencrypt.org/docs/)
 - [Nginx Ingress Controller Documentation](https://kubernetes.github.io/ingress-nginx/)
 
+## Additional Tasks
+
+Automating the entire deployment process with terraform .
+
+[terraform deployment files](https://github.com/citadelict/EKS_Cluster_With_Terraform-files)
+
