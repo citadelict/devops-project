@@ -62,7 +62,7 @@ This repository is designed to be informative for both experienced professionals
 
 - __Project 26: [Implementing Secure HTTPS with Cert-Manager and Let's Encrypt 101](https://github.com/citadelict/devops-project/blob/main/Implementing-Secure-HTTPS-with-Cert-Manager-and-Let's-Encrypt-101/project_26.md)__
 
--  __Project 27-part B: [Streamlining Tooling Application Deployments with Helm, Kustomize, and Vault 108](https://github.com/citadelict/devops-project/blob/main/Streamlining-Tooling-Application-Deployments-with-Helm-Kustomize-and-Vault-104/project_27.md)__
+-  __Project 27: [Streamlining Tooling Application Deployments with Helm, Kustomize, and Vault 108](https://github.com/citadelict/devops-project/blob/main/Streamlining-Tooling-Application-Deployments-with-Helm-Kustomize-and-Vault-104/project_27.md)__
 
   
 
