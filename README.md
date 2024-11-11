@@ -1,8 +1,8 @@
-# StegHub DevOps/ Cloud Engineering
+#  DevOps/ Cloud Engineering
 
 ## My DevOps & Cloud Engineering Journey 
 
-__This repository serves as a central hub for my journey in DevOps and Cloud Engineering at StegHub. It's a comprehensive collection of documentation, code samples, best practices, and curated resources that cover various aspects of these fields__.
+__This repository serves as a central hub for my journey in DevOps and Cloud Engineering . It's a comprehensive collection of documentation, code samples, best practices, and curated resources that cover various aspects of these fields__.
 
 __What You'll Find Here__
 
@@ -60,7 +60,11 @@ This repository is designed to be informative for both experienced professionals
 
 - __Project 25: [Deploying and Packaging applications into Kubernetes](https://github.com/citadelict/devops-project/blob/main/Deploying_and_Packaging_applications_into_Kubernetes/project_25.md)__
 
-- __Project 25-part B: [Implementing Secure HTTPS with Cert-Manager and Let's Encrypt 101](https://github.com/citadelict/devops-project/blob/main/Implementing-Secure-HTTPS-with-Cert-Manager-and-Let's-Encrypt-101/project_26.md)__
+- __Project 26: [Implementing Secure HTTPS with Cert-Manager and Let's Encrypt 101](https://github.com/citadelict/devops-project/blob/main/Implementing-Secure-HTTPS-with-Cert-Manager-and-Let's-Encrypt-101/project_26.md)__
+
+-  __Project 27-part B: [Streamlining Tooling Application Deployments with Helm, Kustomize, and Vault 108](https://github.com/citadelict/devops-project/blob/main/Streamlining-Tooling-Application-Deployments-with-Helm-Kustomize-and-Vault-104/project_27.md)__
+
+  
 
 <br>
 <br>
