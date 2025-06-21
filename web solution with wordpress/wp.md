@@ -227,6 +227,7 @@ We can now proceed to installing and configuring MYSQL server that will serve as
            sudo systemctl enable php-fpm setsebool -P httpd_execmem 1
            sudo setsebool -P httpd_execmem 1
            sudo setsebool -P httpd_can_network_connect_db 1
+           sudo setsebool -P httpd_can_network_connect 1
 
 7. Restart Apache
 
