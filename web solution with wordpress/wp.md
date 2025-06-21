@@ -225,12 +225,14 @@ We can now proceed to installing and configuring MYSQL server that will serve as
            sudo yum install php php-opcache php-gd php-curl php-mysqlnd
            sudo systemctl start php-fpm
            sudo systemctl enable php-fpm setsebool -P httpd_execmem 1
+           sudo setsebool -P httpd_execmem 1
+           sudo setsebool -P httpd_can_network_connect_db 1
 
-6. Restart Apache
+7. Restart Apache
 
             sudo systemctl restart httpd
 
-7. Create an info.php page to test if your configuration is correct
+8. Create an info.php page to test if your configuration is correct
 
                sudo vi /var/www/html/info.php
    
@@ -240,19 +242,19 @@ We can now proceed to installing and configuring MYSQL server that will serve as
                phpinfo();
                    ?>
                    
-  8. Visit your IPaddress/info.php
+  9. Visit your IPaddress/info.php
 
      OUTPUT : ![WP](https://github.com/citadelict/My-devops-Journey/blob/main/web%20solution%20with%20wordpress/info.php.png)
 
 
- 9.  Download and Copy wordpress to the /var/www/html directory
+ 10.  Download and Copy wordpress to the /var/www/html directory
 
              sudo wget http://wordpress.org/latest.tar.gz
              sudo tar xzvf latest.tar.gz
              sudo rm -rf latest.tar.gz
              sudo cp wordpress/wp-config-sample.php wordpress/wp-config.php
      
-10.  configure SElinux policies
+11.  configure SElinux policies
 
                 sudo chown -R apache:apache /var/www/html/wordpress
                  sudo chcon -t httpd_sys_rw_content_t /var/www/html/wordpress -R
